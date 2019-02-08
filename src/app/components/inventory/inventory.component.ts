@@ -19,7 +19,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./inventory.component.scss']
 })
 export class InventoryComponent implements OnInit {
-  title : string = "Cars";
+  title : string = "CARS";
   cars$: Observable<Car[]>;
   fileUploads: Observable<Array<any>>;
   filterForm: FormGroup;
@@ -59,6 +59,8 @@ export class InventoryComponent implements OnInit {
         vehicle_type : [],
         fuel_type : [],
         transmission_type : [],
+        interior_color:[],
+        exterior_color:[],
         is_sold : [false],
       });
     }

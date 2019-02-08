@@ -7,11 +7,12 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  activeMenu:string="home";
+  selectedMenu:string="home";
 
   constructor(public auth : AuthService) { }
 
   ngOnInit() {
+    this.selectedMenu = window.location.pathname.split("/").pop();
   }
 
 }

@@ -41,6 +41,7 @@ router.get('/api/transactionDetails/investorsInvestmentDetails/:date', function(
     ' (select coalesce(SUM(credit),0) - coalesce(SUM(debit),0) from transaction_details'+
      ' where investor_id is not null'+
      ' AND date <='+purchase_date+
+     ' AND c.is_investor=true'+
      ' AND transaction_type_id in(1,3,4,11)'+
      ' AND is_void is not true'+
     ' ) as total_company_investment'+
@@ -134,6 +135,33 @@ router.get('/api/transactionDetails/investorsInvestmentDetails/:date', function(
             res.status(200).send(result.rows);
           }
         });
+      });
+
+      router.post("/api/transactionDetails/closeAccountAndRefund", function(req, res) {
+        client.query('BEGIN', (err) => {
+            if (shouldAbort(err)) return
+          client.query("INSERT INTO public.transaction_details(transaction_details_id, transaction_type_id, investor_id, transaction_type_mode, description, date, debit, created_by, create_date) VALUES(DEFAULT, $1, $2, $3, $4, $5,$6, 1, CURRENT_TIMESTAMP) returning transaction_details_id",
+            [req.body.transaction_type_id, req.body.investor_id, req.body.transaction_type_mode, req.body.description,req.body.date, req.body.debit], function(err,result) {
+              if(err){
+                console.log("ERROR IN TD Query: ", err);
+                if(shouldAbort(err)) return;
+              }
+              else{
+                //Update Client is_investor=false
+                console.log("bla");
+                client.query("UPDATE Client set is_investor = false where client_id = "+req.body.investor_id, (err, result) => {
+                  if (shouldAbort(err)) return
+                });
+
+                client.query('COMMIT', (err) => {
+                  if (err) {
+                    console.error('Error committing transaction', err.stack)
+                  }
+                });//End of commit
+                res.status(200).send(res.rows);
+              }
+            });//End of INSERT
+        });//End of Begin
       });
 
       router.post("/api/transactionDetails/profitAndLoss", function(req, res) {

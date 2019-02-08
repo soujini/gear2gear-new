@@ -15,9 +15,14 @@ import { ClientModule } from './components/client/client.module';
 import { ExpenseModule } from './components/expense/expense.module';
 import { InventoryModule } from './components/inventory/inventory.module';
 import { InvestorsCornerModule } from './components/investors-corner/investors-corner.module';
+import { ContactModule } from './components/contact/contact.module';
+import { AboutModule } from './components/about/about.module';
 
 import { HomeComponent } from './components/home/home.component';
 import { InventoryComponent } from './components/inventory/inventory.component';
+import { AboutComponent } from './components/about/about.component';
+import { ContactComponent } from './components/contact/contact.component';
+// import { InvestorsCornerComponent } from './components/investors-corner/investors-corner.component';
 
 
 declare var require:any;
@@ -75,7 +80,8 @@ const routes: Routes = [
     path: 'investors-corner',
     loadChildren: './components/investors-corner/investors-corner-routing.module#InvestorsCornerRoutingModule'
   },
-  { path: 'contact', component: HomeComponent},
+  { path: 'contact', component: ContactComponent},
+  { path: 'about', component: AboutComponent},
 ];
 
 @NgModule({
@@ -94,7 +100,10 @@ const routes: Routes = [
     ClientModule,
     CarModule,
     InventoryModule,
-    InvestorsCornerModule
+    AboutModule,
+    ContactModule,
+    InvestorsCornerModule,
+
   ],
   exports: [RouterModule],
    // providers: [AuthService,AuthGuard],

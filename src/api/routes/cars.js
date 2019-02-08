@@ -48,6 +48,7 @@ router.get('/api/cars', function(req, res) {
   });
 
   router.get('/api/available-cars', function(req, res) {
+    // console.log("woohoo ", exterior_color);
     var is_sold  = req.query.is_sold;
     var make = parseInt(req.query.make);
     var model = parseInt(req.query.model);
@@ -61,12 +62,15 @@ router.get('/api/cars', function(req, res) {
       ' MK.NAME AS MAKE_NAME,'+
       ' MD.NAME AS MODEL_NAME,'+
       ' V.NAME AS VARIANT_NAME,'+
-      ' C.CAR_ID, C.DESCRIPTION, C.MILEAGE, C.MAKE_YEAR, C.MAKE_MONTH,C.IS_ACCIDENTAL,'+
+      ' C.CAR_ID, C.DESCRIPTION, C.MILEAGE, C.MAKE_YEAR, C.MAKE_MONTH,C.IS_ACCIDENTAL, C.FUEL_ECONOMY, C.INSURANCE,'+
       ' C.IS_FLOODED,C.INSURANCE_YEAR, C.OWNERS,C.EXTERIOR_COLOR, C.INTERIOR_COLOR, C.SELLING_PRICE, C.LICENSE_PLATE,'+
       ' VT.NAME AS VEHICLE_TYPE_NAME,'+
       ' FT.NAME AS FUEL_TYPE_NAME,'+
       ' TT.NAME AS TRANSMISSION_TYPE_NAME,'+
-      ' I.NAME AS INSURANCE_NAME'+
+      ' I.NAME AS INSURANCE_NAME,'+
+      ' CL.NAME AS EXTERIOR_COLOR_NAME,'+
+      ' CL1.NAME AS INTERIOR_COLOR_NAME,'+
+      ' I.NAME AS INSRANCE_NAME'+
 
       ' FROM PUBLIC.CAR C'+
 
@@ -77,6 +81,8 @@ router.get('/api/cars', function(req, res) {
       ' LEFT JOIN PUBLIC.FUEL_TYPE FT ON C.FUEL_TYPE = FT.FUEL_TYPE_ID'+
       ' LEFT JOIN PUBLIC.TRANSMISSION_TYPE TT ON C.TRANSMISSION_TYPE = TT.TRANSMISSION_TYPE_ID'+
       ' LEFT JOIN PUBLIC.INSURANCE I ON C.INSURANCE = I.INSURANCE_ID'+
+      ' LEFT JOIN PUBLIC.COLOR CL ON C.EXTERIOR_COLOR = CL.COLOR_ID'+
+      ' LEFT JOIN PUBLIC.COLOR CL1 ON C.INTERIOR_COLOR = CL1.COLOR_ID'+
 
       ' WHERE C.IS_SOLD='+is_sold+
       ' AND ('+make+' = 0 or c.make='+make+')'+

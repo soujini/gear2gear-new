@@ -37,7 +37,10 @@ export class TransactionDetailsComponent implements OnInit {
   total_balance:String;
   mode:String="Void";
   module:String="transaction";
+  modeTD:String="Close";
+  moduleTD:String="Account & Refund";
   message_error:String="";
+  isAccountClosed:boolean=false;
 
   constructor(
     private fb: FormBuilder,
@@ -80,6 +83,50 @@ export class TransactionDetailsComponent implements OnInit {
         debit_formatted:[]
       });
 
+    }
+
+    closeAccountAndRefund()
+    {
+      this.transactionDetailsForm.get('debit').enable();
+      this.transactionDetailsForm.get('debit').setValidators([Validators.required, Validators.min(1)]);
+      this.transactionDetailsForm.get('debit').updateValueAndValidity({emitEvent:false, onlySelf:true});
+
+      var today = new Date();
+      var dd = today.getDate();
+      var mm = today.getMonth()+1;
+      var yyyy = today.getFullYear();
+
+      if(dd.toString().length == 1){
+        var a = "0"+dd.toString();
+        dd=parseInt(a);
+      }
+      if(mm.toString().length == 1){
+        var a = "0"+mm.toString();
+        mm=parseInt(a, 10)
+      }
+
+      this.transactionDetailsForm.patchValue({
+        date:yyyy+"-0"+mm+"-"+dd,
+        debit: this.total_balance.replace (/,/g, ""),
+        description: "Account Closed - Refund",
+        investor_id:this.selectedClient_Id,
+        transaction_type_id: 11,
+        transaction_type_mode: "debit"
+      });
+
+      this.closeAccount();
+    }
+
+    closeAccount(){
+      this.transactionDetailsService.closeAccountAndRefund(this.transactionDetailsForm.value)
+      .subscribe(
+        res=>{
+          this.getTransactionDetailsByInvestor(this.selectedClient_Id);
+          this.clientService.selectedClientId.next(this.selectedClient_Id);
+        },
+        err=>{
+          console.log("Void Transaction Details ", err);
+        });
     }
 
     voidTransaction(transactionDetails){
@@ -171,6 +218,11 @@ export class TransactionDetailsComponent implements OnInit {
           this.transactionDetails$.subscribe(
             res=>{
               res.forEach(val=>{
+                if(this.isAccountClosed == false){
+                  if(val.description == "Account Closed - Refund"){//Withdraw - Refund
+                    this.isAccountClosed=true;
+                  }
+                }
                 if(val.transaction_type_mode == "credit" && val.is_void != true)
                 {
                   total_investment = total_investment + parseInt(val.credit);
@@ -185,7 +237,7 @@ export class TransactionDetailsComponent implements OnInit {
               });
             },
             err=>{
-
+              console.log("Error ",err);
             }
           )
         }

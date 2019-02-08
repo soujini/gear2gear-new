@@ -1,6 +1,8 @@
 
-<button type="button" class="btn btn-danger waves-light btn-md" (click)="style.show()" mdbWavesEffect><i class="fa fa-trash"></i></button>
-
+<button type="button" *ngIf="mode != 'Close'" class="btn btn-danger waves-light btn-md" (click)="style.show()" mdbWavesEffect><i class="fa fa-trash"></i></button>
+<button *ngIf="mode == 'Close'" class="btn btn-danger btn-md" (click)="style.show()" mdbWavesEffect>
+  Close Account & Refund
+</button>
 <div mdbModal #style="mdb-modal" class="modal fade" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-notify modal-danger" role="document">
         <div class="modal-content">

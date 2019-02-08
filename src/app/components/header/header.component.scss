@@ -1,10 +1,13 @@
 .navbar-toggler-icon{
   color:green !important;
-  background-color: red !important;
 }
 
 .header{
   height: 110px;
+}
+a{
+  font-size:12px !important;
+  font-family: 'Roboto', sans-serif !important;
 }
 .dropdown-menu{
   height:350px;
@@ -13,35 +16,59 @@
 .header{
   z-index: auto;
 }
+.logo{
+  width: 225px;
+}
+
+.container{
+  max-width:100% !important;
+}
 
 /* Extra Small devices (tablets, 768px and up) col-sm */
 @media (max-width: 767px) {
   .logo{
-    width: 250px;
+    width: 200px;
     height: auto;
   }
   .header{
     height: auto;
+  }
+  .container{
+    max-width:100% !important;
   }
 }
 /* Small devices (tablets, 768px and up) col-md  collapses here*/
 @media (min-width: 768px) and (max-width: 992px) {
   .logo{
-    width: 250px;
+    width: 200px;
     height: auto;
   }
   .header{
     height: auto;
   }
+  .container{
+    margin:0px !important;
+  }
 }
+
 
 /* Medium devices (desktops, 992px and up)  col-lg */
 @media (min-width: 992px) and (max-width: 1199px) {
   .logo{
-    width: 250px;
-    height: auto;
+    width: 200px;
+  }
+  a{
+    font-size: 10px !important;
+  }
+  .container{
+    max-width:100% !important;
   }
 
+}
+@media (min-width: 992px){
+.container {
+    max-width: 100% !important;
+}
 }
 
 /* Large devices (large desktops, 1200px and up) */

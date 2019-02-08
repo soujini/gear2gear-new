@@ -2,7 +2,7 @@
 @import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 body, html {
   height: 100%;
-  font-family: fakt-web,Helvetica Neue,Hevetica,sans-serif;
+  font-family: 'Roboto', sans-serif
 }
 body{
   color:#1C2331;
@@ -21,6 +21,10 @@ body{
   font-weight: bold !important;
 }
 
+.green-text{
+  color:#8acc25 !important;
+}
+
 .is-active td{
   color:green;
   font-weight: bold !important;
@@ -36,10 +40,11 @@ body{
   background-color: #121213;
   text-align: right;
   color:gray;
-  font-size: 18px;
+  font-size: 12px;
   font-family: Bebas-Neue,Arial,sans-serif;
   letter-spacing: 0.12em;
   height: inherit;
+  height:100%;
 }
 
 .navbar-transparent:not(.top-nav-collapse) {
@@ -93,10 +98,12 @@ body{
 }
 
 .active-link{
-  background-color:#3F729B;
-
-  border:0px;
-  color: white !important;
+  // background-color:#3F729B;
+  //
+  // border:0px;
+  // color: white !important;
+  color: #ADFF2F !important;
+  color:#8acc25 !important;
 }
 *:focus {
   outline: 0;
@@ -154,8 +161,19 @@ body{
   border:#43464B;
   border-radius:3px;
 }
+.btn-custom2 {
+  background-color: #8acc25 !important;
+  color: #121213 !important;
+  height: 38px;
+  border:#43464B;
+  border-radius:3px;
+  font-size:13px;
+}
 .capitalize{
   text-transform: capitalize;
+}
+.uppercase{
+  text-transform: uppercase;
 }
 .section{
   background-color:white;

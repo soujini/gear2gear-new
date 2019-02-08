@@ -1,13 +1,93 @@
 .filter-div{
-  margin-bottom: 50px;
+  margin:10px;
+  border-radius:15px;
+  padding:10px;
+  border: 1px solid #e8e8e8;
+  padding: 10px;
+  box-shadow: 5px 10px #e8e8e8;
+}
+.qc{
+  padding:15px;
+  font-weight: bold;
+}
+.fa{
+  font-size: 22px !important;
+}
+
+.fa-small{
+  font-size: 20px !important;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+.col-form-label{
+  font-size: 13px !important;
+  text-transform: uppercase !important;
+}
+.title{
+  margin-left:25px;
+
+}
+.info{
+  font-size: 13px;
+}
+.title-car{
+  color: #8acc25 !important;
+  text-transform:capitalize;
+  font-size: 23px;
+}
+.sp{
+  color: #8acc25 !important;
+  font-size: 22px;
+}
+.car-item{
+  margin:25px;
+}
+
+.car-image{
+  background-color:#f8f8f8;
+  border:1px solid #e8e8e8;
+  padding:0px;
+}
+
+.car-details{
+  border:1px dotted #e8e8e8;
+  border-left:0px;
+}
+
+.car-details-inner{
+  background-color:white;
+  padding:15px;
+  height:inherit;
+}
+
+.component{
+  background-color:#f8f8f8;
+  border-right:5px solid white;
+  border-bottom:5px solid white;
+  padding:10px;
+  font-size: 13px;
+}
+
+.component:hover{
+  background-color: greenyellow;
+}
+
+.accent{
+  color:#8acc25 !important;
 }
 .filter-label{
   margin:10px;
-
 }
 .filter-control{
   margin-right:15px;
 }
-.table-bla td{
-  padding:5px !important;
+input[type=checkbox] {
+  -ms-transform: scale(2.5); /* IE */
+  -moz-transform: scale(2.5); /* FF */
+  -webkit-transform: scale(2.5); /* Safari and Chrome */
+  -o-transform: scale(2.5); /* Opera */
+  margin-left:10px;
+  margin-top:10px;
+}
+.mat-tab-label .mat-tab-label-content {
 }

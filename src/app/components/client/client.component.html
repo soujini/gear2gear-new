@@ -7,10 +7,10 @@
 
 <div class="row">
 
-  <div class="col-4">
+  <div class="col-lg-4">
   <app-client-list (searchTerm)="searchClients($event)" [results$]="clients$"></app-client-list>
   </div>
-  <div class="col-8">
+  <div class="col-lg-8">
     <router-outlet></router-outlet>
   </div>
 </div>

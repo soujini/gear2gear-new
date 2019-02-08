@@ -124,6 +124,12 @@ export class TransactionDetailsService {
       return this.http.post(this.apiUrl+'/api/transactionDetails/client',body, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
       .map(res => res);
     }
+    public closeAccountAndRefund(newTransactionDetails:TransactionDetails): Observable<any> {
+      console.log(newTransactionDetails);
+      const body = JSON.stringify(newTransactionDetails);
+      return this.http.post(this.apiUrl+'/api/transactionDetails/closeAccountAndRefund',body, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+      .map(res => res);
+    }
 
     public createTransactionDetailsProfitAndLoss(newTransactionDetails:any): Observable<any> {
       const body = JSON.stringify(newTransactionDetails);

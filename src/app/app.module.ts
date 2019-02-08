@@ -12,6 +12,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+import { ChecklistComponent } from './components/checklist/checklist.component';
 
 import { ROUTES } from './app.routes';
 import { AppRoutingModule } from './app-routing.module';
@@ -36,6 +37,12 @@ import { CommonService } from './services/common/common.service';
 import { ExpenseService } from './services/expense/expense.service';
 import { TransactionTypeService } from './services/transaction-type/transaction-type.service';
 import { TransactionDetailsService } from './services/transaction-details/transaction-details.service';
+import { LoaderComponent } from './components/loader/loader.component';
+
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoaderInterceptorService } from './services/loader-interceptor.service';
+import { AdvantagesComponent } from './components/advantages/advantages.component';
+
 // import { UploadFileComponent } from './components/upload-file/upload-file.component';
 
 
@@ -45,6 +52,9 @@ import { TransactionDetailsService } from './services/transaction-details/transa
     HomeComponent,
     CallbackComponent,
     HeaderComponent,
+    LoaderComponent,
+    ChecklistComponent,
+    AdvantagesComponent,
     // UploadFileComponent,
     ],
   imports: [
@@ -67,6 +77,11 @@ import { TransactionDetailsService } from './services/transaction-details/transa
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
   providers: [
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: LoaderInterceptorService,
+    multi: true
+  },
     AuthService,
     ValidationService,
     MakeService,
@@ -82,7 +97,8 @@ import { TransactionDetailsService } from './services/transaction-details/transa
     ClientService,
     CommonService,
     TransactionTypeService,
-    TransactionDetailsService
+    TransactionDetailsService,
+
     ],
   bootstrap: [AppComponent]
 })
