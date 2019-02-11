@@ -15,11 +15,11 @@ function connect(){
   client.connect(function(err,client,done) {
     if(err){
       console.log("Failed to connect to the database "+ err);
-        console.log("Connecting "+ environment.CONNECTION_STRING);
+     console.log("Connecting to (Connection String) "+ environment.CONNECTION_STRING);
     }
     else {
-      console.log("Connecting "+ app.get('env'));
-      console.log("Connecting "+ environment.ORIGIN);
+      console.log("Connecting (Environment) "+ app.get('env'));
+      console.log("Connecting (ORIGIN) "+ environment.ORIGIN);
     }
 
   });
