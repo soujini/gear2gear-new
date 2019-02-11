@@ -8,7 +8,8 @@
   DATABASE_URL: 'postgres://localhost:5432/postgres',
   API_URL: 'http://localhost:3000',
   SSL:false,
-  ORIGIN: 'http://localhost:4200',
+  // ORIGIN: 'http://localhost:4200',
+  ORIGIN:'http://www.gear2gear.in',
   CONNECTION_STRING:'postgres://localhost:5432/postgres',
 };
 
