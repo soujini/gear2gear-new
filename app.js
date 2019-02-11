@@ -4,7 +4,6 @@ const path = require('path');
 const http = require('http');
 const cors = require('cors');
 const port = process.env.PORT || '3000';
-const compression = require('compression');
 var bodyParser = require('body-parser');
 
 const app = express();
@@ -29,7 +28,6 @@ var corsOptions = {
   origin:environment.ORIGIN,
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
-app.use(compression());
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({
