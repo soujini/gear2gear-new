@@ -38,7 +38,6 @@ router.post("/api/models", function(req, res) {
       res.status(200).send(result.rows[0]);
     }
   });
-
 });
 
 router.get("/api/models/:id", function(req, res) {

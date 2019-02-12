@@ -9,14 +9,9 @@ import { InvestorsCornerComponent } from './investors-corner.component';
     CommonModule,
     SharedModule,
     InvestorsCornerRoutingModule
-    // BrowserAnimationsModule,
-    // MatButtonModule,
-    // MatCheckboxModule,
-    // MatTabsModule
   ],
   declarations: [
      InvestorsCornerComponent
   ],
-  // providers: [InsuranceService],
 })
 export class InvestorsCornerModule { }
