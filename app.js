@@ -68,3 +68,8 @@ function handleError(res, reason, message, code) {
   console.log("ERROR: " + reason);
   res.status(code || 500).json({"error": message});
 }
+
+setInterval(function() {
+    http.get("http://gear2gear.herokuapp.com");
+    console.log("Pinging to keep the site awake");
+}, 300000); // every 5 minutes (300000)
