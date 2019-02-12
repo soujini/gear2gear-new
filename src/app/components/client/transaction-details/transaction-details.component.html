@@ -1,4 +1,4 @@
-<div *ngIf="this.isAccountClosed == false" class="col-12 text-right">
+<div *ngIf="this.isAccountClosed == false && clientForm.controls.client_id.value != 1 && clientForm.controls.is_investor.value == true" class="col-12 text-right">
   <app-simple-modal [module]="moduleTD" [mode]="modeTD" [name]="clientForm.controls.name.value" (isDelete)="closeAccountAndRefund()"></app-simple-modal>
 </div>
 <form [formGroup]="transactionDetailsForm" (ngSubmit)="onSubmit()" >
