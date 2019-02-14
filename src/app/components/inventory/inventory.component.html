@@ -1,172 +1,168 @@
-<section class="section module-small">
-  <header class="header">
-    <div class="col-12">
-      <app-title [title]=title></app-title>
-    </div>
-  </header>
+<!-- <section class="section module-small"> -->
 
-  <div class="col-12">
-    <div class="filter-div">
-      <div class="row qc">
-        <i class="fa fa-search text-center"></i>
-        <h5 class="accent title">QUICK SEARCH</h5>&nbsp;&nbsp;
+<header>
+  <h1>CAR LISTINGS</h1>
+</header>
+
+<section>
+  <div class="row content">
+    <div class="filter-div col-lg-3">
+      <div class="qc">
+        <h2 class="title"><i class="fa fa-car text-right"></i>&nbsp;&nbsp;Find your car</h2>
       </div>
-
       <form [formGroup]="filterForm" xaction="/action_page.php">
-        <div class="form-row">
-          <div class="form-group col-lg-3">
+        <div>
+          <div class="form-group col">
             <label class="col-form-label">Make</label>
             <select class="form-control" formControlName="make">
               <option *ngFor="let make of makes$ | async" [value]="make.make_id">{{make.name}}</option>
             </select>
           </div>
-          <div class="form-group col-lg-3">
+          <div class="form-group col">
             <label class="col-form-label">Model</label>
             <select class="form-control" formControlName="model">
               <option *ngFor="let model of models$ | async" [value]="model.model_id">{{model.name}}</option>
             </select>
           </div>
-          <div class="form-group col-lg-3">
+          <div class="form-group col">
             <label class="col-form-label">Variant</label>
             <select class="form-control"  formControlName="variant">
               <option *ngFor="let variant of variants$ | async" [value]="variant.variant_id">{{variant.name}}</option>
             </select>
           </div>
-          <div class="form-group col-lg-3">
+          <div class="form-group col">
             <label class="col-form-label">Vehicle Type</label>
             <select class="form-control" formControlName="vehicle_type">
               <option *ngFor="let vehicleType of vehicleTypes$ | async" [value]="vehicleType.vehicle_type_id">{{vehicleType.name}}</option>
             </select>
           </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group col-lg-3">
+
+          <div class="form-group col">
             <label class="col-form-label">Fuel Type</label>
             <select class="form-control" formControlName="fuel_type">
               <option *ngFor="let fuelType of fuelTypes$ | async" [value]="fuelType.fuel_type_id">{{fuelType.name}}</option>
             </select>
           </div>
-          <div class="form-group col-lg-3">
+          <div class="form-group col">
             <label class="col-form-label">Transmission</label>
             <select class="form-control" formControlName="transmission_type">
               <option *ngFor="let transmissionType of transmissionTypes$ | async" [value]="transmissionType.transmission_type_id">{{transmissionType.name}}</option>
             </select>
           </div>
-          <div class="form-group col-lg-3 text-center">
+          <div class="form-group col text-center">
             <label class="col-form-label" for="inputIsSold">Is Sold?</label><br>
             <input type="checkbox" cclass="form-check-input" id="inputIsSold" formControlName="is_sold">
           </div>
 
-          <div class="form-group col-lg-3 text-center" style="margin-top: 32px;">
-            <button type="submit" class="btn btn-primary btn-custom2 btn-md col-md-5" (click)="getFilteredCars()">
+          <div class="form-group col text-center" xstyle="margin-top: 32px;">
+            <button type="submit" class="btn btn-primary btn-custom2 btn-md xcol-md-5" (click)="getFilteredCars()">
               Find
             </button>
-            <button type="submit" class="btn btn-primary btn-custom2 btn-md col-md-5" (click)="clear()">
+            <button type="submit" class="btn btn-primary btn-custom2 btn-md xcol-md-5" (click)="clear()">
               Clear
             </button>
           </div>
         </div>
       </form>
     </div>
-  </div>
+    <div class="col-lg-9">
+      <div *ngIf="(cars$ | async)?.length==0" class="alert alert-danger text-center xcol-12" style="margin:50px">
+        <strong>Error!</strong>&nbsp;<span>No records matching the search criteria.</span>
+      </div>
 
-  <div *ngIf="(cars$ | async)?.length==0" class="alert alert-danger text-center xcol-12" style="margin:50px">
-    <strong>Error!</strong>&nbsp;<span>No records matching the search criteria.</span>
-  </div>
+      <div class="row car-item" *ngFor="let car of cars$ |async">
+        <div class="col-lg-5 car-image">
+          <mdb-carousel [isControls]="true">
+            <mdb-slide *ngFor="let file of car.image_urls">
+              <img class="d-block w-100 img-fluid" [src]="file.url" alt="First slide">
+            </mdb-slide>
+            <mdb-slide *ngIf="car.image_urls?.length==0">
+              <img class="d-block w-100 img-fluid car-img" src="https://s3.amazonaws.com/gear2gear/no-photo1.jpeg" alt="First slide" style="height:370px">
+            </mdb-slide>
+          </mdb-carousel>
+        </div>
 
-  <div class="row car-item" *ngFor="let car of cars$ |async">
-    <div class="col-lg-5 car-image">
-      <mdb-carousel [isControls]="true">
-        <mdb-slide *ngFor="let file of car.image_urls">
-          <img class="d-block w-100 img-fluid" [src]="file.url" alt="First slide">
-        </mdb-slide>
-        <mdb-slide *ngIf="car.image_urls?.length==0">
-          <img class="d-block w-100 img-fluid" src="https://s3.amazonaws.com/gear2gear/no_car.png" alt="First slide">
-        </mdb-slide>
-      </mdb-carousel>
-    </div>
+        <div class="col-lg-7 car-details">
+          <mat-tab-group>
+            <mat-tab class="col-lg-6" label="DETAILS">
+              <div class="car-details-inner">
+                <div>
+                  <div class="row">
+                    <p class="title-car col-lg-9">{{car.make_name}} {{car.model_name}} {{car.variant_name}}
+                    </p>
+                    <p *ngIf="car.selling_price != null && car.selling_price != ''" class="col-lg-3 text-lg-right sp">Rs.{{car.selling_price | currency:' '}}</p>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-3 col-md-3 text-center component">
+                      <i class="fa fa-heartbeat fa-small"></i>
+                      <p class="capitalize">{{car.fuel_type_name}}</p>
+                    </div>
+                    <div class="col-lg-3 col-md-3 text-center component">
+                      <i class="fa fa-calendar fa-small"></i>
+                      <p>{{car.make_year}}</p>
+                    </div>
+                    <div class="col-lg-3 col-md-3 text-center component">
+                      <i class="fa fa-road fa-small"></i>
+                      <p>{{car.mileage}} Kms</p>
+                    </div>
+                    <div class="col-lg-3 col-md-3 text-center component">
+                      <i class="fa fa-users fa-small"></i>
+                      <p *ngIf="car.owners == 1">{{car.owners}} Owner</p>
+                      <p *ngIf="car.owners != 1">{{car.owners}} Owners</p>
+                    </div>
+                    <div class="col-lg-3 col-md-3 text-center component">
+                      <i class="fa fa-magic fa-small" aria-hidden="true"></i>
+                      <p class="capitalize">Ext. {{car.exterior_color_name}}</p>
+                    </div>
+                    <div class="col-lg-3 col-md-3 text-center component">
+                      <i class="fa fa-paint-brush fa-small" aria-hidden="true"></i>
+                      <p class="capitalize">Int. {{car.interior_color_name}}</p>
+                    </div>
 
-    <div class="col-lg-7 car-details">
-      <mat-tab-group>
-        <mat-tab class="col-lg-6" label="DETAILS">
-          <div class="car-details-inner">
-            <div>
-              <div class="row">
-                <p class="title-car col-lg-9">{{car.make_name}} {{car.model_name}} {{car.variant_name}}
-                </p>
-                  <p *ngIf="car.selling_price != null && car.selling_price != ''" class="col-lg-3 text-lg-right sp">Rs.{{car.selling_price | currency:' '}}</p>
-                </div>
-              <div class="row">
-                <div class="col-lg-2 col-md-3 text-center component">
-                  <i class="fa fa-heartbeat fa-small"></i>
-                  <p class="capitalize">{{car.fuel_type_name}}</p>
-                </div>
-                <div class="col-lg-2 col-md-3 text-center component">
-                  <i class="fa fa-calendar fa-small"></i>
-                  <p>{{car.make_year}}</p>
-                </div>
-                <div class="col-lg-2 col-md-3 text-center component">
-                  <i class="fa fa-road fa-small"></i>
-                  <p>{{car.mileage}} Kms</p>
-                </div>
-                <div class="col-lg-2 col-md-3 text-center component">
-                  <i class="fa fa-users fa-small"></i>
-                  <p *ngIf="car.owners == 1">{{car.owners}} Owner</p>
-                  <p *ngIf="car.owners != 1">{{car.owners}} Owners</p>
-                </div>
-                <div class="col-lg-2 col-md-3 text-center component">
-                  <i class="fa fa-magic fa-small" aria-hidden="true"></i>
-                  <p class="capitalize">Ext. {{car.exterior_color_name}}</p>
-                </div>
-                <div class="col-lg-2 col-md-3 text-center component">
-                  <i class="fa fa-paint-brush fa-small" aria-hidden="true"></i>
-                  <p class="capitalize">Int. {{car.interior_color_name}}</p>
+                    <div class="col-lg-3 col-md-3 text-center component">
+                      <i class="fa fa-tint fa-small" aria-hidden="true"></i>
+                      <p *ngIf="car.is_flooded == true">Yes</p>
+                      <p *ngIf="car.is_flooded != true">No</p>
+                    </div>
+                    <div class="col-lg-3 col-md-3 text-center component">
+                      <i class="fa fa-bolt fa-small" aria-hidden="true"></i>
+                      <p *ngIf="car.is_accidental == true">Yes</p>
+                      <p *ngIf="car.is_accidental != true">No</p>
+                    </div>
+                    <div class="col-lg-3 col-md-3 text-center component">
+                      <i class="fa fa-automobile fa-small" aria-hidden="true"></i>
+                      <p class="capitalize">{{car.vehicle_type_name}}</p>
+                    </div>
+                    <div class="col-lg-3 col-md-3 text-center component">
+                      <i class="fa fa-thermometer-full fa-small" aria-hidden="true"></i>
+                      <p>{{car.fuel_economy}}Km/l</p>
+                    </div>
+                    <div class="col-lg-3 col-md-3 text-center component">
+                      <i class="fa fa-file fa-small" aria-hidden="true"></i>
+                      <p class="capitalize">{{car.insurance_name}}</p>
+                    </div>
+                    <div class="col-lg-3 col-md-3 text-center component">
+                      <i class="fa fa-car fa-small" aria-hidden="true"></i>
+                      <p class="uppercase">{{car.license_plate}}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="row">
-
-                <div class="col-lg-2 col-md-3 text-center component">
-                  <i class="fa fa-tint fa-small" aria-hidden="true"></i>
-                  <p *ngIf="car.is_flooded == true">Yes</p>
-                  <p *ngIf="car.is_flooded != true">No</p>
-                </div>
-                <div class="col-lg-2 col-md-3 text-center component">
-                  <i class="fa fa-bolt fa-small" aria-hidden="true"></i>
-                  <p *ngIf="car.is_accidental == true">Yes</p>
-                  <p *ngIf="car.is_accidental != true">No</p>
-                </div>
-                <div class="col-lg-2 col-md-3 text-center component">
-                  <i class="fa fa-automobile fa-small" aria-hidden="true"></i>
-                  <p class="capitalize">{{car.vehicle_type_name}}</p>
-                </div>
-                <div class="col-lg-2 col-md-3 text-center component">
-                  <i class="fa fa-thermometer-full fa-small" aria-hidden="true"></i>
-                  <p>{{car.fuel_economy}}Km/l</p>
-                </div>
-                <div class="col-lg-2 col-md-3 text-center component">
-                  <i class="fa fa-file fa-small" aria-hidden="true"></i>
-                  <p class="capitalize">{{car.insurance_name}}</p>
-                </div>
-                <div class="col-lg-2 col-md-3 text-center component">
-                  <i class="fa fa-car fa-small" aria-hidden="true"></i>
-                  <p class="uppercase">{{car.license_plate}}</p>
+            </mat-tab>
+            <mat-tab class="col-6" label="DESCRIPTION">
+              <div>
+                <div class="col-12" style="padding:10px;">
+                  <div class="col-12">
+                    <h3 class="row title-car">More Info</h3>
+                  </div>
+                  <p *ngIf="car.description == ''">{{car.description}}</p>
+                  <p class="info" *ngIf="car.description == '' || car.description == null">NOT AVAILABLE</p>
                 </div>
               </div>
-            </div>
-          </div>
-        </mat-tab>
-        <mat-tab class="col-6" label="DESCRIPTION">
-          <div>
-            <div class="col-12" style="padding:10px;">
-              <div class="col-12">
-                <h3 class="row title-car">More Info</h3>
-              </div>
-              <p *ngIf="car.description == ''">{{car.description}}</p>
-              <p class="info" *ngIf="car.description == '' || car.description == null">NOT AVAILABLE</p>
-              </div>
-              </div>
-        </mat-tab>
-      </mat-tab-group>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
     </div>
   </div>
 </section>
