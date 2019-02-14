@@ -93,55 +93,55 @@
                     <p *ngIf="car.selling_price != null && car.selling_price != ''" class="col-lg-3 text-lg-right sp">Rs.{{car.selling_price | currency:' '}}</p>
                   </div>
                   <div class="row">
-                    <div class="col-lg-3 col-md-3 text-center component">
+                    <div class="col-lg-3 col-md-3 col-xs-6 text-center component">
                       <i class="fa fa-heartbeat fa-small"></i>
                       <p class="capitalize">{{car.fuel_type_name}}</p>
                     </div>
-                    <div class="col-lg-3 col-md-3 text-center component">
+                    <div class="col-lg-3 col-md-3 col-xs-6 text-center component">
                       <i class="fa fa-calendar fa-small"></i>
                       <p>{{car.make_year}}</p>
                     </div>
-                    <div class="col-lg-3 col-md-3 text-center component">
+                    <div class="col-lg-3 col-md-3 col-xs-6 text-center component">
                       <i class="fa fa-road fa-small"></i>
                       <p>{{car.mileage}} Kms</p>
                     </div>
-                    <div class="col-lg-3 col-md-3 text-center component">
+                    <div class="col-lg-3 col-md-3 col-xs-6 text-center component">
                       <i class="fa fa-users fa-small"></i>
                       <p *ngIf="car.owners == 1">{{car.owners}} Owner</p>
                       <p *ngIf="car.owners != 1">{{car.owners}} Owners</p>
                     </div>
-                    <div class="col-lg-3 col-md-3 text-center component">
+                    <div class="col-lg-3 col-md-3 col-xs-6 text-center component">
                       <i class="fa fa-magic fa-small" aria-hidden="true"></i>
                       <p class="capitalize">Ext. {{car.exterior_color_name}}</p>
                     </div>
-                    <div class="col-lg-3 col-md-3 text-center component">
+                    <div class="col-lg-3 col-md-3 col-xs-6 text-center component">
                       <i class="fa fa-paint-brush fa-small" aria-hidden="true"></i>
                       <p class="capitalize">Int. {{car.interior_color_name}}</p>
                     </div>
 
-                    <div class="col-lg-3 col-md-3 text-center component">
+                    <div class="col-lg-3 col-md-3 col-xs-6 text-center component">
                       <i class="fa fa-tint fa-small" aria-hidden="true"></i>
                       <p *ngIf="car.is_flooded == true">Yes</p>
                       <p *ngIf="car.is_flooded != true">No</p>
                     </div>
-                    <div class="col-lg-3 col-md-3 text-center component">
+                    <div class="col-lg-3 col-md-3 col-xs-6 text-center component">
                       <i class="fa fa-bolt fa-small" aria-hidden="true"></i>
                       <p *ngIf="car.is_accidental == true">Yes</p>
                       <p *ngIf="car.is_accidental != true">No</p>
                     </div>
-                    <div class="col-lg-3 col-md-3 text-center component">
+                    <div class="col-lg-3 col-md-3 col-xs-6 text-center component">
                       <i class="fa fa-automobile fa-small" aria-hidden="true"></i>
                       <p class="capitalize">{{car.vehicle_type_name}}</p>
                     </div>
-                    <div class="col-lg-3 col-md-3 text-center component">
+                    <div class="col-lg-3 col-md-3 col-xs-6 text-center component">
                       <i class="fa fa-thermometer-full fa-small" aria-hidden="true"></i>
                       <p>{{car.fuel_economy}}Km/l</p>
                     </div>
-                    <div class="col-lg-3 col-md-3 text-center component">
+                    <div class="col-lg-3 col-md-3 col-xs-6 text-center component">
                       <i class="fa fa-file fa-small" aria-hidden="true"></i>
                       <p class="capitalize">{{car.insurance_name}}</p>
                     </div>
-                    <div class="col-lg-3 col-md-3 text-center component">
+                    <div class="col-lg-3 col-md-3 col-xs-6 text-center component">
                       <i class="fa fa-car fa-small" aria-hidden="true"></i>
                       <p class="uppercase">{{car.license_plate}}</p>
                     </div>
