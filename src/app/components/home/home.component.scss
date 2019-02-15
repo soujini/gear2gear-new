@@ -1,104 +1,28 @@
-.section{
-  // margin-top:-75px;
+.carousel-item{
+height:500px;
 }
-a {
-  cursor: pointer;
+.carousel-caption{
+  margin-bottom:175px !important;
 }
-/* Container holding the image and the text */
-.container {
-    position: relative;
-    text-align: center;
-    color: white;
+.carousel-info{
+  margin-top:35px;
 }
-.home-img{
-   width:100%;
-   margin-top:-100px;
+.h1-responsive{
+  font-size:40px;
+  font-family: arial-black;
 }
 
-/* Bottom left text */
-.bottom-left {
-    position: absolute;
-    bottom: 8px;
-    left: 16px;
-}
-
-/* Top left text */
-.top-left {
-    position: absolute;
-    top: 8px;
-    left: 16px;
-}
-
-/* Top right text */
-.top-right {
-    position: absolute;
-    top: 35%;
-    right: 16px;
-}
-
-/* Bottom right text */
-.bottom-right {
-    position: absolute;
-    bottom: 8px;
-    right: 16px;
-    font-family:Franklin Gothic;
-    font-weight: bold;
-    color:greenyellow;
-}
-// h1{
-//   color:greenyellow
-//   font-weight:bold;
-//   // font-family:Lato;
-// }
-
-/* Centered text */
-/* Centered text */
-.centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family:Franklin Gothic;
-    font-weight: bold;
-    colo:greenyellow;
-}
-.centered-bottom {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family:Franklin Gothic;
-    font-weight: bold;
-    colo:greenyellow;
-}
-.centered-top {
-    position: absolute;
-     top: 215%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family:Franklin Gothic;
-    font-weight: bold;
-    colo:greenyellow;
-    width:100%;
-    margin-top:-200px;
-}
-
-.swap{
-  margin-top:-18%;
-  margin-bottom: 18%;
-  letter-spacing: 7px;
-  font-family: Bebas-Neue,Arial,sans-serif;
-  color:#43464B;
-  font-size: 2.5rem;
-}
 /* Extra Small devices (tablets, 768px and up) col-sm */
 @media (max-width: 767px) {
-  .swap{
-    font-size: 1rem;
+  .h1-responsive{
+    font-size:25px;
+    font-family: arial-black;
   }
-  .home-img{
-     width:100%;
-     margin-top:0px;
+  .carousel-caption{
+    margin-bottom:25px !important;
+  }
+  .carousel-item{
+  height:240px;
   }
 }
 /* Small devices (tablets, 768px and up) col-md  collapses here*/

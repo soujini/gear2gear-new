@@ -1,7 +1,8 @@
 section{
-  background-image: url("https://s3.amazonaws.com/gear2gear/car-coupe.jpeg");
+  // background-image: url("../../../assets/images/green-car.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 .content {
     text-align: left;
@@ -15,7 +16,6 @@ section{
   font-size: 18px;
 }
 .map{
-  // padding: 15%;
 padding-top: 5%;
 }
 .name{
