@@ -1,8 +1,9 @@
 section{
-  // background-image: url("../../../assets/images/green-car.jpeg");
+  background-image: url("../../../assets/images/bg5.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  // background-color: black;
 }
 .content {
     text-align: left;
@@ -12,8 +13,11 @@ section{
     padding: 50px;
 }
 .title{
+
+}
+h1 {
+  font: 44px "arial-black";
   color: white;
-  font-size: 18px;
 }
 .map{
 padding-top: 5%;
