@@ -85,7 +85,7 @@ export class TransactionDetailsComponent implements OnInit {
           // console.log("Owners Amt ", OwnersAmount);
           // console.log("Investors Amt ", InvestorsAmount);
 
-          this.transactionDetailsService.GetInvestorsInvestmentAndPercentDetailsByPurchaseDate(this.carForm.get('purchased_on').value).subscribe(res=>{
+          this.transactionDetailsService.GetInvestorsInvestmentAndPercentDetailsByPurchaseDate(this.carForm.get('purchased_on').value, this.carForm.get('sold_on').value).subscribe(res=>{
             var today = new Date();
             var dd = today.getDate();
             var mm = today.getMonth()+1;
@@ -143,7 +143,8 @@ export class TransactionDetailsComponent implements OnInit {
                 credit: credit,
                 debit: debit,
                 description:description,
-                date:yyyy+"-0"+mm+"-"+dd,
+                // date:yyyy+"-0"+mm+"-"+dd,
+                date:this.carForm.get('sold_on').value,
                 percentage:investor_percent,
               });
 
@@ -183,7 +184,7 @@ export class TransactionDetailsComponent implements OnInit {
               credit: credit,
               debit: debit,
               description:description,
-              date:yyyy+"-"+mm+"-"+dd,
+              date:this.carForm.get('sold_on').value,
               percentage:null,
             });
 

@@ -182,6 +182,10 @@ router.get('/api/cars', function(req, res) {
         if(req.body.mileage){
           req.body.mileage = req.body.mileage.replace( /,/g, "" );
         }
+        if(req.body.is_sold == null){
+          req.body.is_sold=false;
+          console.log("is sold null ", req.body.is_sold);
+        }
 
         client.query("update public.car set make =$1, model=$2,description=$3, variant=$4, vehicle_type=$5, fuel_type=$6, transmission_type=$7, insurance=$8, exterior_color=$9, interior_color=$10, fuel_economy=$11, mileage=$12, make_year=$13, owners=$14, cost_price=$15, purchased_from=$16, purchased_on=$17 ,selling_price=$18, sold_to=$19, sold_on=$20, make_month=$21, insurance_year=$22, is_accidental=$23, is_flooded=$24, is_sold=$25, license_plate=$26, updated_by=1, update_date=CURRENT_TIMESTAMP where car_id = "+carId,[req.body.make,req.body.model,req.body.description, req.body.variant, req.body.vehicle_type, req.body.fuel_type, req.body.transmission_type, req.body.insurance, req.body.exterior_color,req.body.interior_color, req.body.fuel_economy, req.body.mileage, req.body.make_year, req.body.owners, req.body.cost_price, req.body.purchased_from, req.body.purchased_on, req.body.selling_price, req.body.sold_to, req.body.sold_on, req.body.make_month, req.body.insurance_year, req.body.is_accidental, req.body.is_flooded, req.body.is_sold, req.body.license_plate], function(err,result) {
           if(err){

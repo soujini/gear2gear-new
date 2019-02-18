@@ -30,8 +30,9 @@ router.get('/api/transactionDetails/investor/:id', function(req, res) {
     }
   });
 });
-router.get('/api/transactionDetails/investorsInvestmentDetails/:date', function(req, res) {
+router.get('/api/transactionDetails/investorsInvestmentDetails/:date/:date2', function(req, res) {
   var purchase_date = "'"+req.params.date.toString()+"'";
+  var sold_date = "'"+req.params.date2.toString()+"'";
   client.query(
     'with table1 as ('+
     ' SELECT td.investor_id , c.is_investor,'+
@@ -40,7 +41,9 @@ router.get('/api/transactionDetails/investorsInvestmentDetails/:date', function(
     ' coalesce(SUM(td.credit),0) - coalesce(SUM(td.debit),0) as investor_balance,'+
     ' (select coalesce(SUM(credit),0) - coalesce(SUM(debit),0) from transaction_details'+
      ' where investor_id is not null'+
-     ' AND date <='+purchase_date+
+     ' AND case when transaction_type_id=11 then date <= '+sold_date+
+     ' else date <= '+purchase_date+
+     ' END'+
      ' AND c.is_investor=true'+
      ' AND transaction_type_id in(1,3,4,11)'+
      ' AND is_void is not true'+
@@ -49,7 +52,9 @@ router.get('/api/transactionDetails/investorsInvestmentDetails/:date', function(
     ' FROM transaction_details td, client c'+
     ' WHERE td.investor_id is not null'+
     ' AND td.is_void is not true'+
-    ' AND date <= '+purchase_date+
+    ' AND case when transaction_type_id=11 then date <='+sold_date+
+    ' else date <= '+purchase_date+
+    ' END'+
     ' AND c.is_investor=true'+
     ' AND td.investor_id=c.client_id'+
     ' GROUP BY td.investor_id, c.is_investor )'+

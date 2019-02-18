@@ -36,8 +36,8 @@ export class TransactionDetailsService {
     return this.http.get(this.apiUrl+'/api/transactionDetails', {headers: {'Content-Type': 'application/json; charset=utf-8'}})
     .map(res => res);
   }
-  public GetInvestorsInvestmentAndPercentDetailsByPurchaseDate(purchaseDate:string): Observable<any> {
-    return this.http.get(this.apiUrl+'/api/transactionDetails/investorsInvestmentDetails/'+purchaseDate, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+  public GetInvestorsInvestmentAndPercentDetailsByPurchaseDate(purchaseDate:string, soldDate:string): Observable<any> {
+    return this.http.get(this.apiUrl+'/api/transactionDetails/investorsInvestmentDetails/'+purchaseDate +'/'+soldDate, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
     .map(res => res);
   }
   public getTransactionDetailsByInvestor(investor_id:number): Observable<any> {
