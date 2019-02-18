@@ -50,12 +50,17 @@ router.get('/api/cars', function(req, res) {
   router.get('/api/available-cars', function(req, res) {
     // console.log("woohoo ", exterior_color);
     var is_sold  = req.query.is_sold;
+    if(req.query.is_sold == "false"){
+      is_sold = "false or is_sold is null";
+    }
+
     var make = parseInt(req.query.make);
     var model = parseInt(req.query.model);
     var variant = parseInt(req.query.variant);
     var vehicle_type = parseInt(req.query.vehicle_type);
     var fuel_type = parseInt(req.query.fuel_type);
     var transmission_type = parseInt(req.query.transmission_type);
+
 
     client.query(
       'SELECT'+
