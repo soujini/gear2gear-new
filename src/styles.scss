@@ -265,6 +265,10 @@ input[type=number]::-webkit-outer-spin-button {
     width: 200px;
     height: auto;
   }
+  .h1-responsive{
+    font-size:20px !important;
+    font-family: arial-black;
+  }
 }
 /* Small devices (tablets, 768px and up) col-md  collapses here*/
 @media (min-width: 768px) and (max-width: 992px) {
