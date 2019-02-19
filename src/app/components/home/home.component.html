@@ -3,33 +3,35 @@
     <mdb-carousel class="carousel slide carousel-fade" xdata-interval="false" [animation]="'fade'">
     <mdb-carousel-item>
       <div class="view w-100">
-        <img class="d-block w-100" src="https://s3.amazonaws.com/gear2gear/red-car-garage.jpeg" alt="First slide">
+        <img class="d-block w-100" src="./assets/images/bg3.jpeg" alt="First slide">
         <!-- <img class="d-block w-100" src="./assets/images/picture1.jpeg" alt="First slide"> -->
-        <div class="mask rgba-black-strong waves-strong" mdbWavesEffect></div>
+        <div class="mask rgba-black-light waves-light" mdbWavesEffect></div>
       </div>
       <div class="carousel-caption text-center">
-        <h1 class="h1-responsive text-white">WE BUY-SELL-SWAP USED CARS AND PREMIUM BICYCLES</h1>
+        <h1 class="h1-responsive text-white animated fadeInDown">WE BUY-SELL-SWAP USED CARS AND PREMIUM BICYCLES</h1>
       </div>
     </mdb-carousel-item>
     <mdb-carousel-item>
       <div class="view w-100">
         <img class="d-block w-100" src="./assets/images/xuv500.jpg" alt="Second slide">
-        <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
+        <div class="mask rgba-black-light waves-light" mdbWavesEffect></div>
       </div>
       <div class="carousel-caption text-left">
-        <h1 class="h1-responsive text-white">WANT TO BUY</h1>
-        <h1 class="h1-responsive text-white">YOUR FAVOURITE SUV?</h1>
-        <!-- <p class="carousel-info">Check out our stock of SUV’s from various brands - Get yours now!</p> -->
+        <h1 class="h1-responsive text-white animated slideInLeft">WANT TO BUY</h1>
+        <h1 class="h1-responsive text-white animated slideInLeft">YOUR FAVOURITE SUV?</h1>
+        <button class="btn btn-c-black animated slideInLeft"><a class="nav-link" href="#" routerLink="/cars" routerLinkActive="active-link">Find your car<span class="sr-only">(current)</span></a></button>
       </div>
     </mdb-carousel-item>
     <mdb-carousel-item>
       <div class="view w-100">
-        <img class="d-block w-100" src="https://s3.amazonaws.com/gear2gear/car-coupe.jpeg" alt="Third slide">
-        <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
+        <img class="d-block w-100" src="./assets/images/bg5.jpg" alt="Third slide">
+        <div xclass="mask rgba-black-light waves-light" mdbWavesEffect></div>
       </div>
       <div class="carousel-caption text-right">
-        <h1 class="h1-responsive text-white">READY FOR</h1>
-        <h1 class="h1-responsive text-white">AN UPGRADE?</h1>
+        <h1 class="h1-responsive text-white animated fadeInRight">READY FOR</h1>
+        <h1 class="h1-responsive text-white animated slideInRight">AN UPGRADE?</h1>
+        <button class="btn btn-c-green animated slideInRight"><a class="nav-link" href="#" routerLink="/cars" routerLinkActive="active-link">Find your car<span class="sr-only">(current)</span></a></button>
+
       </div>
     </mdb-carousel-item>
   </mdb-carousel>

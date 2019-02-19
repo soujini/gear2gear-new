@@ -3,11 +3,11 @@ section{
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  // background-color: #f8f8f8;
 }
+
 header {
   position: relative;
-  height: 300px;
+  height: 225px;
   overflow: hidden;
 }
 .checklist{
@@ -28,29 +28,30 @@ header {
   transform: skewY(-6deg);
   transform-origin: top left;
 }
-h1 {
-  font: 44px "arial-black";
-  color: white;
-}
 
 h3 {
-  margin: 0;
-  padding: 100px 25px 25px 25px;
+
   font-size: 15px;
   text-align: center;
   letter-spacing: 1px;
 }
 
-header h3 {
+header .header-div{
+  margin: 0;
+  // padding: 100px 25px 25px 25px;
+  padding:50px 50px;
   position: relative;
   color: white;
 }
-
+.fa{
+  font-size:25px !important;
+  margin-bottom: 15px;
+}
 .tag{
   font-size:25px;
   letter-spacing: 2px;
   text-transform: none !important;
-  // color:greenyellow !important;
+   color:black !important;
   font-weight:bold;
 }
 .title{
