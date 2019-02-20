@@ -48,7 +48,6 @@ router.get('/api/cars', function(req, res) {
   });
 
   router.get('/api/available-cars', function(req, res) {
-    // console.log("woohoo ", exterior_color);
     var is_sold  = req.query.is_sold;
     if(req.query.is_sold == "false"){
       is_sold = "false or is_sold is null";
@@ -75,7 +74,7 @@ router.get('/api/cars', function(req, res) {
       ' I.NAME AS INSURANCE_NAME,'+
       ' CL.NAME AS EXTERIOR_COLOR_NAME,'+
       ' CL1.NAME AS INTERIOR_COLOR_NAME,'+
-      ' I.NAME AS INSRANCE_NAME'+
+      ' I.NAME AS INSURANCE_NAME'+
 
       ' FROM PUBLIC.CAR C'+
 
