@@ -4,15 +4,11 @@ section{
 .img-car{
 
 }
-.title{
-    padding-top : 50px;
-  color: #8acc25;
-  font-size: 18px;
-}
+
 .container-left{
   padding-left:25px;
     padding-right:25px;
-  // padding-top:50px;
+   padding-top:50px;
 }
 .content{
   padding-left:15%;
@@ -22,16 +18,13 @@ section{
 .container-right{
   padding:0px;
 }
-p{
-  font-size: 14px;
-  letter-spacing: 1px;
-  padding :15px;
-}
 
 .tag{
-  font-size: 18px;
-  letter-spacing: 5px;
-  padding :25px;
+   font-size: 18px;
+   letter-spacing: 5px;
+  padding :25px 0px 25px 0px;
+  text-align: left;
+  font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;//To Display arial black
 }
 .strong{
   font-size: 22px;

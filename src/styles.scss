@@ -92,14 +92,17 @@ h2{
   font-weight: 900;
   font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;//To Display arial black
 }
-h3, p {
-  font-size: 15px;
+h3 {
+  font-size: 14px;
   text-align: center;
   letter-spacing: 1px;
 }
-
 .h5{
   text-transform:uppercase;
+}
+p{
+  font-size: 15px;
+  letter-spacing: 1px;
 }
 
 .tag{
