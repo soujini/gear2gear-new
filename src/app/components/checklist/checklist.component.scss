@@ -23,37 +23,27 @@ header {
   height: 100%;
   margin-bottom:25px;
   margin-right:5px;
-  background-color: olivedrab;
-  // background-image: linear-gradient(#ff9d2f, #ff6126);
+  background-color: darkgray;
+  background-image: linear-gradient(black, #333);
   transform: skewY(-6deg);
   transform-origin: top left;
 }
 
-h3 {
 
-  font-size: 15px;
-  text-align: center;
-  letter-spacing: 1px;
-}
 
 header .header-div{
   margin: 0;
-  // padding: 100px 25px 25px 25px;
   padding:50px 50px;
   position: relative;
   color: white;
 }
+
 .fa{
   font-size:25px !important;
   margin-bottom: 15px;
+  color:#8acc25;
 }
-.tag{
-  font-size:25px;
-  letter-spacing: 2px;
-  text-transform: none !important;
-   color:black !important;
-  font-weight:bold;
-}
+
 .title{
   padding : 50px;
   color: #e5e5e5;

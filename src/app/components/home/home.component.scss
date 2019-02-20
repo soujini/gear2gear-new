@@ -8,27 +8,8 @@ height:500px;
   margin-top:35px;
 }
 
-
- .btn-c-black{
-   background-color: black;
-   color:white !important;
- }
- .btn-c-black a{
-   color:white !important;
- }
- .btn-c-green{
-   background-color: greenyellow;
- }
-
-.btn-c-green a{
-  color:black !important;
-}
 /* Extra Small devices (tablets, 768px and up) col-sm */
 @media (max-width: 767px) {
-  .h1-responsive{
-    font-size:25px;
-    font-family: arial-black;
-  }
   .carousel-caption{
     margin-bottom:25px !important;
   }

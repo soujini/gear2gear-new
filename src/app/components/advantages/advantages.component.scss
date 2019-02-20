@@ -7,58 +7,36 @@ section{
 }
 
 .img-car{
-height:inherit;
+  height:inherit;
 }
 .title{
   padding : 125px 50px;
-  color: #8acc25;
-  // font-size: 40px !important;
-  // font-weight:bold;
-  font-family:arial-black;
   letter-spacing: 2px;
 }
-// h2 {
-//   font: 44px "arial-black";
-//   color: white;
-// }
-.h5{
-  text-transform:uppercase;
-}
-.container-left{
+
+.container-right{
   height:510px;
   padding-left:0px;
-  // background-image: url("https://s3.amazonaws.com/gear2gear/black-suv.jpeg");
   background-image: url("../../../assets/images/yellow-car.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
-  // background-attachment: fixed;
-  // background-color: #f8f8f8;
 }
 .content{
   padding:5%;
   padding-top:5%;
   color:#121213;
 }
-.container-right{
-  // padding:25px;
-  // padding-top:50px;
-}
-p{
-      font-size: 15px;
-      letter-spacing: 1px;
-      padding: 25px 175px 25px 25px;
-      color: white;
-}
-.strong{
-  font-size: 22px;
-  color: #8acc25;
-  letter-spacing: 1px;
-}
-table.table th, table.table td {
-    padding-top: 10px;
-    padding-bottom: 10px;
+.container-left{
 }
 
+p{
+  padding: 25px 175px 25px 25px;
+  letter-spacing: 2px;
+  font-style: normal;
+  font-family: cursive;
+  font-size:20px;
+  color:whitesmoke;
+}
 
 /* Extra Small devices (tablets, 768px and up) col-sm */
 @media (max-width: 767px) {

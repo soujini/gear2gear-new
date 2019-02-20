@@ -2,66 +2,13 @@
 @import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 body, html {
   height: 100%;
-  // font-family: 'Roboto', sans-serif
-  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-}
-body{
+  font-family:Roboto,Verdana, sans-serif;
   color:#1C2331;
 }
-.h1-responsive{
-  font-size:45px;
-  font-family: arial-black;
-}
-.padding0{
-  padding:0px;
-}
-.auth0-lock.auth0-lock .auth0-lock-header-bg {
-  background-color: black !important;
-}
-.bold{
-  font-weight: bold;
-}
-.is-active{
-  color:green;
-  font-weight: bold !important;
-}
 
-.green-text{
-  color:#8acc25 !important;
-}
-
-.is-active td{
-  color:green;
-  font-weight: bold !important;
-}
-.auth0-lock-name{
-  color:black;
-  font-size: 40px;
-  font-weight: 700;
-  font-family: Ethnocentric;
-}
-
-.navbar-custom{
-  background-color: #121213;
-  text-align: right;
-  color:gray;
-  font-size: 12px;
-  font-family: Bebas-Neue,Arial,sans-serif;
-  letter-spacing: 0.12em;
-  height: inherit;
-  height:100%;
-}
-
-.navbar-transparent:not(.top-nav-collapse) {
-  color: #CDCFD0 !important;
-}
-.nav-link{
-  letter-spacing: 0.12em !important;
-}
 .section,
 .section-div {
   min-height:100% !important;
-
 }
 
 .section-title{
@@ -77,88 +24,161 @@ body{
   font-weight: 300 !important;
   color:#43464B !important;
 }
-.p-25{
-  padding:25px;
+
+.section-list{
+  background-color: white;
 }
-.m-left15{
-  margin-left:15px;
+
+/*COLORS AND BACKGROUNDS*/
+
+.accent1{
+  color:#ADFF2F !important;
+}
+.accent2{
+  color:#8acc25;
+}
+.accent3{
+  color:olivedrab;
 }
 .text-white-gray {
   color: rgba(255, 255, 255, 0.8) !important;
 }
-.lead {
-  font-weight: 300;
-  letter-spacing: 1px;
-  font-size: 1.2rem;
-  border-color: #1C2331;
-  border-radius: 3px;
-  padding-top: 50px;
-  padding-bottom: 50px
+
+.active-link{
+  color:#8acc25 !important;
 }
+.bg-dark{
+  color:#1C2331;
+  border-bottom: 0.25px solid #1C2331;
+}
+.green-text{
+  color:#8acc25 !important;
+}
+
+.is-active{
+  color:green;
+  font-weight: bold !important;
+}
+.is-active td{
+  color:green;
+  font-weight: bold !important;
+}
+
+// .item{
+//   color: white !important;
+// }
+
+
+/*BORDERS*/
+.active-text{
+  border-bottom: 3px solid #d01110;
+}
+
+/*Header*/
+.nav-link{
+  letter-spacing: 0.12em !important;
+}
+.nav-item{
+  margin: 0 10px;
+}
+
+/* Headers and Text */
+.h1-responsive{
+  font-size:45px;
+  font-weight: 900;
+  font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;//To Display arial black
+}
+h2{
+  font-weight: 900;
+  font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;//To Display arial black
+}
+h3, p {
+  font-size: 15px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.h5{
+  text-transform:uppercase;
+}
+
+.tag{
+  font-size:25px;
+  letter-spacing: 2px;
+  text-transform: none !important;
+  color:black !important;
+  font-weight:bold;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.capitalize{
+  text-transform: capitalize;
+}
+
+.uppercase{
+  text-transform: uppercase;
+}
+
+
+/*MISCELLANEOUS*/
+*:focus {
+  outline: 0;
+}
+
+.fa{
+  font-size: 16px !important;
+}
+
+
+/* auth0-lock */
+.auth0-lock.auth0-lock .auth0-lock-header-bg {
+  background-color: black !important;
+}
+.auth0-lock-name{
+  color:black;
+  font-size: 40px;
+  font-weight: 700;
+  font-family: Ethnocentric;
+}
+
+/* Margins & Padding */
 .m-top25{
   margin-top:3em;
 }
 .m-top150{
   margin-top:150px;
 }
-
-.active-link{
-  // background-color:#3F729B;
-  //
-  // border:0px;
-  // color: white !important;
-  color: #ADFF2F !important;
-  color:#8acc25 !important;
+.m-left15{
+  margin-left:15px;
 }
-*:focus {
-  outline: 0;
+.p-25{
+  padding:25px;
 }
-
-.bg-dark{
-  // background-color: #243a51 !important;
-  color:#1C2331;
-  // color:#243a51;
-  border-bottom: 0.25px solid #1C2331;
+.padding0{
+  padding:0px;
 }
-.item{
-  color: white !important;
-}
-.active-text{
-  border-bottom: 3px solid #d01110;
+.nm-left3{
+  margin-left: -2px !important;
 }
 
-.nav-item{
-  margin: 0 10px;
+/* Custom Buttons */
+.btn-c-black{
+  background-color: black;
+  color:white !important;
+}
+.btn-c-black a{
+  color:white !important;
+}
+.btn-c-green{
+  background-color: greenyellow;
 }
 
-@font-face {
-  font-family: 'Ethnocentric';
-  src: url('./assets/fonts/ethnocentric_rg.ttf') format('truetype');
-  font-style: normal;
-  font-weight: normal;
+.btn-c-green a{
+  color:black !important;
 }
-@font-face {
-  font-family: 'Bebas-Neue';
-  src: url('./assets/fonts/BebasNeue-Regular.ttf') format('truetype');
-  font-style: normal;
-  // font-weight: normal;
-}
-
-
-// .logo{
-//   color: greenyellow;
-//   font-size: 40px;
-//   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-//   font-weight: bold;
-//
-// }
-// .logo2{
-//   color: black;
-//   font-size: 80px;
-//   text-shadow: -1px 0 greenyellow, 0 1px greenyellow, 1px 0 greenyellow, 0 -1px greenyellow;
-//   font-weight: bold;
-//
-// }
 .btn-custom {
   background-color: #43464B !important;
   color: white !important;
@@ -174,12 +194,19 @@ body{
   border-radius:3px;
   font-size:13px;
 }
-.capitalize{
-  text-transform: capitalize;
+
+@font-face {
+  font-family: 'Ethnocentric';
+  src: url('./assets/fonts/ethnocentric_rg.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
 }
-.uppercase{
-  text-transform: uppercase;
+@font-face {
+  font-family: 'Bebas-Neue';
+  src: url('./assets/fonts/BebasNeue-Regular.ttf') format('truetype');
+  font-style: normal;
 }
+
 .section{
   background-color:white;
   height:100%;
@@ -188,16 +215,6 @@ body{
   cursor: pointer;
 }
 
-.section-list{
-  background-color: white;
-}
-.fa{
-  font-size: 16px !important;
-}
-
-.nm-left3{
-  margin-left: -2px !important;
-}
 
 .loader {
   border: 5px solid black; /* Light grey */
@@ -213,12 +230,12 @@ body{
 }
 
 .modal-backdrop {
-    /* bug fix - no overlay */
-    display: none !important;
+  /* bug fix - no overlay */
+  display: none !important;
 }
 
- .modal{
- z-index:2050 !important;
+.modal{
+  z-index:2050 !important;
 }
 
 
@@ -250,14 +267,43 @@ body{
 }
 /* For Firefox */
 input[type='number'] {
-    -moz-appearance:textfield;
+  -moz-appearance:textfield;
 }
 /* Webkit browsers like Safari and Chrome */
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
+
+
+
+//
+// .navbar-custom{
+//   background-color: #121213;
+//   text-align: right;
+//   color:gray;
+//   font-size: 12px;
+//   font-family: Bebas-Neue,Arial,sans-serif;
+//   letter-spacing: 0.12em;
+//   height: inherit;
+//   height:100%;
+// }
+
+// .navbar-transparent:not(.top-nav-collapse) {
+//   color: #CDCFD0 !important;
+// }
+
+// .lead {
+//   font-weight: 300;
+//   letter-spacing: 1px;
+//   font-size: 1.2rem;
+//   border-color: #1C2331;
+//   border-radius: 3px;
+//   padding-top: 50px;
+//   padding-bottom: 50px
+// }
+
 
 /* Extra Small devices (tablets, 768px and up) col-sm */
 @media (max-width: 767px) {
@@ -267,7 +313,6 @@ input[type=number]::-webkit-outer-spin-button {
   }
   .h1-responsive{
     font-size:20px !important;
-    font-family: arial-black;
   }
 }
 /* Small devices (tablets, 768px and up) col-md  collapses here*/
