@@ -60,7 +60,6 @@ router.get('/api/cars', function(req, res) {
     var fuel_type = parseInt(req.query.fuel_type);
     var transmission_type = parseInt(req.query.transmission_type);
 
-
     client.query(
       'SELECT'+
       ' MK.NAME AS MAKE_NAME,'+
@@ -88,7 +87,7 @@ router.get('/api/cars', function(req, res) {
       ' LEFT JOIN PUBLIC.COLOR CL ON C.EXTERIOR_COLOR = CL.COLOR_ID'+
       ' LEFT JOIN PUBLIC.COLOR CL1 ON C.INTERIOR_COLOR = CL1.COLOR_ID'+
 
-      ' WHERE C.IS_SOLD='+is_sold+
+      ' WHERE (C.IS_SOLD='+is_sold+')'+
       ' AND ('+make+' = 0 or c.make='+make+')'+
       ' AND ('+model+' = 0 or c.model='+model+')'+
       ' AND ('+variant+' = 0 or c.variant='+variant+')'+
