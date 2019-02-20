@@ -10,7 +10,7 @@ section{
   height:inherit;
 }
 .title{
-  padding : 125px 50px;
+  padding : 50px 25px;
   letter-spacing: 2px;
 }
 
@@ -34,11 +34,9 @@ section{
 }
 
 p{
-  padding: 25px 165px 25px 35px;
+  padding: 50px 0px 50px 50px;
   letter-spacing: 2px;
-  // font-style: normal;
-  // font-family: cursive;
-  // font-size:20px;
+  font-size:18px;
   color:whitesmoke;
 }
 h2{
@@ -47,13 +45,17 @@ h2{
 
 /* Extra Small devices (tablets, 768px and up) col-sm */
 @media (max-width: 767px) {
-  .container-left{
+  .container-right{
     height:auto;
+    text-align: center;
   }
 }
 /* Small devices (tablets, 768px and up) col-md  collapses here*/
 @media (min-width: 768px) and (max-width: 992px) {
-
+  .container-right{
+    height:auto;
+    text-align: center;
+  }
 }
 
 /* Medium devices (desktops, 992px and up)  col-lg */
