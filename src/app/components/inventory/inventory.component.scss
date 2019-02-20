@@ -34,7 +34,7 @@ h1 {
 //   color: black;
 // }
 h2 {
-  font: 24px "Arial";
+   font-size:18px;
   color: black;
 }
 
@@ -49,7 +49,6 @@ section {
   padding: 100px 0;
   padding-left:2%;
 }
-
 
 .page-title{
   height:350px;
@@ -74,15 +73,6 @@ section {
   text-transform: uppercase;
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
 }
-
-
-
-
-
-
-
-
-
 
 .filter-div{
   border-radius:5px;
@@ -119,17 +109,19 @@ section {
   text-transform:capitalize;
   font-size: 18px;
   color: #222 !important;
+   font-weight: bold;
 }
 .sp{
   color: #8acc25 !important;
-  font-size: 22px;
+   font-size: 18px;
+   font-weight: bold;
 }
 .car-item{
   margin-left:5px;
   border-radius:5px;
   border:1px dotted #e8e8e8;
   margin-bottom:25px;
-   height:385px;
+  height:385px;
 }
 
 .car-image{
@@ -177,3 +169,27 @@ input[type=checkbox] {
 }
 .mat-tab-label .mat-tab-label-content {
 }
+
+/* Extra Small devices (tablets, 768px and up) col-sm */
+@media (max-width: 767px) {
+  .car-item{
+    height:auto;
+  }
+}
+/* Small devices (tablets, 768px and up) col-md  collapses here*/
+@media (min-width: 768px) and (max-width: 992px) {
+  .car-item{
+    height:auto;
+  }
+}
+
+/* Medium devices (desktops, 992px and up)  col-lg */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .car-item{
+    height:auto;
+  }
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) and (max-width: 1920px) {}

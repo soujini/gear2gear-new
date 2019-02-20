@@ -78,6 +78,7 @@ export class CarService {
       {
         car.forEach(c => {
           c.image_urls=[];
+          c.selling_price=this.formatCurrency(c.selling_price);
           this.fileUploads = this.uploadFileService.getFiles(c.car_id);
           this.fileUploads.subscribe(res=>{
             c.image_urls=res;
@@ -168,5 +169,26 @@ export class CarService {
       let errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
       console.log(errMsg); // log to console instead
+    }
+    formatCurrency(val){
+      var isValid = /^[0-9,.]*$/.test(val);
+      if(isValid == true)
+      {
+        let x = val.toString().replace( /,/g, "" );
+        var afterPoint = '';
+        if(x.indexOf('.') > 0)
+        afterPoint = x.substring(x.indexOf('.'),x.length);
+        x = Math.floor(x);
+        x=x.toString();
+        var lastThree = x.substring(x.length-3);
+        var otherNumbers = x.substring(0,x.length-3);
+        if(otherNumbers != '')
+        lastThree = ',' + lastThree;
+        var res = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree + afterPoint;
+        return res;
+      }
+      else{
+        return "";
+      }
     }
   }

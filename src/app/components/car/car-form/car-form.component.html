@@ -218,6 +218,15 @@
                     </div>
                   </div>
                 </div>
+                <div class="form-group">
+                  <label for="inputSoldFor" class="col-sm-3 col-form-label">Selling Price</label>
+                  <div>
+                    <div class="md-form mt-0">
+                      <input id="inputSoldFor" type="text" class="form-control" formControlName="selling_price" (keyup)="formatCurrency(carForm.controls.selling_price)">
+                      <app-control-messages [control]="carForm.controls.selling_price"></app-control-messages>
+                    </div>
+                  </div>
+                </div>
                 <!-- Default switch -->
                 <div class="form-check" *ngIf="carForm.controls.is_sold.value == true" >
                   <input type="checkbox" class="form-check-input" id="inputIsSold" formControlName="is_sold" (change)="is_sold()">
@@ -231,8 +240,7 @@
                   <input type="checkbox" class="form-check-input" id="inputAccidental" formControlName="is_accidental">
                   <label class="form-check-label" for="inputAccidental">Is Accidental?</label>
                 </div>
-
-                <div class="form-group" *ngIf="selectedCar_Id" style="margin-bottom:150px">
+                <div class="form-group" *ngIf="selectedCar_Id" style="margin-bottom:25px">
                   <app-upload-file [car_id]=selectedCar_Id></app-upload-file>
                 </div>
                 <div class="text-right">

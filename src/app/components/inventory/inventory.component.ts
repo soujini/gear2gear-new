@@ -90,7 +90,9 @@ export class InventoryComponent implements OnInit {
 
     getAvailableCars() {
       var baseURL="https://s3.amazonaws.com/gear2gear/";
+
       this.cars$ = this.carService.getAvailableCars(this.filterForm.value);
+
     }
     getFilteredCars(){
       this.getAvailableCars();
