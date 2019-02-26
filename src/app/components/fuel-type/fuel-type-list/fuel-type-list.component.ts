@@ -8,7 +8,7 @@ import { FuelTypeService } from 'app/services/fuel-type/fuel-type.service';
 @Component({
   selector: 'app-fuelType-list',
   templateUrl: './fuel-type-list.component.html',
-  styleUrls: ['./fuel-type-list.component.scss']
+  styleUrls: ['./fuel-type-list.component.scss'],
 })
 export class FuelTypeListComponent implements OnInit {
   @Input()

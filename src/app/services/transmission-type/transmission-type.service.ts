@@ -27,24 +27,24 @@ export class TransmissionTypeService {
   }
 
   public getTransmissionTypes(): Observable<any> {
-    return this.http.get(this.apiUrl+'/api/transmissionTypes', {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.get(this.apiUrl+'/api/transmissionTypes', {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 
   public getTransmissionTypeById(transmission_type_id:number): Observable<any> {
-    return this.http.get(this.apiUrl+'/api/transmissionTypes/'+transmission_type_id, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.get(this.apiUrl+'/api/transmissionTypes/'+transmission_type_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 
   public searchTransmissionTypes(searchTerm): Observable<any> {
-    return this.http.get(this.apiUrl+'/api/transmissionTypes/search/'+searchTerm, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.get(this.apiUrl+'/api/transmissionTypes/search/'+searchTerm, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 
   public createTransmissionType(newTransmissionType:TransmissionType): Observable<any> {
     const body = JSON.stringify(newTransmissionType);
 
-    return this.http.post(this.apiUrl+'/api/transmissionTypes', body, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.post(this.apiUrl+'/api/transmissionTypes', body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 
@@ -52,12 +52,12 @@ export class TransmissionTypeService {
     const body = JSON.stringify(editTransmissionType);
     const transmission_type_id = editTransmissionType.transmission_type_id;
 
-    return this.http.put("http://localhost:3000/api/transmissionTypes/"+transmission_type_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.put("http://localhost:3000/api/transmissionTypes/"+transmission_type_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 
   public deleteTransmissionType(transmission_type_id:number): Observable<any> {
-    return this.http.delete(this.apiUrl+'/api/transmissionTypes/'+transmission_type_id, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.delete(this.apiUrl+'/api/transmissionTypes/'+transmission_type_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 

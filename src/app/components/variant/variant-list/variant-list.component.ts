@@ -8,7 +8,7 @@ import { VariantService } from 'app/services/variant/variant.service';
 @Component({
   selector: 'app-variant-list',
   templateUrl: './variant-list.component.html',
-  styleUrls: ['./variant-list.component.scss']
+  styleUrls: ['./variant-list.component.scss'],
 })
 export class VariantListComponent implements OnInit {
   @Input()

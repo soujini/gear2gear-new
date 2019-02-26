@@ -1,9 +1,4 @@
 section{
-  // background-image: url("../../../assets/images/black-car.jpeg");
-  // background-size: cover;
-  // background-repeat: no-repeat;
-  // background-attachment: fixed;
-  // // background-color: #f8f8f8;
 }
 
 .img-car{
@@ -17,7 +12,7 @@ section{
 .container-right{
   height:550px;
   padding-left:0px;
-  background-image: url("../../../assets/images/yellow-car.jpeg");
+  background-image: url("https://s3.amazonaws.com/gear2gear/yellow-car.jp2");
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -28,7 +23,7 @@ section{
 }
 .container-left{
   padding:0px;
-  background-image: url("../../../assets/images/bg4.jpeg");
+  background-image: url("https://s3.amazonaws.com/gear2gear/bg4.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
 }

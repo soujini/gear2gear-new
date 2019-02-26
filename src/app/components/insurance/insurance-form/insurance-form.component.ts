@@ -8,7 +8,7 @@ import { InsuranceService } from 'app/services/insurance/insurance.service';
 @Component({
   selector: 'app-insurance-form',
   templateUrl: './insurance-form.component.html',
-  styleUrls: ['./insurance-form.component.scss']
+  styleUrls: ['./insurance-form.component.scss'],
 })
 export class InsuranceFormComponent implements OnInit {
   title : string = "Create Insurance";

@@ -8,7 +8,7 @@ import { TransmissionTypeService } from 'app/services/transmission-type/transmis
 @Component({
   selector: 'app-transmissionType-form',
   templateUrl: './transmission-type-form.component.html',
-  styleUrls: ['./transmission-type-form.component.scss']
+  styleUrls: ['./transmission-type-form.component.scss'],
 })
 export class TransmissionTypeFormComponent implements OnInit {
   title : string = "Create Transmission Type";

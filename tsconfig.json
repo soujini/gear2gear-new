@@ -16,5 +16,8 @@
       "dom"
     ],
   },
+  "angularCompilerOptions": {
+    "preserveWhitespaces": false
+},
    "include": ["node_modules/angular-bootstrap-md/**/*.ts",  "src/**/*.ts"]
 }

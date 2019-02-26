@@ -23,6 +23,6 @@ export class CommonService {
   }
 
   // public getStates(): Observable<any> {
-  //   //return this.http.get('http://services.groupkt.com/state/get/IND/all',{headers: {'Content-Type': 'application/json; charset=utf-8'}});
+  //   //return this.http.get('http://services.groupkt.com/state/get/IND/all',{headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}});
   // }
 }

@@ -11,7 +11,7 @@ import { CarService } from 'app/services/car/car.service';
 @Component({
   selector: 'app-car',
   templateUrl: './car.component.html',
-  styleUrls: ['./car.component.scss']
+  styleUrls: ['./car.component.scss'],
 })
 export class CarComponent implements OnInit {
   title : string = "Car";

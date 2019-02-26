@@ -8,7 +8,7 @@ import { ColorService } from 'app/services/color/color.service';
 @Component({
   selector: 'app-color-list',
   templateUrl: './color-list.component.html',
-  styleUrls: ['./color-list.component.scss']
+  styleUrls: ['./color-list.component.scss'],
 })
 export class ColorListComponent implements OnInit {
   @Input()
@@ -23,7 +23,7 @@ export class ColorListComponent implements OnInit {
     this.colorService.selectedColorId.subscribe(res=>{
       this.selectedColorId=res;
     },err=>{
-      
+
     });
   }
 

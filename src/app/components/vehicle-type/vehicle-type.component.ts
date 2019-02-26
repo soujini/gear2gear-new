@@ -11,7 +11,7 @@ import { VehicleTypeService } from 'app/services/vehicle-type/vehicle-type.servi
 @Component({
   selector: 'app-make',
   templateUrl: './vehicle-type.component.html',
-  styleUrls: ['./vehicle-type.component.scss']
+  styleUrls: ['./vehicle-type.component.scss'],
 })
 export class VehicleTypeComponent implements OnInit {
   title : string = "Vehicle Type";

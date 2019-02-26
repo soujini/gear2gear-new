@@ -8,7 +8,7 @@ import { VehicleTypeService } from 'app/services/vehicle-type/vehicle-type.servi
 @Component({
   selector: 'app-vehicleType-form',
   templateUrl: './vehicle-type-form.component.html',
-  styleUrls: ['./vehicle-type-form.component.scss']
+  styleUrls: ['./vehicle-type-form.component.scss'],
 })
 export class VehicleTypeFormComponent implements OnInit {
   title : string = "Create Vehicle Type";

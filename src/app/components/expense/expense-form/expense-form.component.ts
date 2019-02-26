@@ -8,7 +8,7 @@ import { ExpenseService } from 'app/services/expense/expense.service';
 @Component({
   selector: 'app-expense-form',
   templateUrl: './expense-form.component.html',
-  styleUrls: ['./expense-form.component.scss']
+  styleUrls: ['./expense-form.component.scss'],
 })
 export class ExpenseFormComponent implements OnInit {
   title : string = "Create Expense";

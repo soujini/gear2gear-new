@@ -11,7 +11,7 @@ import { InsuranceService } from 'app/services/insurance/insurance.service';
 @Component({
   selector: 'app-insurance',
   templateUrl: './insurance.component.html',
-  styleUrls: ['./insurance.component.scss']
+  styleUrls: ['./insurance.component.scss'],
 })
 export class InsuranceComponent implements OnInit {
   title : string = "Insurance";

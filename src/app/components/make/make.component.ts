@@ -11,7 +11,7 @@ import { MakeService } from 'app/services/make/make.service';
 @Component({
   selector: 'app-make',
   templateUrl: './make.component.html',
-  styleUrls: ['./make.component.scss']
+  styleUrls: ['./make.component.scss'],
 })
 export class MakeComponent implements OnInit {
   title : string = "Make";

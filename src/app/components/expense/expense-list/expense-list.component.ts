@@ -8,7 +8,7 @@ import { ExpenseService } from 'app/services/expense/expense.service';
 @Component({
   selector: 'app-expense-list',
   templateUrl: './expense-list.component.html',
-  styleUrls: ['./expense-list.component.scss']
+  styleUrls: ['./expense-list.component.scss'],
 })
 export class ExpenseListComponent implements OnInit {
   @Input()

@@ -27,24 +27,24 @@ export class VariantService {
   }
 
   public getVariants(): Observable<any> {
-    return this.http.get(this.apiUrl+'/api/variants', {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.get(this.apiUrl+'/api/variants', {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 
   public getVariantById(variant_id:number): Observable<any> {
-    return this.http.get(this.apiUrl+'/api/variants/'+variant_id, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.get(this.apiUrl+'/api/variants/'+variant_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 
   public searchVariants(searchTerm): Observable<any> {
-    return this.http.get(this.apiUrl+'/api/variants/search/'+searchTerm, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.get(this.apiUrl+'/api/variants/search/'+searchTerm, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 
   public createVariant(newVariant:Variant): Observable<any> {
     const body = JSON.stringify(newVariant);
 
-    return this.http.post(this.apiUrl+'/api/variants', body, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.post(this.apiUrl+'/api/variants', body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 
@@ -52,12 +52,12 @@ export class VariantService {
     const body = JSON.stringify(editVariant);
     const variant_id = editVariant.variant_id;
 
-    return this.http.put("http://localhost:3000/api/variants/"+variant_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.put("http://localhost:3000/api/variants/"+variant_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 
   public deleteVariant(variant_id:number): Observable<any> {
-    return this.http.delete(this.apiUrl+'/api/variants/'+variant_id, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.delete(this.apiUrl+'/api/variants/'+variant_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 

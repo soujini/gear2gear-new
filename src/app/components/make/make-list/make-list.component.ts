@@ -8,7 +8,7 @@ import { MakeService } from 'app/services/make/make.service';
 @Component({
   selector: 'app-make-list',
   templateUrl: './make-list.component.html',
-  styleUrls: ['./make-list.component.scss']
+  styleUrls: ['./make-list.component.scss'],
 })
 export class MakeListComponent implements OnInit {
   @Input()

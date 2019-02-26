@@ -10,7 +10,7 @@ import 'rxjs/add/operator/take';
 @Component({
   selector: 'app-make-form',
   templateUrl: './make-form.component.html',
-  styleUrls: ['./make-form.component.scss']
+  styleUrls: ['./make-form.component.scss'],
 })
 export class MakeFormComponent implements OnInit {
   title : string = "Create Make";

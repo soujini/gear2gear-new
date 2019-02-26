@@ -10,7 +10,7 @@ import { TransactionTypeService } from 'app/services/transaction-type/transactio
 @Component({
   selector: 'app-client-form',
   templateUrl: './client-form.component.html',
-  styleUrls: ['./client-form.component.scss']
+  styleUrls: ['./client-form.component.scss'],
 })
 export class ClientFormComponent implements OnInit {
   title : string = "Create Client";

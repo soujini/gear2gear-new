@@ -8,7 +8,7 @@ import { ModelService } from 'app/services/model/model.service';
 @Component({
   selector: 'app-model-list',
   templateUrl: './model-list.component.html',
-  styleUrls: ['./model-list.component.scss']
+  styleUrls: ['./model-list.component.scss'],
 })
 export class ModelListComponent implements OnInit {
   @Input()

@@ -12,7 +12,7 @@ import { CommonService } from 'app/services/common/common.service';
 @Component({
   selector: 'app-client',
   templateUrl: './client.component.html',
-  styleUrls: ['./client.component.scss']
+  styleUrls: ['./client.component.scss'],
 })
 export class ClientComponent implements OnInit {
   title : string = "Client";

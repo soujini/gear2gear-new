@@ -8,7 +8,7 @@ import { VehicleTypeService } from 'app/services/vehicle-type/vehicle-type.servi
 @Component({
   selector: 'app-vehicleType-list',
   templateUrl: './vehicle-type-list.component.html',
-  styleUrls: ['./vehicle-type-list.component.scss']
+  styleUrls: ['./vehicle-type-list.component.scss'],
 })
 export class VehicleTypeListComponent implements OnInit {
   @Input()

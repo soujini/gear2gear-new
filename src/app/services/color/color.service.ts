@@ -27,24 +27,24 @@ export class ColorService {
   }
 
   public getColors(): Observable<any> {
-    return this.http.get(this.apiUrl+'/api/colors', {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.get(this.apiUrl+'/api/colors', {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 
   public getColorById(color_id:number): Observable<any> {
-    return this.http.get(this.apiUrl+'/api/colors/'+color_id, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.get(this.apiUrl+'/api/colors/'+color_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 
   public searchColors(searchTerm): Observable<any> {
-    return this.http.get(this.apiUrl+'/api/colors/search/'+searchTerm, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.get(this.apiUrl+'/api/colors/search/'+searchTerm, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 
   public createColor(newColor:Color): Observable<any> {
     const body = JSON.stringify(newColor);
 
-    return this.http.post(this.apiUrl+'/api/colors', body, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.post(this.apiUrl+'/api/colors', body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 
@@ -52,12 +52,12 @@ export class ColorService {
     const body = JSON.stringify(editColor);
     const color_id = editColor.color_id;
 
-    return this.http.put("http://localhost:3000/api/colors/"+color_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.put("http://localhost:3000/api/colors/"+color_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 
   public deleteColor(color_id:number): Observable<any> {
-    return this.http.delete(this.apiUrl+'/api/colors/'+color_id, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.delete(this.apiUrl+'/api/colors/'+color_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 

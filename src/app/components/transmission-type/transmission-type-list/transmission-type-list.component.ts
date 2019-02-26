@@ -8,7 +8,7 @@ import { TransmissionTypeService } from 'app/services/transmission-type/transmis
 @Component({
   selector: 'app-transmissionType-list',
   templateUrl: './transmission-type-list.component.html',
-  styleUrls: ['./transmission-type-list.component.scss']
+  styleUrls: ['./transmission-type-list.component.scss'],
 })
 export class TransmissionTypeListComponent implements OnInit {
   @Input()

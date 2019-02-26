@@ -11,7 +11,7 @@ import { TransactionDetailsService } from 'app/services/transaction-details/tran
 @Component({
   selector: 'app-transaction-details',
   templateUrl: './transaction-details.component.html',
-  styleUrls: ['./transaction-details.component.scss']
+  styleUrls: ['./transaction-details.component.scss'],
 })
 export class TransactionDetailsComponent implements OnInit {
   @Input()

@@ -11,7 +11,7 @@ import { ExpenseService } from 'app/services/expense/expense.service';
 @Component({
   selector: 'app-expense',
   templateUrl: './expense.component.html',
-  styleUrls: ['./expense.component.scss']
+  styleUrls: ['./expense.component.scss'],
 })
 export class ExpenseComponent implements OnInit {
   title : string = "Expense";

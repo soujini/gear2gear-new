@@ -4,7 +4,7 @@ import { UploadFileService } from 'app/services/upload-file/upload-file.service'
 @Component({
   selector: 'app-upload-file',
   templateUrl: './upload-file.component.html',
-  styleUrls: ['./upload-file.component.scss']
+  styleUrls: ['./upload-file.component.scss'],
 })
 export class UploadFileComponent implements OnInit {
   @Input() car_id :string = "default"; //Will be the folder name

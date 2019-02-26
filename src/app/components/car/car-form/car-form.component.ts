@@ -21,7 +21,7 @@ import { TransactionDetailsService } from 'app/services/transaction-details/tran
 @Component({
   selector: 'app-car-form',
   templateUrl: './car-form.component.html',
-  styleUrls: ['./car-form.component.scss']
+  styleUrls: ['./car-form.component.scss'],
 })
 export class CarFormComponent implements OnInit {
   title : string = "Create Car";

@@ -8,7 +8,7 @@ import { FuelTypeService } from 'app/services/fuel-type/fuel-type.service';
 @Component({
   selector: 'app-fuelType-form',
   templateUrl: './fuel-type-form.component.html',
-  styleUrls: ['./fuel-type-form.component.scss']
+  styleUrls: ['./fuel-type-form.component.scss'],
 })
 export class FuelTypeFormComponent implements OnInit {
   title : string = "Create Fuel Type";

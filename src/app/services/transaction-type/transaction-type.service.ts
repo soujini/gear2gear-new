@@ -27,28 +27,28 @@ export class TransactionTypeService {
   }
 
   public getTransactionTypes(): Observable<any> {
-    return this.http.get(this.apiUrl+'/api/transactionTypes', {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.get(this.apiUrl+'/api/transactionTypes', {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
   public getTransactionTypesForClient(): Observable<any> {
-    return this.http.get(this.apiUrl+'/api/transactionTypes/client', {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.get(this.apiUrl+'/api/transactionTypes/client', {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 
   public getTransactionTypeById(transaction_type_id:number): Observable<any> {
-    return this.http.get(this.apiUrl+'/api/transactionTypes/'+transaction_type_id, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.get(this.apiUrl+'/api/transactionTypes/'+transaction_type_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 
   public searchTransactionTypes(searchTerm): Observable<any> {
-    return this.http.get(this.apiUrl+'/api/transactionTypes/search/'+searchTerm, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.get(this.apiUrl+'/api/transactionTypes/search/'+searchTerm, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 
   public createTransactionType(newTransactionType:TransactionType): Observable<any> {
     const body = JSON.stringify(newTransactionType);
 
-    return this.http.post(this.apiUrl+'/api/transactionTypes', body, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.post(this.apiUrl+'/api/transactionTypes', body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 
@@ -56,12 +56,12 @@ export class TransactionTypeService {
     const body = JSON.stringify(editTransactionType);
     const transaction_type_id = editTransactionType.transaction_type_id;
 
-    return this.http.put("http://localhost:3000/api/transactionTypes/"+transaction_type_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.put("http://localhost:3000/api/transactionTypes/"+transaction_type_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 
   public deleteTransactionType(transaction_type_id:number): Observable<any> {
-    return this.http.delete(this.apiUrl+'/api/transactionTypes/'+transaction_type_id, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.delete(this.apiUrl+'/api/transactionTypes/'+transaction_type_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 

@@ -11,7 +11,7 @@ import { TransmissionTypeService } from 'app/services/transmission-type/transmis
 @Component({
   selector: 'app-make',
   templateUrl: './transmission-type.component.html',
-  styleUrls: ['./transmission-type.component.scss']
+  styleUrls: ['./transmission-type.component.scss'],
 })
 export class TransmissionTypeComponent implements OnInit {
   title : string = "Transmission Type";

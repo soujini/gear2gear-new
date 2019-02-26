@@ -27,24 +27,24 @@ export class VehicleTypeService {
   }
 
   public getVehicleTypes(): Observable<any> {
-    return this.http.get(this.apiUrl+'/api/vehicleTypes', {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.get(this.apiUrl+'/api/vehicleTypes', {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 
   public getVehicleTypeById(vehicle_type_id:number): Observable<any> {
-    return this.http.get(this.apiUrl+'/api/vehicleTypes/'+vehicle_type_id, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.get(this.apiUrl+'/api/vehicleTypes/'+vehicle_type_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 
   public searchVehicleTypes(searchTerm): Observable<any> {
-    return this.http.get(this.apiUrl+'/api/vehicleTypes/search/'+searchTerm, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.get(this.apiUrl+'/api/vehicleTypes/search/'+searchTerm, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 
   public createVehicleType(newVehicleType:VehicleType): Observable<any> {
     const body = JSON.stringify(newVehicleType);
 
-    return this.http.post(this.apiUrl+'/api/vehicleTypes', body, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.post(this.apiUrl+'/api/vehicleTypes', body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 
@@ -52,12 +52,12 @@ export class VehicleTypeService {
     const body = JSON.stringify(editVehicleType);
     const vehicle_type_id = editVehicleType.vehicle_type_id;
 
-    return this.http.put("http://localhost:3000/api/vehicleTypes/"+vehicle_type_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.put("http://localhost:3000/api/vehicleTypes/"+vehicle_type_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 
   public deleteVehicleType(vehicle_type_id:number): Observable<any> {
-    return this.http.delete(this.apiUrl+'/api/vehicleTypes/'+vehicle_type_id, {headers: {'Content-Type': 'application/json; charset=utf-8'}})
+    return this.http.delete(this.apiUrl+'/api/vehicleTypes/'+vehicle_type_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 

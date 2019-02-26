@@ -11,7 +11,7 @@ import { FuelTypeService } from 'app/services/fuel-type/fuel-type.service';
 @Component({
   selector: 'app-make',
   templateUrl: './fuel-type.component.html',
-  styleUrls: ['./fuel-type.component.scss']
+  styleUrls: ['./fuel-type.component.scss'],
 })
 export class FuelTypeComponent implements OnInit {
   title : string = "Fuel Type";

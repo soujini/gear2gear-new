@@ -11,7 +11,7 @@ import { ModelService } from 'app/services/model/model.service';
 @Component({
   selector: 'app-model',
   templateUrl: './model.component.html',
-  styleUrls: ['./model.component.scss']
+  styleUrls: ['./model.component.scss'],
 })
 export class ModelComponent implements OnInit {
   title : string = "Model";

@@ -4,10 +4,25 @@
 // .navbar-toggler-icon{
 //   color:green !important;
 // }
+ button.navbar-toogler{
 
+
+@extend .sr-only;
+}
+
+.sr-only{
+    position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
 .header{
   height: 110px;
-  background-image: url('../../../../src/assets/images/bg1.jpeg');
+  background-image: url('https://s3.amazonaws.com/gear2gear/bg1.jpeg');
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;

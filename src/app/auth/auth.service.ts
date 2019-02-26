@@ -12,7 +12,7 @@ export class AuthService {
     'allowSignUp':false,
     'redirect':false,
     theme: {
-      logo: './assets/images/g2g-favicon-auth0.png',
+      logo: 'https://s3.amazonaws.com/gear2gear/g2g-favicon-auth0.png',
       primaryColor: '#31324F'
     },
     allowedConnections: ['Username-Password-Authentication'],

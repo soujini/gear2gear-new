@@ -12,7 +12,7 @@ import { TransactionDetailsService } from 'app/services/transaction-details/tran
 @Component({
   selector: 'app-investors-corner',
   templateUrl: './investors-corner.component.html',
-  styleUrls: ['./investors-corner.component.scss']
+  styleUrls: ['./investors-corner.component.scss'],
 })
 export class InvestorsCornerComponent implements OnInit {
   cars$: Observable<any>;

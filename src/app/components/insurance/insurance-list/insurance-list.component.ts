@@ -8,7 +8,7 @@ import { InsuranceService } from 'app/services/insurance/insurance.service';
 @Component({
   selector: 'app-insurance-list',
   templateUrl: './insurance-list.component.html',
-  styleUrls: ['./insurance-list.component.scss']
+  styleUrls: ['./insurance-list.component.scss'],
 })
 export class InsuranceListComponent implements OnInit {
   @Input()

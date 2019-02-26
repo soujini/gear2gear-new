@@ -11,7 +11,7 @@ import { VariantService } from 'app/services/variant/variant.service';
 @Component({
   selector: 'app-variant',
   templateUrl: './variant.component.html',
-  styleUrls: ['./variant.component.scss']
+  styleUrls: ['./variant.component.scss'],
 })
 export class VariantComponent implements OnInit {
   title : string = "Variant";

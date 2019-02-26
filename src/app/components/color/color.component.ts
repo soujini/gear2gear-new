@@ -11,7 +11,7 @@ import { ColorService } from 'app/services/color/color.service';
 @Component({
   selector: 'app-color',
   templateUrl: './color.component.html',
-  styleUrls: ['./color.component.scss']
+  styleUrls: ['./color.component.scss'],
 })
 export class ColorComponent implements OnInit {
   title : string = "Color";

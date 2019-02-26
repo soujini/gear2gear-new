@@ -2,15 +2,15 @@
 // The build system defaults to the dev environment which uses `environment.ts`, but if you do
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
- // export {};
-  var environment =  {
+
+ const environment = {
   production: false,
-  DATABASE_URL: 'postgres://localhost:5432/postgres',
+  CONNECTION_STRING:'postgres://localhost:5432/postgres',
+  DATABASE_URL:'postgres://localhost:5432/postgres',
   API_URL: 'http://localhost:3000',
   SSL:false,
   // ORIGIN: 'http://localhost:4200', //use this origin for local
   ORIGIN:'http://www.gear2gear.in', //use this for deployment
-  CONNECTION_STRING:'postgres://localhost:5432/postgres',
 };
-
- module.exports =  environment;
+ export{environment};
+   //module.exports =  environment;
