@@ -1,6 +1,16 @@
-// var concat = require('gulp-concat');
-// var gulp = require('gulp');
-// var minify = require('gulp-minify');
+ var concat = require('gulp-gzip');
+ var gulp = require('gulp');
+ var minify = require('gulp-minify');
+
+
+gulp.task('default',  gulp.series(copyIndex));
+
+function copyIndex() {
+  console.log("in index");
+     return gulp.src('./dist/*.map').pipe(minify()).pipe(gulp.dest('./dist', {overwrite: true}));
+     done();
+ }
+
 //
 // // gulp.task('concat', function () {
 // //   return gulp.src([
@@ -12,12 +22,7 @@
 // //     .pipe(gulp.dest('./dist/'));
 // // });
 //
-// gulp.task('minify', function () {
-//   return gulp
-//     .src('./src/index.html')
-//     .pipe(minify())
-//     .pipe(gulp.dest('./dist/'))
-// });
+
 //
 // // // var gulp = require('gulp');
 // //  var gzip = require('gulp-gzip');
