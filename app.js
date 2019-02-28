@@ -30,7 +30,7 @@ var corsOptions = {
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
-app.use(compression({filter: shouldCompress}));
+app.use(compression({level:-1}));
 
 function shouldCompress (req, res) {
   // if (req.headers['x-no-compression']) {
