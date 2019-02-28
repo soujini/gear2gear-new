@@ -42,6 +42,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderInterceptorService } from './services/loader-interceptor.service';
 import { AdvantagesComponent } from './components/advantages/advantages.component';
+import { LazyLoadDirective } from './lazy-load.directive';
 // import { ServiceWorkerModule } from '@angular/service-worker';
 // import { environment } from '../environments/environment';
 
@@ -57,6 +58,7 @@ import { AdvantagesComponent } from './components/advantages/advantages.componen
     LoaderComponent,
     ChecklistComponent,
     AdvantagesComponent,
+    LazyLoadDirective,
     // UploadFileComponent,
     ],
   imports: [
