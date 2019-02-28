@@ -1,14 +1,21 @@
 var gulp = require('gulp');
 var gzip = require('gulp-gzip');
 
-
- gulp.task('compress', done => {
-   console.log("compressing");
-    gulp.src('./dist/scripts/*.js')
+ gulp.task('default',  gulp.series(clean, compress));
+//
+function compress(done) {
+    return gulp.src('./dist/scripts/*.js')
     .pipe(gzip())
-    .pipe(gulp.dest('./dist/scripts'));
-     done();
-});
+    .pipe(gulp.dest('./dist', {overwrite: true}));
+    done();
+}
+//  gulp.task('compress', function() {
+//    console.log("compressing");
+//     gulp.src('./dist/scripts/*.js')
+//     .pipe(gzip())
+//     .pipe(gulp.dest('./dist/scripts'));
+//     done();
+// });
 
 //
 // // gulp.task('concat', function () {
@@ -36,10 +43,10 @@ var gzip = require('gulp-gzip');
 // //
 // // gulp.task('default',  gulp.series(copyIndex, copyAppJs));
 // //
-// // function clean(done) {
-// //     // del(['./dist/**/*.*']);
-// //     done();
-// // }
+function clean(done) {
+    // del(['./dist/**/*.*']);
+    done();
+}
 // //
 // // function copyIndex(done) {
 // //     return gulp.src('./dist/index.html').pipe(gzip()).pipe(gulp.dest('./dist', {overwrite: true}));
