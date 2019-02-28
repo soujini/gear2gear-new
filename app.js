@@ -29,8 +29,21 @@ var corsOptions = {
   origin:environment.ORIGIN,
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
+
+app.use(compression({filter: shouldCompress}));
+
+function shouldCompress (req, res) {
+  // if (req.headers['x-no-compression']) {
+  //   // don't compress responses with this request header
+  //   return false
+  // }
+
+  // fallback to standard filter function
+  return compression.filter(req, res)
+}
+
 app.use(express.static(path.join(__dirname, 'dist')));
- app.use(compression({threshold:0, filter:function(){return true;}}));
+ // app.use(compression({threshold:0, filter:function(){return true;}}));
 app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({
   extended: true
