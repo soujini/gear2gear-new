@@ -30,7 +30,7 @@ var corsOptions = {
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 app.use(express.static(path.join(__dirname, 'dist')));
-app.use(compression()); //compressing dist folder
+ app.use(compression({threshold:0, filter:function(){return true;}}));
 app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({
   extended: true
@@ -39,7 +39,7 @@ app.use(bodyParser.json());
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
- res.header("Cache-Control", "public, max-age=31557600");//1year
+ // res.header("Cache-Control", "public, max-age=31557600");//1year
  // res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
 res.header('Expires', '9');
   next();
