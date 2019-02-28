@@ -3,7 +3,7 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
- const environment = {
+ var environment = {
   production: false,
   CONNECTION_STRING:'postgres://localhost:5432/postgres',
   DATABASE_URL:'postgres://localhost:5432/postgres',
