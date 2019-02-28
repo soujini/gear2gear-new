@@ -39,7 +39,8 @@ function shouldCompress (req, res) {
   // }
 
   // fallback to standard filter function
-  return compression.filter(req, res)
+  console.log("returning compressed");
+  return compression.filter(req, res);
 }
 
 app.use(express.static(path.join(__dirname, 'dist')));

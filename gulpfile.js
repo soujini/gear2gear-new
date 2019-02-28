@@ -4,7 +4,7 @@ var gzip = require('gulp-gzip');
  gulp.task('default',  gulp.series(clean, compress));
 //
 function compress(done) {
-    return gulp.src('./dist/scripts/*.js')
+    return gulp.src('./dist/*.js')
     .pipe(gzip())
     .pipe(gulp.dest('./dist', {overwrite: true}));
     done();
