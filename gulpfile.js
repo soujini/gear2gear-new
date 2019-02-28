@@ -1,15 +1,14 @@
- var concat = require('gulp-gzip');
- var gulp = require('gulp');
- var minify = require('gulp-minify');
+var gulp = require('gulp');
+var gzip = require('gulp-gzip');
 
 
-gulp.task('default',  gulp.series(copyIndex));
-
-function copyIndex() {
-  console.log("in index");
-     return gulp.src('./dist/*.map').pipe(minify()).pipe(gulp.dest('./dist', {overwrite: true}));
+ gulp.task('compress', done => {
+   console.log("compressing");
+    gulp.src('./dist/scripts/*.js')
+    .pipe(gzip())
+    .pipe(gulp.dest('./dist/scripts'));
      done();
- }
+});
 
 //
 // // gulp.task('concat', function () {
