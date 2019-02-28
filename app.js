@@ -1,11 +1,11 @@
 
+var compression = require('compression');
 const express = require('express');
 const path = require('path');
 const http = require('http');
 const cors = require('cors');
 const port = process.env.PORT || '3000';
 var bodyParser = require('body-parser');
-const compression = require('compression');
 
 const app = express();
 require('dotenv').config();
@@ -30,18 +30,7 @@ var corsOptions = {
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
-app.use(compression({filter: shouldCompress, level:9}));
-
-function shouldCompress (req, res) {
-  // if (req.headers['x-no-compression']) {
-  //   // don't compress responses with this request header
-  //   return false
-  // }
-
-  // fallback to standard filter function
-  console.log("returning compressed");
-  return compression.filter(req, res);
-}
+app.use(compression());
 
 app.use(express.static(path.join(__dirname, 'dist')));
  // app.use(compression({threshold:0, filter:function(){return true;}}));
@@ -90,5 +79,5 @@ function handleError(res, reason, message, code) {
 
 setInterval(function() {
     http.get("http://gear2gear.herokuapp.com");
-    console.log("Pinging to keep the site awake");
+    // console.log("Pinging to keep the site awake");
 }, 300000); // every 5 minutes (300000)
