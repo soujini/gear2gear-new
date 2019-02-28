@@ -26,9 +26,7 @@
     "@angular/material": "^7.3.3",
     "@angular/platform-browser": "^7.2.6",
     "@angular/platform-browser-dynamic": "^7.2.6",
-    "@angular/pwa": "^0.13.3",
     "@angular/router": "^7.2.6",
-    "@angular/service-worker": "^7.2.6",
     "@babel/core": "^7.3.3",
     "angular-bootstrap-datetimepicker": "^2.2.1",
     "angular-bootstrap-md": "^7.4.1",
@@ -57,6 +55,7 @@
     "popper.js": "^1.14.7",
     "rxjs": "^6.3.3",
     "rxjs-compat": "^6.3.3",
+    "webpack-dev-server": "^3.2.1",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
@@ -81,7 +80,6 @@
     "protractor": "^5.4.2",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
-    "typescript": "^3.2.4",
-    "webpack-dev-server": "^3.2.0"
+    "typescript": "^3.2.4"
   }
 }

@@ -1,26 +1,25 @@
 import {Component} from '@angular/core';
-import { SwUpdate } from '@angular/service-worker';
+// import { SwUpdate } from '@angular/service-worker';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-//export class AppComponent {
 export class AppComponent {
   title = 'app';
-
-  constructor(private swUpdate: SwUpdate) {
+//private swUpdate: SwUpdate
+  constructor() {
   }
 
   ngOnInit() {
-    if (this.swUpdate.isEnabled) {
-      this.swUpdate.available.subscribe(() => {
-        if(confirm("New version available. Load New Version?")) {
-          window.location.reload();
-        }
-      });
-    }
+    // if (this.swUpdate.isEnabled) {
+    //   this.swUpdate.available.subscribe(() => {
+    //     if(confirm("New version available. Load New Version?")) {
+    //       window.location.reload();
+    //     }
+    //   });
+    // }
   }
   onActivate(event) {
     window.scrollTo(0, 0);

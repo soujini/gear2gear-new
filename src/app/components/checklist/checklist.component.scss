@@ -1,5 +1,5 @@
 section{
-  background-image: url("https://s3.amazonaws.com/gear2gear/red-car-garage.jp2");
+  background-image: url("https://s3.amazonaws.com/gear2gear/red-car-garage.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -12,6 +12,10 @@ header {
 }
 .checklist{
   padding:50px;
+}
+
+.checklist-item{
+  visibility: visible !important;
 }
 .header__bg {
   position: absolute;
