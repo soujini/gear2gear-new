@@ -12,5 +12,5 @@
   // ORIGIN: 'http://localhost:4200', //use this origin for local
   ORIGIN:'http://www.gear2gear.in', //use this for deployment
 };
- export{environment};
-   //module.exports =  environment;
+ //export{environment};
+   module.exports =  environment;
