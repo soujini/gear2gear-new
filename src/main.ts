@@ -3,7 +3,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
 // import { environment } from './environments/environment';
- let environment = require('./environments/environment');
+let environment = require('./environments/environment');
 
 import 'hammerjs';
 
@@ -11,12 +11,10 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule);
-//.catch(err => console.log(err));
-//   .then(() => {
-// if ('serviceWorker' in navigator) {
-//     navigator.serviceWorker.register('ngsw-worker.js');
-// }
-
-//})
-//
+platformBrowserDynamic().bootstrapModule(AppModule)
+.then(() => {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('ngsw-worker.js');
+  }
+})
+.catch(err => console.log(err));

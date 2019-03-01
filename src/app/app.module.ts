@@ -43,7 +43,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoaderInterceptorService } from './services/loader-interceptor.service';
 import { AdvantagesComponent } from './components/advantages/advantages.component';
 import { LazyLoadDirective } from './lazy-load.directive';
-// import { ServiceWorkerModule } from '@angular/service-worker';
+import { ServiceWorkerModule } from '@angular/service-worker';
+// import { environment } from '../environments/environment';
 // import { environment } from '../environments/environment';
 
 // import { UploadFileComponent } from './components/upload-file/upload-file.component';
@@ -70,8 +71,8 @@ import { LazyLoadDirective } from './lazy-load.directive';
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatTabsModule
-    // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    MatTabsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   exports:[
     BrowserModule,

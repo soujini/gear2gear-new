@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-// import { SwUpdate } from '@angular/service-worker';
+ import { SwUpdate } from '@angular/service-worker';
 
 @Component({
   selector: 'app-root',
@@ -8,18 +8,18 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-//private swUpdate: SwUpdate
+private swUpdate: SwUpdate
   constructor() {
   }
 
   ngOnInit() {
-    // if (this.swUpdate.isEnabled) {
-    //   this.swUpdate.available.subscribe(() => {
-    //     if(confirm("New version available. Load New Version?")) {
-    //       window.location.reload();
-    //     }
-    //   });
-    // }
+    if (this.swUpdate.isEnabled) {
+      this.swUpdate.available.subscribe(() => {
+        if(confirm("New version available. Load New Version?")) {
+          window.location.reload();
+        }
+      });
+    }
   }
   onActivate(event) {
     window.scrollTo(0, 0);

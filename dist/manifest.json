@@ -3,9 +3,9 @@
   "short_name": "template",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
-  "display": "fullscreen",
+  "display": "standalone",
   "scope": "/",
-   "start_url": "http://localhost:8080/",
+  "start_url": "/",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",

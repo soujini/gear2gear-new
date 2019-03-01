@@ -9,17 +9,21 @@
   <base href="/">
 
   <link rel="icon" type="image/x-icon" href="https://s3.amazonaws.com/gear2gear/favicon-black.png">
+<link rel="preload" href="./src/styles.scss">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1976d2">
 </head>
 
 <body>
   <app-root></app-root>
+  <noscript>Please enable JavaScript to continue using this application.</noscript>
 </body>
 </html>
 
 <noscript>
   <link rel="preload" rel="icon" type="image/x-icon" href="https://s3.amazonaws.com/gear2gear/favicon-black.png">
   <link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons" >
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
-  <script>new WOW().init();</script>
-  <script src="https://cdn.auth0.com/js/lock/11.6.0/lock.min.js"></script>
+  <script defer async src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+  <script defer async>new WOW().init();</script>
+  <script defer async src="https://cdn.auth0.com/js/lock/11.6.0/lock.min.js"></script>
 </noscript>
