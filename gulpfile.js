@@ -3,7 +3,7 @@ var gzip = require('gulp-gzip');
 var strip = require('gulp-strip-comments');//uninstall this
 const purify = require('gulp-purifycss');
 
-gulp.task('default',  gulp.series(clean, compress,x));
+gulp.task('default',  gulp.series(clean, compress));
 
 function clean(done) {
   // del(['./dist/**/*.*']);
