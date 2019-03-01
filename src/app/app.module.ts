@@ -72,7 +72,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     MatButtonModule,
     MatCheckboxModule,
     MatTabsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js')
+    // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   exports:[
     BrowserModule,
