@@ -8,8 +8,8 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-private swUpdate: SwUpdate
-  constructor() {
+
+  constructor(private swUpdate: SwUpdate) {
   }
 
   ngOnInit() {
