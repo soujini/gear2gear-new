@@ -14,10 +14,10 @@ if (environment.production) {
 platformBrowserDynamic().bootstrapModule(AppModule)
 .then(() => {
   console.log("oh ho prod  ",environment.production);
-if ('serviceWorker' in navigator) {
+//if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('ngsw-worker.js');
     console.log("service worker reg");
-}
+//}
 })
 .catch(err => console.log(err))
 
