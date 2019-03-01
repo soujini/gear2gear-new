@@ -1,5 +1,7 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { SwUpdate } from '@angular/service-worker';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { AppModule } from './app/app.module';
 // import { environment } from './environments/environment';
@@ -13,11 +15,12 @@ if (environment.production) {
 
 platformBrowserDynamic().bootstrapModule(AppModule)
 .then(() => {
-  console.log("oh ho prod  ",environment.production);
-//if ('serviceWorker' in navigator) {
+  console.log("oh ho prod navigator ",navigator);
+  console.log("sw in nav ",navigator.serviceWorker);
+if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('ngsw-worker.js');
     console.log("service worker reg");
-//}
+}
 })
 .catch(err => console.log(err))
 
