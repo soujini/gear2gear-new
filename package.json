@@ -29,6 +29,7 @@
     "@angular/platform-browser-dynamic": "^7.2.6",
     "@angular/router": "^7.2.6",
     "@babel/core": "^7.3.3",
+    "@types/jquery": "^3.3.29",
     "angular-bootstrap-datetimepicker": "^2.2.1",
     "angular-bootstrap-md": "^7.4.1",
     "auth0-js": "^9.8.2",
