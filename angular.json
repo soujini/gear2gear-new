@@ -19,9 +19,7 @@
             "assets": [
               "src/manifest.json",
               "src/assets",
-              "src/favicon.ico",
-              "src/manifest.json",
-              "src/manifest.json"
+              "src/favicon.ico"
             ],
             "styles": [
               "node_modules/font-awesome/scss/font-awesome.scss",
@@ -89,7 +87,6 @@
               "src/assets",
               "src/favicon.ico",
               "src/manifest.json",
-              "src/manifest.json"
             ]
           }
         },
