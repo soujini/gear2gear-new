@@ -13,13 +13,13 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    if (this.swUpdate.isEnabled) {
+    //if (this.swUpdate.isEnabled) {
       this.swUpdate.available.subscribe(() => {
         if(confirm("New version available. Load New Version?")) {
           window.location.reload();
         }
       });
-    }
+  //  }
   }
   onActivate(event) {
     window.scrollTo(0, 0);
