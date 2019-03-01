@@ -21,7 +21,7 @@ function x(done){
   .pipe(
     purify(
       //['./src/app/**/*.ts', './src/app/**/*.html'],
-      ['./dist/*.js', './dist/*.html'],
+      ['./src/app/**/*.ts', './src/app/**/*.html'],
       {
         info: true, // Outputs reduction information (like in the screenshot above)
         minify: true, // Minifies the files after reduction
