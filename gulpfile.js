@@ -3,12 +3,13 @@ var gzip = require('gulp-gzip');
 var strip = require('gulp-strip-comments');//uninstall this
 const purify = require('gulp-purifycss');
 
-gulp.task('default',  gulp.series(clean, compress));
+gulp.task('default',  gulp.series(clean, compress, x));
 
 function clean(done) {
   // del(['./dist/**/*.*']);
   done();
 }
+
 function compress(done) {
   return gulp.src(['./dist/*.js'])
   .pipe(gzip())
@@ -21,7 +22,7 @@ function x(done){
   .pipe(
     purify(
       //['./src/app/**/*.ts', './src/app/**/*.html'],
-      ['./src/app/**/*.ts', './src/app/**/*.html'],
+      ['./src/dist/*.js.*', './src/app/**/*.html'],
       {
         info: true, // Outputs reduction information (like in the screenshot above)
         minify: true, // Minifies the files after reduction
