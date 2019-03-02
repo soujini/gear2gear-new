@@ -2,8 +2,8 @@
 var compression = require('compression');
 const express = require('express');
 const path = require('path');
-const spdy = require('spdy');
-const http = require('http2');
+// const spdy = require('spdy');
+const spdy = require('http');
 const cors = require('cors');
 const port = process.env.PORT || '3000';
 var bodyParser = require('body-parser');
