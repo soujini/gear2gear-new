@@ -2,7 +2,7 @@
 var compression = require('compression');
 const express = require('express');
 const path = require('path');
-const http = require('http');
+const http = require('https');
 const cors = require('cors');
 const port = process.env.PORT || '3000';
 var bodyParser = require('body-parser');
