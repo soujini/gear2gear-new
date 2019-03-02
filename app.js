@@ -2,6 +2,7 @@
 var compression = require('compression');
 const express = require('express');
 const path = require('path');
+const spdy = require('spdy');
 const http = require('http2');
 const cors = require('cors');
 const port = process.env.PORT || '3000';
@@ -75,7 +76,7 @@ var certificate = fs.readFileSync('ssl/server.crt').toString();
 var credentials = {key: privateKey, cert: certificate};
 
 // Initialize the app.
-const server = http.createServer(credentials,app);
+const server = spdy.createServer(credentials,app);
 server.listen(port, () => console.log("App is listening on Port : ",port));
 // Generic error handler used by all endpoints.
 function handleError(res, reason, message, code) {
