@@ -8,7 +8,7 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "http-server ./dist",
+    "start": "node app.js",
     "build": "ng build --prod",
     "gulp": "gulp",
     "test": "ng test",
