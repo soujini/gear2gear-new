@@ -2,7 +2,7 @@
 var compression = require('compression');
 const express = require('express');
 const path = require('path');
-const http = require('https');
+const http = require('http');
 const cors = require('cors');
 const port = process.env.PORT || '3000';
 var bodyParser = require('body-parser');
@@ -69,7 +69,6 @@ app.get('*', (req,res) => {
 app.set('port',port);
 
 var   fs = require("fs");
-      // http = require("https");
 
 var privateKey = fs.readFileSync('ssl/server.key').toString();
 var certificate = fs.readFileSync('ssl/server.crt').toString();
@@ -83,8 +82,3 @@ function handleError(res, reason, message, code) {
   console.log("ERROR: " + reason);
   res.status(code || 500).json({"error": message});
 }
-
-setInterval(function() {
-    http.get("http://gear2gear.herokuapp.com");
-    // console.log("Pinging to keep the site awake");
-}, 300000); // every 5 minutes (300000)
