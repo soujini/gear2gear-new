@@ -76,7 +76,7 @@ var certificate = fs.readFileSync('ssl/server.crt').toString();
 var credentials = {key: privateKey, cert: certificate};
 
 // Initialize the app.
-const server = http.createServer(credential, app);
+const server = http.createServer(app);
 server.listen(port, () => console.log("App is listening on Port : ",port));
 // Generic error handler used by all endpoints.
 function handleError(res, reason, message, code) {

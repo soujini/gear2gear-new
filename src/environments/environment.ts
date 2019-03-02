@@ -7,10 +7,10 @@
   production: false,
   CONNECTION_STRING:'postgres://localhost:5432/postgres',
   DATABASE_URL:'postgres://localhost:5432/postgres',
-  API_URL: 'http://localhost:3000',
+  API_URL: 'https://localhost:3000',
   SSL:false,
   // ORIGIN: 'http://localhost:4200', //use this origin for local
-  ORIGIN:'http://www.gear2gear.in', //use this for deployment
+  ORIGIN:'https://www.gear2gear.in', //use this for deployment
 };
  //export{environment};
    module.exports =  environment;
