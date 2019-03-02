@@ -10,18 +10,23 @@
           "/index.html",
           "/*.css",
           "/*.js"
+        ],
+        "urls": [
+          "https://fonts.googleapis.com/icon?family=Material+Icons",
+          "https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js",
+          "https://cdn.auth0.com/js/lock/11.6.0/lock.min.js"
         ]
       }
-    }, {
-      "name": "assets",
-      "installMode": "lazy",
-      "updateMode": "prefetch",
-      "resources": {
-        "files": [
-          "/assets/**",
-          "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
-        ]
+      }, {
+        "name": "assets",
+        "installMode": "lazy",
+        "updateMode": "prefetch",
+        "resources": {
+          "files": [
+            "/assets/**",
+            "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"
+          ]
+        }
       }
-    }
-  ]
-}
+    ]
+  }
