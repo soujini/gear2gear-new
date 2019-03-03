@@ -1,12 +1,26 @@
 var gulp = require('gulp');
 var gzip = require('gulp-gzip');
+let babel = require('gulp-babel');
 var strip = require('gulp-strip-comments');//uninstall this
 const purify = require('gulp-purifycss');
+var uglify = require('gulp-uglify');
+const terser = require('gulp-terser');
 
-gulp.task('default',  gulp.series(clean, compress));
+
+gulp.task('default',  gulp.series(clean, ug, compress));
 
 function clean(done) {
   // del(['./dist/**/*.*']);
+  done();
+}
+
+function ug(done) {
+  return gulp.src(['./dist/*.js'])
+    // .pipe(babel({
+    //   presets: ['es2015']
+    // }))
+     .pipe(terser())
+    .pipe(gulp.dest('./dist', {overwrite: true}));
   done();
 }
 
