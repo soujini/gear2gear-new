@@ -7,7 +7,7 @@ var uglify = require('gulp-uglify');
 const terser = require('gulp-terser');
 
 
-gulp.task('default',  gulp.series(clean, ug, compress));
+gulp.task('default',  gulp.series(clean, compress));
 
 function clean(done) {
   // del(['./dist/**/*.*']);
