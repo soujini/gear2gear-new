@@ -39,26 +39,26 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(bodyParser.json());
-// app.use(function(req, res, next) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//  // res.header("Cache-Control", "public, max-age=31557600");//1year
-//  // res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-// res.header('Expires', '9');
-//   next();
-// });
-
-app.use(function(req, res,next) {
+app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-
-// if (req.host !== 'localhost' && req.get('X-Forwarded-Proto') !== 'https') {
-    if (!req.socket.encrypted) {
-        res.writeHead(301, {'Location': 'https://' + req.host + req.url});
-        return res.end();
-    }
-      return next();
+ // res.header("Cache-Control", "public, max-age=31557600");//1year
+ // res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+res.header('Expires', '9');
+  next();
 });
+
+// app.use(function(req, res,next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//
+// // if (req.host !== 'localhost' && req.get('X-Forwarded-Proto') !== 'https') {
+//     if (!req.socket.encrypted) {
+//         res.writeHead(301, {'Location': 'https://' + req.host + req.url});
+//         return res.end();
+//     }
+//       return next();
+// });
 
 // app.use((req, res, next) => {
 //   if (req.hostname !== 'localhost' && req.get('X-Forwarded-Proto') !== 'https') {
