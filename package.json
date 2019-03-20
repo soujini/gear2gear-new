@@ -8,7 +8,7 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "node app.js",
+    "start":"node app.js",
     "build": "ng build --prod",
     "gulp": "gulp",
     "test": "ng test",

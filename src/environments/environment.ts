@@ -7,8 +7,8 @@
   production: false,
   CONNECTION_STRING:'postgres://localhost:5432/postgres',
   DATABASE_URL:'postgres://localhost:5432/postgres',
-  API_URL: 'https://localhost:3000',
-  SSL:false,
+  API_URL: 'http://localhost:3000',
+  SSL:true,
   // ORIGIN: 'http://localhost:4200', //use this origin for local
   ORIGIN:'https://www.gear2gear.in', //use this for deployment
 };

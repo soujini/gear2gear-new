@@ -29,6 +29,9 @@ export class TransactionDetailsComponent implements OnInit {
   opMessage = new EventEmitter();
 
   @Output()
+  tdCount = new EventEmitter();
+
+  @Output()
   opFunction = new EventEmitter();
 
   transactionDetails$:Observable<any>;
@@ -406,8 +409,9 @@ export class TransactionDetailsComponent implements OnInit {
           this.total_cost_car=0;
           this.total_money_received=0;
           this.total_money_invested=0;
-
+          this.tdCount.emit(res.length);
           res.forEach(val=>{
+
             if(val.is_void != true){
               if(val.transaction_type_mode == "credit")
               {

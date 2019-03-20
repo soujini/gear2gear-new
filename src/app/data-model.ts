@@ -71,6 +71,8 @@ export class Car {
   is_sold:boolean;
   license_plate:string;
   image_urls;
+  is_parkandsell:boolean;
+  is_partnercar:boolean;
 }
 
 export class Client {

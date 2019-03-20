@@ -19,6 +19,17 @@
           <div class="col-12">
             <form [formGroup]="carForm" (ngSubmit)="onSubmit()" >
               <div class="col-12">
+                <!-- *ngIf="carForm.controls.is_sold.value == true" -->
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="inputIsParkAndSell" formControlName="is_parkandsell" (change)="IsParkAndSell()">
+                  <label class="form-check-label" for="inputIsParkAndSell">Park and Sell?</label>
+                </div>
+
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="inputIsPartnerCar" formControlName="is_partnercar">
+                  <label class="form-check-label" for="inputIsPartnerCar">Partner Car?</label>
+                </div>
+
                 <div class="form-group">
                   <label for="inputMake" class="col-sm-3 col-form-label">Make</label>
                   <div>
@@ -297,27 +308,29 @@
               </div>
             </div>
             <div class="col col-md-12">
-              <button [hidden]="inProcess == true" [disabled]="soldDetailsForm.invalid || soldDetailsForm.controls.selling_price.value <= 0" type="submit" class="btn btn-primary btn-custom btn-md" style="width:100%" (click)="ProcessSale()" >
-                Process Sale
+              <!-- Updates Buyer details and sets inProcess =true -->
+              <button [hidden]="carForm.controls.is_sold.value == true && inProcess == true" [disabled]="soldDetailsForm.invalid || soldDetailsForm.controls.selling_price.value <= 0" type="submit" class="btn btn-primary btn-custom btn-md" style="width:100%" (click)="ProcessSale()" >
+                Process/Edit Sale
               </button>
-              <button [hidden]="inProcess == false" [disabled]="soldDetailsForm.invalid || soldDetailsForm.controls.selling_price.value <= 0" type="submit" class="btn btn-success btn-md" (click)="ProcessSale()" >
+              <!-- <button [hidden]="carForm.controls.is_sold.value == true && inProcess == false" [disabled]="soldDetailsForm.invalid || soldDetailsForm.controls.selling_price.value <= 0" type="submit" class="btn btn-success btn-md" (click)="ProcessSale()" >
                 In Process
-              </button>
+              </button> -->
             </div>
             <div class="col col-md-12">
-              <button *ngIf="carForm.controls.is_sold.value == false && inProcess == true" type="submit" class="btn btn-danger btn-md" (click)="Sell()" >
+              <button *ngIf="(carForm.controls.is_sold.value == false || carForm.controls.is_sold.value == null) && inProcess == true" type="submit" class="btn btn-danger btn-md" (click)="Sell()" >
                 Sell
               </button>
-              <button *ngIf="carForm.controls.is_sold.value == true" type="submit" class="btn btn-danger btn-md">
-                SOLD
+              <button *ngIf="(carForm.controls.is_sold.value == false || carForm.controls.is_sold.value == null) && carForm.controls.is_parkandsell.value == true" type="submit" class="btn btn-danger btn-md" (click)="ParkAndSell()" >
+                Park And Sell
               </button>
+              <label *ngIf="carForm.controls.is_sold.value == true" for="sold" class="danger" style="color:red">SOLD</label>
             </div>
           </div>
         </form>
         <div *ngIf="message_td != ''" class="alert alert-danger text-center col-12">
           <strong>Error !</strong>&nbsp;{{message_td}}
         </div>
-        <app-transaction-details (opMessage)="setMessage($event)" [transactionTypes$]="transactionTypes$" [expenses$]="expenses$" [carForm]="carForm" [refreshTD]="refreshTD"></app-transaction-details>
+        <app-transaction-details (tdCount)="getTDCount($event)" (opMessage)="setMessage($event)" [transactionTypes$]="transactionTypes$" [expenses$]="expenses$" [carForm]="carForm" [refreshTD]="refreshTD"></app-transaction-details>
       </mat-tab>
     </mat-tab-group>
   </div>

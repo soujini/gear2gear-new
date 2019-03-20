@@ -1,7 +1,7 @@
 <div *ngIf="message" class="alert alert-danger text-center col-12">
   <strong>Error! </strong>{{message}}
 </div>
-<form [formGroup]="transactionDetailsForm" (ngSubmit)="onSubmit()" >
+<form *ngIf="carForm.get('is_parkandsell').value != true" [formGroup]="transactionDetailsForm" (ngSubmit)="onSubmit()" >
   <div class="row">
     <div class="form-group col-lg-12">
       <div>
