@@ -52,8 +52,8 @@ app.use(function(req, res,next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
-if (req.host !== 'localhost' && req.get('X-Forwarded-Proto') !== 'https') {
-    //if (!req.socket.encrypted) {
+// if (req.host !== 'localhost' && req.get('X-Forwarded-Proto') !== 'https') {
+    if (!req.socket.encrypted) {
         res.writeHead(301, {'Location': 'https://' + req.host + req.url});
         return res.end();
     }
