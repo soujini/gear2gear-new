@@ -54,9 +54,17 @@ app.use(function(req, res,next) {
 
     if (!req.socket.encrypted) {
         res.writeHead(301, {'Location': 'https://' + req.host + req.url});
-        return res.end()
+        return res.end();
     }
+      return next();
 });
+
+// app.use((req, res, next) => {
+//   if (req.hostname !== 'localhost' && req.get('X-Forwarded-Proto') !== 'https') {
+//     return res.redirect(`https://${req.hostname}${req.url}`)
+//   }
+//   return next()
+// });
 
 app.use(makesAPI);
 app.use(modelsAPI);
