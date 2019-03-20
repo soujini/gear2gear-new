@@ -34,19 +34,28 @@ var corsOptions = {
 app.use(compression());
 
 app.use(express.static(path.join(__dirname, 'dist')));
- // app.use(compression({threshold:0, filter:function(){return true;}}));
 app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(bodyParser.json());
-app.use(function(req, res, next) {
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//  // res.header("Cache-Control", "public, max-age=31557600");//1year
+//  // res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+// res.header('Expires', '9');
+//   next();
+// });
+
+app.use(function(req, res,next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
- // res.header("Cache-Control", "public, max-age=31557600");//1year
- // res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
-res.header('Expires', '9');
-  next();
+
+    if (!req.socket.encrypted) {
+        res.writeHead(301, {'Location': 'https://' + req.host + req.url});
+        return res.end()
+    }
 });
 
 app.use(makesAPI);
@@ -64,19 +73,19 @@ app.use(transactionTypesAPI);
 app.use(transactionDetailsAPI);
 
 app.get('*', (req,res) => {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));//production
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
 app.set('port',port);
 
-var   fs = require("fs");
+var fs = require("fs");
 
 var privateKey = fs.readFileSync('ssl/server.key').toString();
 var certificate = fs.readFileSync('ssl/server.crt').toString();
 var credentials = {key: privateKey, cert: certificate};
 
 // Initialize the app.
-const server = spdy.createServer(credentials,app);//production
+const server = spdy.createServer(credentials,app);
 server.listen(port, () => console.log("App is listening on Port : ",port));
 // Generic error handler used by all endpoints.
 function handleError(res, reason, message, code) {
