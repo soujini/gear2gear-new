@@ -3,7 +3,7 @@ var compression = require('compression');
 const express = require('express');
 const path = require('path');
 // const spdy = require('spdy');
-const spdy = require('https');
+const spdy = require('http');
 const cors = require('cors');
 const port = process.env.PORT || '3000';
 var bodyParser = require('body-parser');
@@ -52,7 +52,8 @@ app.use(function(req, res,next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
-    if (!req.socket.encrypted) {
+if (req.host !== 'localhost' && req.get('X-Forwarded-Proto') !== 'https') {
+    //if (!req.socket.encrypted) {
         res.writeHead(301, {'Location': 'https://' + req.host + req.url});
         return res.end();
     }
