@@ -2,8 +2,8 @@
 var compression = require('compression');
 const express = require('express');
 const path = require('path');
-// const spdy = require('spdy');
-const spdy = require('http');
+ const spdy = require('spdy');
+//const spdy = require('http');
 const cors = require('cors');
 const port = process.env.PORT || '3000';
 var bodyParser = require('body-parser');
@@ -92,6 +92,25 @@ var fs = require("fs");
 var privateKey = fs.readFileSync('ssl/server.key').toString();
 var certificate = fs.readFileSync('ssl/server.crt').toString();
 var credentials = {key: privateKey, cert: certificate};
+
+spdy: {
+  protocols: [ 'h2', 'spdy/3.1', 'http/1.1' ],
+  plain: false,
+
+  // **optional**
+  // Parse first incoming X_FORWARDED_FOR frame and put it to the
+  // headers of every request.
+  // NOTE: Use with care! This should not be used without some proxy that
+  // will *always* send X_FORWARDED_FOR
+  'x-forwarded-for': true,
+
+  connection: {
+    windowSize: 1024 * 1024, // Server's window size
+
+    // **optional** if true - server will send 3.1 frames on 3.0 *plain* spdy
+    autoSpdy31: false
+  }
+}
 
 // Initialize the app.
 const server = spdy.createServer(credentials,app);
