@@ -52,7 +52,7 @@ export class FuelTypeService {
     const body = JSON.stringify(editFuelType);
     const fuel_type_id = editFuelType.fuel_type_id;
 
-    return this.http.put("http://localhost:3000/api/fuelTypes/"+fuel_type_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
+    return this.http.put(this.apiUrl+'/api/fuelTypes/'+fuel_type_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 

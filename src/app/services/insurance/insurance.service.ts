@@ -52,7 +52,7 @@ export class InsuranceService {
     const body = JSON.stringify(editInsurance);
     const insurance_id = editInsurance.insurance_id;
 
-    return this.http.put("http://localhost:3000/api/insurances/"+insurance_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
+    return this.http.put(this.apiUrl+'/api/insurances/'+insurance_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 

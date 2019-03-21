@@ -52,7 +52,7 @@ export class TransmissionTypeService {
     const body = JSON.stringify(editTransmissionType);
     const transmission_type_id = editTransmissionType.transmission_type_id;
 
-    return this.http.put("http://localhost:3000/api/transmissionTypes/"+transmission_type_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
+    return this.http.put(this.apiUrl+'/api/transmissionTypes/'+transmission_type_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 

@@ -52,7 +52,7 @@ export class VariantService {
     const body = JSON.stringify(editVariant);
     const variant_id = editVariant.variant_id;
 
-    return this.http.put("http://localhost:3000/api/variants/"+variant_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
+    return this.http.put(this.apiUrl+'/api/variants/'+variant_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 

@@ -52,7 +52,7 @@ export class ExpenseService {
     const body = JSON.stringify(editExpense);
     const expense_id = editExpense.expense_id;
 
-    return this.http.put("http://localhost:3000/api/expenses/"+expense_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
+    return this.http.put(this.apiUrl+'/api/expenses/'+expense_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 

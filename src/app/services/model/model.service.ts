@@ -56,7 +56,7 @@ export class ModelService {
     const body = JSON.stringify(editModel);
     const model_id = editModel.model_id;
 
-    return this.http.put("http://localhost:3000/api/models/"+model_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
+    return this.http.put(this.apiUrl+'/api/models/'+model_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 

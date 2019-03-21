@@ -52,7 +52,7 @@ export class ColorService {
     const body = JSON.stringify(editColor);
     const color_id = editColor.color_id;
 
-    return this.http.put("http://localhost:3000/api/colors/"+color_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
+    return this.http.put(this.apiUrl+'/api/colors/'+color_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
 
