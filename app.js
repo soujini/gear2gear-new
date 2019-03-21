@@ -91,26 +91,30 @@ var fs = require("fs");
 
 var privateKey = fs.readFileSync('ssl/server.key').toString();
 var certificate = fs.readFileSync('ssl/server.crt').toString();
-var credentials = {key: privateKey, cert: certificate};
+var options = {
+  key: privateKey,
+  cert: certificate,
+  spdy: {
+    protocols: [ 'h2', 'spdy/3.1', 'http/1.1' ],
+    plain: false,
 
-spdy: {
-  protocols: [ 'h2', 'spdy/3.1', 'http/1.1' ],
-  plain: false,
+    // **optional**
+    // Parse first incoming X_FORWARDED_FOR frame and put it to the
+    // headers of every request.
+    // NOTE: Use with care! This should not be used without some proxy that
+    // will *always* send X_FORWARDED_FOR
+    'x-forwarded-for': true,
 
-  // **optional**
-  // Parse first incoming X_FORWARDED_FOR frame and put it to the
-  // headers of every request.
-  // NOTE: Use with care! This should not be used without some proxy that
-  // will *always* send X_FORWARDED_FOR
-  'x-forwarded-for': true,
+    connection: {
+      windowSize: 1024 * 1024, // Server's window size
 
-  connection: {
-    windowSize: 1024 * 1024, // Server's window size
-
-    // **optional** if true - server will send 3.1 frames on 3.0 *plain* spdy
-    autoSpdy31: false
+      // **optional** if true - server will send 3.1 frames on 3.0 *plain* spdy
+      autoSpdy31: false
+    }
   }
-}
+};
+
+
 
 
 // Initialize the app.
