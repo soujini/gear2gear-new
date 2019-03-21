@@ -12,6 +12,8 @@ import { TransmissionTypeService } from 'app/services/transmission-type/transmis
 import { UploadFileService } from 'app/services/upload-file/upload-file.service';
 import 'rxjs/add/observable/of';
 import { map } from 'rxjs/operators';
+import * as _ from 'underscore';
+import { PagerService } from 'app/services/index';
 
 @Component({
   selector: 'app-inventory',
@@ -21,6 +23,7 @@ import { map } from 'rxjs/operators';
 export class InventoryComponent implements OnInit {
   title : string = "CARS";
   cars$: Observable<Car[]>;
+  pagedCars$: Observable<any[]>;
   fileUploads: Observable<Array<any>>;
   filterForm: FormGroup;
   makes$:Observable<Make>;
@@ -29,6 +32,15 @@ export class InventoryComponent implements OnInit {
   vehicleTypes$:Observable<VehicleType>;
   fuelTypes$:Observable<FuelType>;
   transmissionTypes$:Observable<TransmissionType>;
+
+  // array of all items to be paged
+  private allItems: any[];
+
+  // pager object
+  pager: any = {};
+
+  // paged items
+  pagedItems: any[];
 
   constructor(
     private fb: FormBuilder,
@@ -39,7 +51,11 @@ export class InventoryComponent implements OnInit {
     private vehicleTypeService:VehicleTypeService,
     private fuelTypeService:FuelTypeService,
     private transmissionTypeService:TransmissionTypeService,
-    public uploadFileService:UploadFileService) { }
+    public uploadFileService:UploadFileService,
+    // private http: Http,
+    private pagerService: PagerService) { }
+
+
 
     ngOnInit() {
       this.createForm();
@@ -50,6 +66,21 @@ export class InventoryComponent implements OnInit {
       this.getVehicleTypes();
       this.getFuelTypes();
       this.getTransmissionTypes();
+    }
+
+    setPage(page: number) {
+
+      // if (page < 1 || page > this.pager.totalPages) {
+      //   return;
+      // }
+
+      // get pager object from service
+      this.pager = this.pagerService.getPager(this.allItems.length, page);
+
+      // get current page of items
+      //paged items
+      this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
+        window.scrollTo(0, 0);
     }
     createForm() {
       this.filterForm = this.fb.group({
@@ -91,14 +122,36 @@ export class InventoryComponent implements OnInit {
     getAvailableCars() {
       var baseURL="https://s3.amazonaws.com/gear2gear/";
 
-      this.cars$ = this.carService.getAvailableCars(this.filterForm.value);
+      //this.cars$ = this.carService.getAvailableCars(this.filterForm.value);
+      //this.setPage(1);
+      this.carService.getAvailableCars(this.filterForm.value)
+      .subscribe(data => {
+        // set items to json response
+        this.allItems = data;
+        this.cars$ = data;
 
+        // initialize to page 1
+        this.setPage(1);
+      });
     }
+
+    // this.http.get('./dummy-data.json')
+    // .map((response: Response) => response.json())
+    // .subscribe(data => {
+    //     // set items to json response
+    //     this.allItems = data;
+    //
+    //     // initialize to page 1
+    //     this.setPage(1);
+    // });
+
+
     getFilteredCars(){
       this.getAvailableCars();
     }
     clear(){
       this.filterForm.reset();
+      this.getAvailableCars();
     }
 
   }

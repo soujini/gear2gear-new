@@ -66,7 +66,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     BrowserModule,
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
-    RouterModule.forRoot(ROUTES),
+    RouterModule.forRoot(ROUTES, { enableTracing: false,  scrollPositionRestoration: 'enabled'}),
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,

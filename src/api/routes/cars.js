@@ -50,7 +50,7 @@ router.get('/api/cars', function(req, res) {
   router.get('/api/available-cars', function(req, res) {
     var is_sold  = req.query.is_sold;
     if(req.query.is_sold == "false"){
-      is_sold = "false or is_sold is null";
+      is_sold = "false or C.is_sold is null";
     }
 
     var make = parseInt(req.query.make);

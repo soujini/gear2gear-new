@@ -30,6 +30,7 @@ export class CarFormComponent implements OnInit {
   message:string="";
   message_error:string="";
   message_td:string="";
+  message_td_success:string="";
   carForm: FormGroup;
   soldDetailsForm:FormGroup;
   private sub;
@@ -525,16 +526,15 @@ export class CarFormComponent implements OnInit {
           this.carService.updateCar(this.carForm.value)
           .subscribe(
             res => {
-              this.message_td = "Car sold successfully";
+              this.message_td_success = "Car sold successfully";
               setTimeout(() => {
-                this.message_td ="";
+                this.message_td_success ="";
               },5000);
             },
             err => {
               console.log(err);
             }
           );
-
         }
 
         Sell(){

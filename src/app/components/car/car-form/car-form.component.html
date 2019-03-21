@@ -327,6 +327,9 @@
             </div>
           </div>
         </form>
+        <div *ngIf="message_td_success != ''" class="alert alert-success text-center col-12">
+          <strong>Error !</strong>&nbsp;{{message_td_success}}
+        </div>
         <div *ngIf="message_td != ''" class="alert alert-danger text-center col-12">
           <strong>Error !</strong>&nbsp;{{message_td}}
         </div>

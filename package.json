@@ -60,6 +60,7 @@
     "popper.js": "^1.14.7",
     "rxjs": "^6.3.3",
     "rxjs-compat": "^6.3.3",
+    "underscore": "^1.9.1",
     "webpack-dev-server": "^3.2.1",
     "zone.js": "^0.8.26"
   },

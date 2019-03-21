@@ -87,7 +87,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes,{ enableTracing: false }),
+    RouterModule.forRoot(routes,{ enableTracing: false,  scrollPositionRestoration: 'enabled'  }),
     MakeModule,
     ModelModule,
     VariantModule,

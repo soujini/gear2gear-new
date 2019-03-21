@@ -46,31 +46,36 @@ export class CarService {
     var vehicle_type="0";
     var fuel_type="0";
     var transmission_type="0";
+    var is_sold="false";
+
+    if(filterCars.is_sold != null){
+      is_sold = filterCars.is_sold.toString();
+    }
 
     if(filterCars.make != null){
-      make = filterCars.make.toString()
+      make = filterCars.make.toString();
     }
     if(filterCars.model != null){
-      model = filterCars.model.toString()
+      model = filterCars.model.toString();
     }
     if(filterCars.variant != null){
-      variant = filterCars.variant.toString()
+      variant = filterCars.variant.toString();
     }
     if(filterCars.vehicle_type != null){
-      vehicle_type = filterCars.vehicle_type.toString()
+      vehicle_type = filterCars.vehicle_type.toString();
     }
     if(filterCars.fuel_type != null){
-      fuel_type = filterCars.fuel_type.toString()
+      fuel_type = filterCars.fuel_type.toString();
     }
     if(filterCars.transmission_type != null){
-      transmission_type = filterCars.transmission_type.toString()
+      transmission_type = filterCars.transmission_type.toString();
     }
 
     let options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json; charset=utf-8',
       }),
-       params: {is_sold: filterCars.is_sold.toString(), make:make, model:model, variant:variant, vehicle_type:vehicle_type, fuel_type:fuel_type, transmission_type:transmission_type},
+       params: {is_sold: is_sold, make:make, model:model, variant:variant, vehicle_type:vehicle_type, fuel_type:fuel_type, transmission_type:transmission_type},
     };
 
     return this.http.get<any[]>(this.apiUrl+'/api/available-cars',options)
