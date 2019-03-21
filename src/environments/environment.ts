@@ -9,8 +9,8 @@
   DATABASE_URL:'postgres://localhost:5432/postgres',
   API_URL: 'http://localhost:3000',
   SSL:true,
-  // ORIGIN: 'http://localhost:4200', //use this origin for local
-  ORIGIN:'https://www.gear2gear.in', //use this for deployment
+  ORIGIN: 'http://localhost:4200', //use this origin for local
+  // ORIGIN:'https://www.gear2gear.in', //use this for deployment
 };
  //export{environment};
    module.exports =  environment;
