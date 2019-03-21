@@ -103,7 +103,7 @@ var options = {
     // // headers of every request.
     // // NOTE: Use with care! This should not be used without some proxy that
     // // will *always* send X_FORWARDED_FOR
-    // 'x-forwarded-for': true,
+     'x-forwarded-for': true,
     //
     // connection: {
     //   windowSize: 1024 * 1024, // Server's window size
@@ -112,26 +112,26 @@ var options = {
     //   autoSpdy31: false
     // }
   }
-};
+}
 
-spdy
-  .createServer(options, app)
-  .listen(port, (error) => {
-    if (error) {
-      console.error(error)
-      return process.exit(1)
-    } else {
-      console.log('Listening on port: ' + port + '.')
-    }
-  });
+// spdy
+//   .createServer(options, app)
+//   .listen(port, (error) => {
+//     if (error) {
+//       console.error(error)
+//       return process.exit(1)
+//     } else {
+//       console.log('Listening on port: ' + port + '.')
+//     }
+//   });
 
 
 // Initialize the app.
-// const server = spdy.createServer(options,app);
-//
-// server.listen(port, () => console.log("App is listening on Port : ",port));
-// // Generic error handler used by all endpoints.
-// function handleError(res, reason, message, code) {
-//   console.log("ERROR: " + reason);
-//   res.status(code || 500).json({"error": message});
-// }
+const server = spdy.createServer(options,app);
+
+server.listen(port, () => console.log("App is listening on Port : ",port));
+// Generic error handler used by all endpoints.
+function handleError(res, reason, message, code) {
+  console.log("ERROR: " + reason);
+  res.status(code || 500).json({"error": message});
+}
