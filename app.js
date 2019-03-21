@@ -112,7 +112,7 @@ var options = {
 //     //   autoSpdy31: false
 //     // }
 //   }
-// }
+ }
 
 // spdy
 //   .createServer(options, app)
