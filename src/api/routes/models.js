@@ -29,7 +29,7 @@ router.get('/api/models/search/:searchTerm', function(req, res) {
 });
 
 router.post("/api/models", function(req, res) {
-  client.query("INSERT INTO public.model (model_id, name, created_by, create_date) VALUES(DEFAULT, $1, 1, CURRENT_TIMESTAMP) returning model_id",[req.body.name], function(err,result) {
+  client.query("INSERT INTO public.model (model_id, make_id, name, created_by, create_date) VALUES(DEFAULT, $1,$2, 1, CURRENT_TIMESTAMP) returning model_id",[req.body.make_id, req.body.name], function(err,result) {
     if(err){
       console.log(err);
       res.status(400).send(err);
@@ -54,9 +54,23 @@ router.get("/api/models/:id", function(req, res) {
 
 });
 
+router.get("/api/models/make/:id", function(req, res) {
+  var makeId = parseInt(req.params.id);
+  client.query('select * from public.model where make_id = '+makeId, function(err,result) {
+    if(err){
+      console.log(err);
+      res.status(400).send(err);
+    }
+    else{
+      res.status(200).send(result.rows);
+    }
+  });
+
+});
+
 router.put("/api/models/:id", function(req, res) {
   var modelId = parseInt(req.params.id);
-  client.query("update public.model set name = $1, updated_by=1, update_date=CURRENT_TIMESTAMP where model_id = "+modelId,[req.body.name], function(err,result) {
+  client.query("update public.model set make_id=$1, name = $2, updated_by=1, update_date=CURRENT_TIMESTAMP where model_id = "+modelId,[req.body.make_id,req.body.name], function(err,result) {
     if(err){
       console.log(err);
       res.status(400).send(err);

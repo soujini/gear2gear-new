@@ -35,6 +35,10 @@ export class ModelService {
     return this.http.get(this.apiUrl+'/api/models/'+model_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }
+  public getModelByMakeId(make_id:number): Observable<any> {
+    return this.http.get(this.apiUrl+'/api/models/make/'+make_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
+    .map(res => res);
+  }
 
   public searchModels(searchTerm): Observable<any> {
     return this.http.get(this.apiUrl+'/api/models/search/'+searchTerm, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})

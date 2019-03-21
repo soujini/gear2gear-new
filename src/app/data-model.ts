@@ -5,6 +5,7 @@ export class Make {
 
 export class Model {
   model_id:number;
+  make_id:number;
   name:string;
 }
 

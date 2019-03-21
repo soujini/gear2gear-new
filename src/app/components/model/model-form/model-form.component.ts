@@ -1,9 +1,13 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router,ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 import { Model } from 'app/data-model';
 import { ModelService } from 'app/services/model/model.service';
+import { MakeService } from 'app/services/make/make.service';
+import { Make} from 'app/data-model';
+
 
 @Component({
   selector: 'app-model-form',
@@ -20,8 +24,9 @@ export class ModelFormComponent implements OnInit {
   selectedModel_Id: any;
   submitted = false;
   private sub;
+  makes$:Observable<Make>;
 
-  constructor(private fb: FormBuilder, private modelService:ModelService, private router:Router, private route:ActivatedRoute) {
+  constructor(private fb: FormBuilder, private makeService:MakeService, private modelService:ModelService, private router:Router, private route:ActivatedRoute) {
     this.modelService.selectedModelId.next(0);
     this.sub = this.modelService.selectedModelId
     .subscribe(
@@ -42,6 +47,7 @@ export class ModelFormComponent implements OnInit {
   createForm() {
     this.modelForm = this.fb.group({
       model_id: [''],
+      make_id:['', [Validators.required]],
       name: ['', [Validators.required,Validators.maxLength(50)]],
     });
   }
@@ -138,9 +144,15 @@ export class ModelFormComponent implements OnInit {
       this.modelForm.reset();
     }
   }
+  
+  getMakes()  {
+    this.makes$ = this.makeService.getMakes();
+  }
 
   ngOnInit() {
+    this.getMakes();
     this.createForm();
+
   }
 
   ngOnDestroy() {

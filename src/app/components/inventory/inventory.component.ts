@@ -41,6 +41,7 @@ export class InventoryComponent implements OnInit {
 
   // paged items
   pagedItems: any[];
+  private sub;
 
   constructor(
     private fb: FormBuilder,
@@ -53,15 +54,16 @@ export class InventoryComponent implements OnInit {
     private transmissionTypeService:TransmissionTypeService,
     public uploadFileService:UploadFileService,
     // private http: Http,
-    private pagerService: PagerService) { }
+    private pagerService: PagerService) {
 
+    }
 
 
     ngOnInit() {
       this.createForm();
       this.getAvailableCars();
       this.getMakes();
-      this.getModels();
+      // this.getModels();
       this.getVariants();
       this.getVehicleTypes();
       this.getFuelTypes();
@@ -99,6 +101,9 @@ export class InventoryComponent implements OnInit {
     getMakes()  {
       this.makes$ = this.makeService.getMakes();
     }
+    getModelByMakeId(make_id:number)  {
+      this.models$ = this.modelService.getModelByMakeId(make_id);
+    }
     getModels()  {
       this.models$ = this.modelService.getModels();
     }
@@ -135,20 +140,15 @@ export class InventoryComponent implements OnInit {
       });
     }
 
-    // this.http.get('./dummy-data.json')
-    // .map((response: Response) => response.json())
-    // .subscribe(data => {
-    //     // set items to json response
-    //     this.allItems = data;
-    //
-    //     // initialize to page 1
-    //     this.setPage(1);
-    // });
-
-
     getFilteredCars(){
       this.getAvailableCars();
     }
+
+    getFilteredCarsMake(){
+      this.getModelByMakeId(this.filterForm.get('make').value);
+      this.getAvailableCars();
+    }
+
     clear(){
       this.filterForm.reset();
       this.getAvailableCars();

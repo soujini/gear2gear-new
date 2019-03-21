@@ -15,6 +15,17 @@
     <div class="col-12">
       <form [formGroup]="modelForm" (ngSubmit)="onSubmit()" >
         <div class="form-group">
+          <label for="inputMake" class="col-sm-2 col-form-label">Make</label>
+          <div>
+            <div class="mt-0">
+              <select class="form-control" id="inputMake" formControlName="make_id">
+                <option *ngFor="let make of makes$ | async" [value]="make.make_id">{{make.name}}</option>
+              </select>
+              <app-control-messages [control]="modelForm.controls.make_id"></app-control-messages>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
           <label for="inputModelName" class="col-sm-2 col-form-label">Name</label>
           <div>
             <div class="md-form mt-0">
