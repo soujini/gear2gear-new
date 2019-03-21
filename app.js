@@ -114,15 +114,24 @@ var options = {
   // }
 };
 
-
+spdy
+  .createServer(options, app)
+  .listen(port, (error) => {
+    if (error) {
+      console.error(error)
+      return process.exit(1)
+    } else {
+      console.log('Listening on port: ' + port + '.')
+    }
+  });
 
 
 // Initialize the app.
-const server = spdy.createServer(options,app);
-
-server.listen(port, () => console.log("App is listening on Port : ",port));
-// Generic error handler used by all endpoints.
-function handleError(res, reason, message, code) {
-  console.log("ERROR: " + reason);
-  res.status(code || 500).json({"error": message});
-}
+// const server = spdy.createServer(options,app);
+//
+// server.listen(port, () => console.log("App is listening on Port : ",port));
+// // Generic error handler used by all endpoints.
+// function handleError(res, reason, message, code) {
+//   console.log("ERROR: " + reason);
+//   res.status(code || 500).json({"error": message});
+// }
