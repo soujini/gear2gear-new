@@ -118,12 +118,7 @@ var options = {
 
 
 // Initialize the app.
-//const server = spdy.createServer(credentials,app);
-
-const server = spdy.createServer(options, function(req, res) {
-  res.writeHead(200);
-  res.end('hello world!');
-});
+const server = spdy.createServer(options,app);
 
 server.listen(port, () => console.log("App is listening on Port : ",port));
 // Generic error handler used by all endpoints.
