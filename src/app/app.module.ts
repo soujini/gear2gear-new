@@ -6,7 +6,9 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';  // replaces previous Http service
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+// import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatTabsModule} from '@angular/material/tabs';
 
 
@@ -44,7 +46,7 @@ import { LoaderInterceptorService } from './services/loader-interceptor.service'
 import { AdvantagesComponent } from './components/advantages/advantages.component';
 import { LazyLoadDirective } from './lazy-load.directive';
 import { ServiceWorkerModule } from '@angular/service-worker';
-// import { environment } from '../environments/environment';
+import { environment } from '../environments/environment';
 // import { environment } from '../environments/environment';
 
 // import { UploadFileComponent } from './components/upload-file/upload-file.component';
@@ -72,8 +74,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     MatButtonModule,
     MatCheckboxModule,
     MatTabsModule,
-    ServiceWorkerModule.register('ngsw-worker.js')
-    // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   exports:[
     BrowserModule,
