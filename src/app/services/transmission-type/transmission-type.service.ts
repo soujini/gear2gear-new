@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-// import { environment } from '../../../environments/environment';
-let environment = require('../../../environments/environment');
+// const environment = require('../../../environments/environment.ts');
+const environment = require('../../../environments/environment.ts');
 import { TransmissionType } from '../../data-model';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs';

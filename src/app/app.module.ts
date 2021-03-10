@@ -46,8 +46,8 @@ import { LoaderInterceptorService } from './services/loader-interceptor.service'
 import { AdvantagesComponent } from './components/advantages/advantages.component';
 import { LazyLoadDirective } from './lazy-load.directive';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
-// import { environment } from '../environments/environment';
+const environment = require('../environments/environment.ts');
+// const environment = require('../environments/environment.ts');
 
 // import { UploadFileComponent } from './components/upload-file/upload-file.component';
 

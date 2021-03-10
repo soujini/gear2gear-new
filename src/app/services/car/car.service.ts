@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 // import {environment} from '../../../environments/environment';
-let environment = require('../../../environments/environment');
+const environment = require('../../../environments/environment.ts');
 import { Car,FileUpload } from '../../data-model';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs';
@@ -35,6 +35,7 @@ export class CarService {
   }
 
   public getCars(): Observable<any> {
+    alert(this.apiUrl);
     return this.http.get(this.apiUrl+'/api/cars', {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .map(res => res);
   }

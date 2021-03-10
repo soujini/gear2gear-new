@@ -45,6 +45,7 @@
     "cors": "^2.8.5",
     "currencyformatter.js": "^2.2.0",
     "dotenv": "^8.2.0",
+    "esm": "^3.2.25",
     "express": "^4.17.1",
     "font-awesome": "^4.7.0",
     "foreman": "^3.0.1",
