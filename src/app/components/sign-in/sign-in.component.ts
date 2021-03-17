@@ -92,7 +92,7 @@ export class SignInComponent implements AfterViewInit {
     this.submitted = true;
     this.loading = true;
   }
-  signIn(userEmail:string, userPwd:string, firstName:string, lastName:string ){
+  signIn(userEmail:string, userPwd:string ){
     this.authService.SignIn(userEmail, userPwd).then(() => {
       this.successMessage = 'You are successfully logged in';
       setTimeout(() => {
