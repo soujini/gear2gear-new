@@ -2,7 +2,6 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as $ from 'jquery';
 import { AuthService } from "../../shared/services/auth.service";
-import { ModalDirective } from 'angular-bootstrap-md';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PagerService } from '../../services';
 import {User} from '../../shared/services/user'

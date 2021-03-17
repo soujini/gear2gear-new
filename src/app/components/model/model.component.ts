@@ -1,8 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs/Subscription';
-import { Observable } from 'rxjs/Observable';
-import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
+import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Model } from '../../data-model';

@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/catch';
 import { map } from 'rxjs/operators';
 import { RequestOptions } from '@angular/http';
-import {Subject} from 'rxjs/Subject';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 const httpOptions = {
   headers: { 'Content-Type': 'application/json' }
@@ -28,24 +28,24 @@ export class MakeService {
 
   public getMakes(): Observable<any> {
     return this.http.get(this.apiUrl+'/api/makes', {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public getMakeById(make_id:number): Observable<any> {
     return this.http.get(this.apiUrl+'/api/makes/'+make_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public searchMakes(searchTerm): Observable<any> {
     return this.http.get(this.apiUrl+'/api/makes/search/'+searchTerm, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public createMake(newMake:Make): Observable<any> {
     const body = JSON.stringify(newMake);
 
     return this.http.post(this.apiUrl+'/api/makes', body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public updateMake(editMake:Make): Observable<any> {
@@ -53,12 +53,12 @@ export class MakeService {
     const make_id = editMake.make_id;
 
     return this.http.put(this.apiUrl+'/api/makes/'+make_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public deleteMake(make_id:number): Observable<any> {
     return this.http.delete(this.apiUrl+'/api/makes/'+make_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   extractData(res: Response) {

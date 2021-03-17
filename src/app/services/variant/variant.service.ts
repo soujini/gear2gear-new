@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/catch';
 import { map } from 'rxjs/operators';
 import { RequestOptions } from '@angular/http';
-import {Subject} from 'rxjs/Subject';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 const httpOptions = {
   headers: { 'Content-Type': 'application/json' }
@@ -28,24 +28,24 @@ export class VariantService {
 
   public getVariants(): Observable<any> {
     return this.http.get(this.apiUrl+'/api/variants', {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public getVariantById(variant_id:number): Observable<any> {
     return this.http.get(this.apiUrl+'/api/variants/'+variant_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public searchVariants(searchTerm): Observable<any> {
     return this.http.get(this.apiUrl+'/api/variants/search/'+searchTerm, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public createVariant(newVariant:Variant): Observable<any> {
     const body = JSON.stringify(newVariant);
 
     return this.http.post(this.apiUrl+'/api/variants', body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public updateVariant(editVariant:Variant): Observable<any> {
@@ -53,12 +53,12 @@ export class VariantService {
     const variant_id = editVariant.variant_id;
 
     return this.http.put(this.apiUrl+'/api/variants/'+variant_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public deleteVariant(variant_id:number): Observable<any> {
     return this.http.delete(this.apiUrl+'/api/variants/'+variant_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   extractData(res: Response) {

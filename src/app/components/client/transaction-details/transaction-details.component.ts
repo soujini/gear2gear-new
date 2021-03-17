@@ -2,12 +2,12 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Router,ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-
+import {debounceTime} from 'rxjs/operators';
 import { ClientService } from '../../../services/client/client.service';
 import { CarService } from '../../../services/car/car.service';
 import { TransactionDetailsService } from '../../../services/transaction-details/transaction-details.service';
-
-
+import { of } from 'rxjs';
+import { distinctUntilChanged } from 'rxjs/operators';
 @Component({
   selector: 'app-transaction-details',
   templateUrl: './transaction-details.component.html',
@@ -283,8 +283,8 @@ export class TransactionDetailsComponent implements OnInit {
         }
         createTransactionDetails(){
           this.transactionDetailsService.createTransactionDetailsForClient(this.transactionDetailsForm.value)
-          .debounceTime(1000)
-          .distinctUntilChanged()
+          .pipe(debounceTime(1000),
+          distinctUntilChanged())
           .subscribe(
             res => {
               this.getTransactionDetailsByInvestor(this.selectedClient_Id);

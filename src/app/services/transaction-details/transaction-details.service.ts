@@ -5,11 +5,12 @@ const environment = require('../../../environments/environment.ts');
 import { TransactionDetails } from '../../data-model';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs';
-import 'rxjs/add/operator/catch';
+import { of } from 'rxjs';
+// import 'rxjs/add/operator/catch';
 import { map } from 'rxjs/operators';
 import { RequestOptions } from '@angular/http';
-import { Subject } from 'rxjs/Subject';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 // import "rxjs/add/operator/debounceTime";
 
 const httpOptions = {
@@ -29,21 +30,21 @@ export class TransactionDetailsService {
 
   public getAvailablePoolBalanceAsOfPurchaseDate(purchaseDate:string):Observable<any>{
     return this.http.get(this.apiUrl+'/api/transactionDetails/availablePoolBalance/'+purchaseDate, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public getTransactionDetails(): Observable<any> {
     return this.http.get(this.apiUrl+'/api/transactionDetails', {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
   public GetInvestorsInvestmentAndPercentDetailsByPurchaseDate(purchaseDate:string, soldDate:string): Observable<any> {
     return this.http.get(this.apiUrl+'/api/transactionDetails/investorsInvestmentDetails/'+purchaseDate +'/'+soldDate, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
   public getTransactionDetailsByInvestor(investor_id:number): Observable<any> {
     console.log("getting tran details by investor");
     return this.http.get<any[]>(this.apiUrl+'/api/transactionDetails/investor/'+investor_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(transaction =>
+    .pipe(map(transaction =>
       {
         transaction.forEach(c => {
           if(c.debit != 0 && c.debit != null){
@@ -54,12 +55,12 @@ export class TransactionDetailsService {
           }
         });
         return transaction;
-      });
+      }));
     }
 
     public getTransactionDetailsById(car_id:number): Observable<any> {
       return this.http.get<any[]>(this.apiUrl+'/api/transactionDetails/'+car_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-      .map(transaction =>
+      .pipe(map(transaction =>
         {
           transaction.forEach(c => {
             if(c.debit != 0 && c.debit != null){
@@ -73,11 +74,11 @@ export class TransactionDetailsService {
         },
       err=>{
         console.log("Error getTransactionDetailsById ",err);
-      });
+      }));
     }
     public getAllTransactionDetailsById(car_id:number): Observable<any> {
       return this.http.get<any[]>(this.apiUrl+'/api/transactionDetails/'+car_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-      .map(transaction =>
+      .pipe(map(transaction =>
         {
           transaction.forEach(c => {
             if(c.debit != 0 && c.debit != null){
@@ -91,50 +92,50 @@ export class TransactionDetailsService {
         },
       err=>{
         console.log("Error getAllTransactionDetailsById ",err);
-      });
+      }));
     }
     // public getTotalInvestmentAndBalanceByCar(car_id:number): Observable<any> {
     //   return this.http.get(this.apiUrl+'/api/transactionDetails/totalInvestmentBalance/'+car_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    //   .map(res => res);
+    //   .pipe(map(res => res));
     // }
     public getTransactionDetailsBySoldTranType(car_id:number): Observable<any> {
       return this.http.get(this.apiUrl+'/api/transactionDetails/soldTranType/'+car_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-      .map(res => res);
+      .pipe(map(res => res));
     }
     public getTransactionDetailsByPurchaseTranType(car_id:number): Observable<any> {
       return this.http.get(this.apiUrl+'/api/transactionDetails/purchaseTranType/'+car_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-      .map(res => res);
+      .pipe(map(res => res));
     }
 
     // public searchTransactionDetailss(searchTerm): Observable<any> {
     //   return this.http.get(this.apiUrl+'/api/transactionDetails/search/'+searchTerm, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    //   .map(res => res);
+    //   .pipe(map(res => res));
     // }
 
     public createTransactionDetails(newTransactionDetails:TransactionDetails): Observable<any> {
       console.log(newTransactionDetails);
       const body = JSON.stringify(newTransactionDetails);
       return this.http.post(this.apiUrl+'/api/transactionDetails',body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-      .map(res => res);
+      .pipe(map(res => res));
     }
 
     public createTransactionDetailsForClient(newTransactionDetails:TransactionDetails): Observable<any> {
       console.log(newTransactionDetails);
       const body = JSON.stringify(newTransactionDetails);
       return this.http.post(this.apiUrl+'/api/transactionDetails/client',body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-      .map(res => res);
+      .pipe(map(res => res));
     }
     public closeAccountAndRefund(newTransactionDetails:TransactionDetails): Observable<any> {
       console.log(newTransactionDetails);
       const body = JSON.stringify(newTransactionDetails);
       return this.http.post(this.apiUrl+'/api/transactionDetails/closeAccountAndRefund',body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-      .map(res => res);
+      .pipe(map(res => res));
     }
 
     public createTransactionDetailsProfitAndLoss(newTransactionDetails:any): Observable<any> {
       const body = JSON.stringify(newTransactionDetails);
       return this.http.post(this.apiUrl+'/api/transactionDetails/profitAndLoss',body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-      .map(res => res);
+      .pipe(map(res => res));
     }
 
     public updateTransactionDetails(editTransactionDetails:TransactionDetails): Observable<any> {
@@ -142,23 +143,23 @@ export class TransactionDetailsService {
       const transaction_details_id = editTransactionDetails.transaction_details_id;
 
       return this.http.put(this.apiUrl+'/api/transactionDetails/'+transaction_details_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-      .map(res => res);
+      .pipe(map(res => res));
     }
     public voidTransactionDetails(transactionDetails:TransactionDetails): Observable<any> {
       const body = JSON.stringify(transactionDetails);
       const transaction_details_id = transactionDetails.transaction_details_id;
 
       return this.http.put(this.apiUrl+'/api/transactionDetails/void/'+transaction_details_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-      .map(res => res);
+      .pipe(map(res => res));
     }
 
     public deleteTransactionDetails(transaction_details_id:number): Observable<any> {
       return this.http.delete(this.apiUrl+'/api/transactionDetails/'+transaction_details_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-      .map(res => res);
+      .pipe(map(res => res));
     }
     public deleteTransactionDetailsByTransactionType(transaction_type_id:number): Observable<any> {
       return this.http.delete(this.apiUrl+'/api/transactionDetails/transactionType/'+transaction_type_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-      .map(res => res);
+      .pipe(map(res => res));
     }
     public deleteProfitOrLossTransactionDetails(car_id:number): Observable<any> {
       // const investorsDetails = JSON.stringify(investorsExpensesAndPercent);
@@ -170,7 +171,7 @@ export class TransactionDetailsService {
       // };
 
       return this.http.delete(this.apiUrl+'/api/transactionDetails/deleteProfitOrLoss/'+car_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-      .map(res => res);
+      .pipe(map(res => res));
     }
     public formatCurrencyByVal(val){
       let val1 = ''+val;

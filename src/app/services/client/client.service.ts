@@ -5,12 +5,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Client } from '../../data-model';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs';
-import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/operator/catch';
+import { Subscription } from 'rxjs';
+// import 'rxjs/add/operator/catch';
+import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { RequestOptions } from '@angular/http';
-import {Subject} from 'rxjs/Subject';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 const httpOptions = {
   headers: { 'Content-Type': 'application/json' }
@@ -31,19 +32,19 @@ export class ClientService {
 
   public getClients(): Observable<any> {
     return this.http.get(this.apiUrl+'/api/clients', {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
   public getInvestors(): Observable<any> {
     return this.http.get(this.apiUrl+'/api/investors', {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
   public getInvestorsExpensesAndPercent(car_id:number): Observable<any> {
     return this.http.get(this.apiUrl+'/api/investors/investorsExpensesAndPercent/'+car_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
   public getAvailableBalance(investor_id:number): Observable<any> {
     return this.http.get(this.apiUrl+'/api/investors/'+investor_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public updateAvailableBalance(investor:any) {
@@ -82,19 +83,19 @@ export class ClientService {
 
   public getClientById(client_id:number): Observable<any> {
     return this.http.get(this.apiUrl+'/api/clients/'+client_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public searchClients(searchTerm): Observable<any> {
     return this.http.get(this.apiUrl+'/api/clients/search/'+searchTerm, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public createClient(newClient:Client): Observable<any> {
     const body = JSON.stringify(newClient);
 
     return this.http.post(this.apiUrl+'/api/clients', body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public updateClient(editClient:Client): Observable<any> {
@@ -102,12 +103,12 @@ export class ClientService {
     const client_id = editClient.client_id;
 
     return this.http.put(this.apiUrl+'/api/clients/'+client_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public deleteClient(client_id:number): Observable<any> {
     return this.http.delete(this.apiUrl+'/api/clients/'+client_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   extractData(res: Response) {

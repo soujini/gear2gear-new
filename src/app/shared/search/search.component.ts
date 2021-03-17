@@ -2,9 +2,10 @@ import { Component, OnInit, EventEmitter, Output  } from '@angular/core';
 import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { Observable } from "rxjs";
 import { Http, Response } from "@angular/http";
-import 'rxjs/add/operator/distinctUntilChanged';
-import "rxjs/add/operator/map";
-import "rxjs/add/operator/debounceTime";
+import { of } from 'rxjs';
+import { distinctUntilChanged } from 'rxjs/operators';
+import {debounceTime} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search',

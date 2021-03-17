@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/catch';
 import { map } from 'rxjs/operators';
 import { RequestOptions } from '@angular/http';
-import {Subject} from 'rxjs/Subject';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 const httpOptions = {
   headers: { 'Content-Type': 'application/json' }
@@ -28,24 +28,24 @@ export class TransmissionTypeService {
 
   public getTransmissionTypes(): Observable<any> {
     return this.http.get(this.apiUrl+'/api/transmissionTypes', {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public getTransmissionTypeById(transmission_type_id:number): Observable<any> {
     return this.http.get(this.apiUrl+'/api/transmissionTypes/'+transmission_type_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public searchTransmissionTypes(searchTerm): Observable<any> {
     return this.http.get(this.apiUrl+'/api/transmissionTypes/search/'+searchTerm, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public createTransmissionType(newTransmissionType:TransmissionType): Observable<any> {
     const body = JSON.stringify(newTransmissionType);
 
     return this.http.post(this.apiUrl+'/api/transmissionTypes', body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public updateTransmissionType(editTransmissionType:TransmissionType): Observable<any> {
@@ -53,12 +53,12 @@ export class TransmissionTypeService {
     const transmission_type_id = editTransmissionType.transmission_type_id;
 
     return this.http.put(this.apiUrl+'/api/transmissionTypes/'+transmission_type_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public deleteTransmissionType(transmission_type_id:number): Observable<any> {
     return this.http.delete(this.apiUrl+'/api/transmissionTypes/'+transmission_type_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   extractData(res: Response) {

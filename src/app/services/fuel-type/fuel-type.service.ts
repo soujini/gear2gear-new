@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/catch';
 import { map } from 'rxjs/operators';
 import { RequestOptions } from '@angular/http';
-import {Subject} from 'rxjs/Subject';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 const httpOptions = {
   headers: { 'Content-Type': 'application/json' }
@@ -28,24 +28,24 @@ export class FuelTypeService {
 
   public getFuelTypes(): Observable<any> {
     return this.http.get(this.apiUrl+'/api/fuelTypes', {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public getFuelTypeById(fuel_type_id:number): Observable<any> {
     return this.http.get(this.apiUrl+'/api/fuelTypes/'+fuel_type_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public searchFuelTypes(searchTerm): Observable<any> {
     return this.http.get(this.apiUrl+'/api/fuelTypes/search/'+searchTerm, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public createFuelType(newFuelType:FuelType): Observable<any> {
     const body = JSON.stringify(newFuelType);
 
     return this.http.post(this.apiUrl+'/api/fuelTypes', body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public updateFuelType(editFuelType:FuelType): Observable<any> {
@@ -53,12 +53,12 @@ export class FuelTypeService {
     const fuel_type_id = editFuelType.fuel_type_id;
 
     return this.http.put(this.apiUrl+'/api/fuelTypes/'+fuel_type_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public deleteFuelType(fuel_type_id:number): Observable<any> {
     return this.http.delete(this.apiUrl+'/api/fuelTypes/'+fuel_type_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   extractData(res: Response) {

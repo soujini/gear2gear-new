@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/catch';
 import { map } from 'rxjs/operators';
 import { RequestOptions } from '@angular/http';
-import { Subject } from 'rxjs/Subject';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 const httpOptions = {
   headers: { 'Content-Type': 'application/json' }
@@ -28,24 +28,24 @@ export class ExpenseService {
 
   public getExpenses(): Observable<any> {
     return this.http.get(this.apiUrl+'/api/expenses', {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public getExpenseById(expense_id:number): Observable<any> {
     return this.http.get(this.apiUrl+'/api/expenses/'+expense_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public searchExpenses(searchTerm): Observable<any> {
     return this.http.get(this.apiUrl+'/api/expenses/search/'+searchTerm, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public createExpense(newExpense:Expense): Observable<any> {
     const body = JSON.stringify(newExpense);
 
     return this.http.post(this.apiUrl+'/api/expenses', body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public updateExpense(editExpense:Expense): Observable<any> {
@@ -53,12 +53,12 @@ export class ExpenseService {
     const expense_id = editExpense.expense_id;
 
     return this.http.put(this.apiUrl+'/api/expenses/'+expense_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public deleteExpense(expense_id:number): Observable<any> {
     return this.http.delete(this.apiUrl+'/api/expenses/'+expense_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   extractData(res: Response) {

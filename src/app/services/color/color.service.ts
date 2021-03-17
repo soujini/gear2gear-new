@@ -8,8 +8,9 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/catch';
 import { map } from 'rxjs/operators';
 import { RequestOptions } from '@angular/http';
-import {Subject} from 'rxjs/Subject';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { of } from 'rxjs';
+import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 const httpOptions = {
   headers: { 'Content-Type': 'application/json' }
@@ -28,24 +29,24 @@ export class ColorService {
 
   public getColors(): Observable<any> {
     return this.http.get(this.apiUrl+'/api/colors', {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public getColorById(color_id:number): Observable<any> {
     return this.http.get(this.apiUrl+'/api/colors/'+color_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public searchColors(searchTerm): Observable<any> {
     return this.http.get(this.apiUrl+'/api/colors/search/'+searchTerm, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public createColor(newColor:Color): Observable<any> {
     const body = JSON.stringify(newColor);
 
     return this.http.post(this.apiUrl+'/api/colors', body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public updateColor(editColor:Color): Observable<any> {
@@ -53,12 +54,12 @@ export class ColorService {
     const color_id = editColor.color_id;
 
     return this.http.put(this.apiUrl+'/api/colors/'+color_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public deleteColor(color_id:number): Observable<any> {
     return this.http.delete(this.apiUrl+'/api/colors/'+color_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   extractData(res: Response) {

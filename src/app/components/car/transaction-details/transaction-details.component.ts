@@ -1,8 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter ,ChangeDetectorRef} from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Router,ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 import { Observable } from 'rxjs';
-
+import {debounceTime} from 'rxjs/operators';
+import { distinctUntilChanged } from 'rxjs/operators'
 import { ClientService } from '../../../services/client/client.service';
 import { CarService } from '../../../services/car/car.service';
 import { TransactionDetailsService } from '../../../services/transaction-details/transaction-details.service';
@@ -195,8 +197,8 @@ export class TransactionDetailsComponent implements OnInit {
             console.log("P&L details ",this.transactionDetailProfitandLoss);
             // Create P&L Transaction Detail for all investors and Update Car with IS_Sold = true
             this.transactionDetailsService.createTransactionDetailsProfitAndLoss(this.transactionDetailProfitandLoss)
-            .debounceTime(1000)
-            .distinctUntilChanged()
+            .pipe(debounceTime(1000),
+            distinctUntilChanged())
             .subscribe(
               res => {
                 this.transactionDetailsForm.reset();

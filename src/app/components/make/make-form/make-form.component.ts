@@ -4,8 +4,8 @@ import { Router,ActivatedRoute } from '@angular/router';
 
 import { Make } from '../../../data-model';
 import { MakeService } from '../../../services/make/make.service';
-import 'rxjs/add/operator/takeUntil';
-import 'rxjs/add/operator/take';
+import { takeUntil } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-make-form',

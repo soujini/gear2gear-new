@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Car, Make, Model, Variant, VehicleType, FuelType, TransmissionType, Insurance, Color, Client, Expense, FileUpload } from '../../data-model';
 import { CarService } from '../../services/car/car.service';

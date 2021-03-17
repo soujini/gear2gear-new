@@ -9,8 +9,8 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/catch';
 import { map } from 'rxjs/operators';
 import { RequestOptions } from '@angular/http';
-import {Subject} from 'rxjs/Subject';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 const httpOptions = {
   headers: { 'Content-Type': 'application/json' }
@@ -29,24 +29,24 @@ export class VehicleTypeService {
 
   public getVehicleTypes(): Observable<any> {
     return this.http.get(this.apiUrl+'/api/vehicleTypes', {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public getVehicleTypeById(vehicle_type_id:number): Observable<any> {
     return this.http.get(this.apiUrl+'/api/vehicleTypes/'+vehicle_type_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public searchVehicleTypes(searchTerm): Observable<any> {
     return this.http.get(this.apiUrl+'/api/vehicleTypes/search/'+searchTerm, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public createVehicleType(newVehicleType:VehicleType): Observable<any> {
     const body = JSON.stringify(newVehicleType);
 
     return this.http.post(this.apiUrl+'/api/vehicleTypes', body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public updateVehicleType(editVehicleType:VehicleType): Observable<any> {
@@ -54,12 +54,12 @@ export class VehicleTypeService {
     const vehicle_type_id = editVehicleType.vehicle_type_id;
 
     return this.http.put(this.apiUrl+'/api/vehicleTypes/'+vehicle_type_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public deleteVehicleType(vehicle_type_id:number): Observable<any> {
     return this.http.delete(this.apiUrl+'/api/vehicleTypes/'+vehicle_type_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   extractData(res: Response) {

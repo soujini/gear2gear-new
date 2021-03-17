@@ -6,12 +6,12 @@ const environment = require('../../../environments/environment.ts');
 import { Car,FileUpload } from '../../data-model';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs';
-import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/operator/catch';
+import { Subscription } from 'rxjs';
+// import 'rxjs/add/operator/catch';
 import { map } from 'rxjs/operators';
 import { RequestOptions } from '@angular/http';
-import {Subject} from 'rxjs/Subject';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { UploadFileService } from '../../services/upload-file/upload-file.service';
 import 'rxjs/add/observable/from';
 
@@ -37,7 +37,7 @@ export class CarService {
   public getCars(): Observable<any> {
     alert(this.apiUrl);
     return this.http.get(this.apiUrl+'/api/cars', {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public getAvailableCars(filterCars:Car): Observable<any> {
@@ -80,7 +80,7 @@ export class CarService {
     };
 
     return this.http.get<any[]>(this.apiUrl+'/api/available-cars',options)
-    .map(car =>
+    .pipe(map(car =>
       {
         car.forEach(c => {
           c.image_urls=[];
@@ -91,29 +91,29 @@ export class CarService {
           });
         });
         return car;
-      });
+      }));
     }
 
     public getSoldCars(): Observable<any> {
       return this.http.get(this.apiUrl+'/api/sold-cars', {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-      .map(res => res);
+      .pipe(map(res => res));
     }
 
     public getCarById(car_id:number): Observable<any> {
       return this.http.get(this.apiUrl+'/api/cars/'+car_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-      .map(res => res);
+      .pipe(map(res => res));
     }
 
     public searchCars(searchTerm): Observable<any> {
       return this.http.get(this.apiUrl+'/api/cars/search/'+searchTerm, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-      .map(res => res);
+      .pipe(map(res => res));
     }
 
     public createCar(newCar:Car): Observable<any> {
       const body = JSON.stringify(newCar);
 
       return this.http.post(this.apiUrl+'/api/cars', body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-      .map(res => res);
+      .pipe(map(res => res));
     }
 
     public updateCar(editCar:Car): Observable<any> {
@@ -121,7 +121,7 @@ export class CarService {
       const car_id = editCar.car_id;
 
       return this.http.put(this.apiUrl+'/api/cars/'+car_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-      .map(res => res);
+      .pipe(map(res => res));
     }
 
     public updateTotalCost(car:any) {
@@ -159,7 +159,7 @@ export class CarService {
 
     public deleteCar(car_id:number): Observable<any> {
       return this.http.delete(this.apiUrl+'/api/cars/'+car_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-      .map(res => res);
+      .pipe(map(res => res));
     }
 
     extractData(res: Response) {

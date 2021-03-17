@@ -9,7 +9,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node app.js",
-    "build": "ng build --prod --source-map=false --vendor-chunk=true  --extract-css=true --build-optimizer",
+    "build": "ng build --prod --source-map=false --vendor-chunk=true --build-optimizer",
     "gulp": "gulp",
     "test": "ng test",
     "lint": "ng lint",

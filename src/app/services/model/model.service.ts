@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/catch';
 import { map } from 'rxjs/operators';
 import { RequestOptions } from '@angular/http';
-import {Subject} from 'rxjs/Subject';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 const httpOptions = {
   headers: { 'Content-Type': 'application/json' }
@@ -28,28 +28,28 @@ export class ModelService {
 
   public getModels(): Observable<any> {
     return this.http.get(this.apiUrl+'/api/models', {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-   .map(res => res);
+   .pipe(map(res => res));
   }
 
   public getModelById(model_id:number): Observable<any> {
     return this.http.get(this.apiUrl+'/api/models/'+model_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
   public getModelByMakeId(make_id:number): Observable<any> {
     return this.http.get(this.apiUrl+'/api/models/make/'+make_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public searchModels(searchTerm): Observable<any> {
     return this.http.get(this.apiUrl+'/api/models/search/'+searchTerm, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public createModel(newModel:Model): Observable<any> {
     const body = JSON.stringify(newModel);
 
     return this.http.post(this.apiUrl+'/api/models', body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public updateModel(editModel:Model): Observable<any> {
@@ -57,12 +57,12 @@ export class ModelService {
     const model_id = editModel.model_id;
 
     return this.http.put(this.apiUrl+'/api/models/'+model_id, body, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   public deleteModel(model_id:number): Observable<any> {
     return this.http.delete(this.apiUrl+'/api/models/'+model_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
-    .map(res => res);
+    .pipe(map(res => res));
   }
 
   extractData(res: Response) {
