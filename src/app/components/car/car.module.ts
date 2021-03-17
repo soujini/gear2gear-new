@@ -8,7 +8,7 @@ import { CarComponent } from './car.component';
 import { CarListComponent } from './car-list/car-list.component';
 import { CarFormComponent } from './car-form/car-form.component';
 import { TransactionDetailsComponent } from './transaction-details/transaction-details.component';
-import { UploadFileComponent } from 'app/components/upload-file/upload-file.component';
+// import { UploadFileComponent } from 'app/components/upload-file/upload-file.component';
 
 @NgModule({
   imports: [
@@ -21,7 +21,7 @@ import { UploadFileComponent } from 'app/components/upload-file/upload-file.comp
     CarListComponent,
     CarFormComponent,
     TransactionDetailsComponent,
-    UploadFileComponent
+    // UploadFileComponent
   ],
   // providers: [CarService],
 })

@@ -2,8 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router,ActivatedRoute } from '@angular/router';
 
-import { Model } from 'app/data-model';
-import { ModelService } from 'app/services/model/model.service';
+import { Model } from '../../../data-model';
+import { ModelService } from '../../../services/model/model.service';
 
 @Component({
   selector: 'app-model-list',

@@ -2,8 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router,ActivatedRoute } from '@angular/router';
 
-import { Color } from 'app/data-model';
-import { ColorService } from 'app/services/color/color.service';
+import { Color } from '../../../data-model';
+import { ColorService } from '../../../services/color/color.service';
 
 @Component({
   selector: 'app-color-list',

@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { Car, Make, Model, Variant, VehicleType, FuelType, TransmissionType, Insurance, Color, Client, Expense, FileUpload } from 'app/data-model';
-import { CarService } from 'app/services/car/car.service';
-import { MakeService } from 'app/services/make/make.service';
-import { ModelService } from 'app/services/model/model.service';
-import { VariantService } from 'app/services/variant/variant.service';
-import { VehicleTypeService } from 'app/services/vehicle-type/vehicle-type.service';
-import { FuelTypeService } from 'app/services/fuel-type/fuel-type.service';
-import { TransmissionTypeService } from 'app/services/transmission-type/transmission-type.service';
-import { UploadFileService } from 'app/services/upload-file/upload-file.service';
+import { Car, Make, Model, Variant, VehicleType, FuelType, TransmissionType, Insurance, Color, Client, Expense, FileUpload } from '../../data-model';
+import { CarService } from '../../services/car/car.service';
+import { MakeService } from '../../services/make/make.service';
+import { ModelService } from '../../services/model/model.service';
+import { VariantService } from '../../services/variant/variant.service';
+import { VehicleTypeService } from '../../services/vehicle-type/vehicle-type.service';
+import { FuelTypeService } from '../../services/fuel-type/fuel-type.service';
+import { TransmissionTypeService } from '../../services/transmission-type/transmission-type.service';
+import { UploadFileService } from '../../services/upload-file/upload-file.service';
 import 'rxjs/add/observable/of';
 import { map } from 'rxjs/operators';
 import * as _ from 'underscore';
-import { PagerService } from 'app/services/index';
+import { PagerService } from '../../services/index';
 
 @Component({
   selector: 'app-inventory',

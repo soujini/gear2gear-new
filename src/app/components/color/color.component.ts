@@ -5,8 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { Color } from 'app/data-model';
-import { ColorService } from 'app/services/color/color.service';
+import { Color } from '../../data-model';
+import { ColorService } from '../../services/color/color.service';
 
 @Component({
   selector: 'app-color',

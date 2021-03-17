@@ -24,7 +24,7 @@ import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 // import { InvestorsCornerComponent } from './components/investors-corner/investors-corner.component';
 
-
+// import { AuthGuard } from "./shared/guard/auth.guard";
 declare var require:any;
 
 const routes: Routes = [
@@ -82,6 +82,7 @@ const routes: Routes = [
   },
   { path: 'contact', component: ContactComponent},
   { path: 'about', component: AboutComponent},
+
 ];
 
 @NgModule({
@@ -106,7 +107,6 @@ const routes: Routes = [
 
   ],
   exports: [RouterModule],
-   // providers: [AuthService,AuthGuard],
   declarations: []
 })
 

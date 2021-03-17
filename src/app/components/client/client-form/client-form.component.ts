@@ -2,10 +2,10 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Router,ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Client } from 'app/data-model';
-import { ClientService } from 'app/services/client/client.service';
-import { CommonService } from 'app/services/common/common.service';
-import { TransactionTypeService } from 'app/services/transaction-type/transaction-type.service';
+import { Client } from '../../../data-model';
+import { ClientService } from '../../../services/client/client.service';
+import { CommonService } from '../../../services/common/common.service';
+import { TransactionTypeService } from '../../../services/transaction-type/transaction-type.service';
 
 @Component({
   selector: 'app-client-form',

@@ -5,8 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { Car } from 'app/data-model';
-import { CarService } from 'app/services/car/car.service';
+import { Car } from '../../data-model';
+import { CarService } from '../../services/car/car.service';
 
 @Component({
   selector: 'app-car',

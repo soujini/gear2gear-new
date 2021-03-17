@@ -2,8 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router,ActivatedRoute } from '@angular/router';
 
-import { VehicleType } from 'app/data-model';
-import { VehicleTypeService } from 'app/services/vehicle-type/vehicle-type.service';
+import { VehicleType } from '../../../data-model';
+import { VehicleTypeService } from '../../../services/vehicle-type/vehicle-type.service';
 
 @Component({
   selector: 'app-vehicleType-list',

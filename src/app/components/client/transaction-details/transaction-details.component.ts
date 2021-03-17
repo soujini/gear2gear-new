@@ -3,9 +3,9 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { Router,ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { ClientService } from 'app/services/client/client.service';
-import { CarService } from 'app/services/car/car.service';
-import { TransactionDetailsService } from 'app/services/transaction-details/transaction-details.service';
+import { ClientService } from '../../../services/client/client.service';
+import { CarService } from '../../../services/car/car.service';
+import { TransactionDetailsService } from '../../../services/transaction-details/transaction-details.service';
 
 
 @Component({

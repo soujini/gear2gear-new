@@ -2,8 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router,ActivatedRoute } from '@angular/router';
 
-import { FuelType } from 'app/data-model';
-import { FuelTypeService } from 'app/services/fuel-type/fuel-type.service';
+import { FuelType } from '../../../data-model';
+import { FuelTypeService } from '../../../services/fuel-type/fuel-type.service';
 
 @Component({
   selector: 'app-fuelType-list',

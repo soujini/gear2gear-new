@@ -5,8 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { TransmissionType } from 'app/data-model';
-import { TransmissionTypeService } from 'app/services/transmission-type/transmission-type.service';
+import { TransmissionType } from '../../data-model';
+import { TransmissionTypeService } from '../../services/transmission-type/transmission-type.service';
 
 @Component({
   selector: 'app-make',

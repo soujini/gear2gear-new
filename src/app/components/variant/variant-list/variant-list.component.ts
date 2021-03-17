@@ -2,8 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router,ActivatedRoute } from '@angular/router';
 
-import { Variant } from 'app/data-model';
-import { VariantService } from 'app/services/variant/variant.service';
+import { Variant } from '../../../data-model';
+import { VariantService } from '../../../services/variant/variant.service';
 
 @Component({
   selector: 'app-variant-list',

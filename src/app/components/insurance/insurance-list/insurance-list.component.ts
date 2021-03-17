@@ -2,8 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router,ActivatedRoute } from '@angular/router';
 
-import { Insurance } from 'app/data-model';
-import { InsuranceService } from 'app/services/insurance/insurance.service';
+import { Insurance } from '../../../data-model';
+import { InsuranceService } from '../../../services/insurance/insurance.service';
 
 @Component({
   selector: 'app-insurance-list',

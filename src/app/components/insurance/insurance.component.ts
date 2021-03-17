@@ -5,8 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { Insurance } from 'app/data-model';
-import { InsuranceService } from 'app/services/insurance/insurance.service';
+import { Insurance } from '../../data-model';
+import { InsuranceService } from '../../services/insurance/insurance.service';
 
 @Component({
   selector: 'app-insurance',

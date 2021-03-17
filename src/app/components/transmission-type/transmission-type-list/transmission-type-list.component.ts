@@ -2,8 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router,ActivatedRoute } from '@angular/router';
 
-import { TransmissionType } from 'app/data-model';
-import { TransmissionTypeService } from 'app/services/transmission-type/transmission-type.service';
+import { TransmissionType } from '../../../data-model';
+import { TransmissionTypeService } from '../../../services/transmission-type/transmission-type.service';
 
 @Component({
   selector: 'app-transmissionType-list',

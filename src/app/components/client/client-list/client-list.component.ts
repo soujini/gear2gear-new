@@ -2,8 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router,ActivatedRoute } from '@angular/router';
 
-import { Client,Make,Model } from 'app/data-model';
-import { ClientService } from 'app/services/client/client.service';
+import { Client,Make,Model } from '../../../data-model';
+import { ClientService } from '../../../services/client/client.service';
 
 
 @Component({

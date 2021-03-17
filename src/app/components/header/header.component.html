@@ -6,44 +6,73 @@
     <links>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#" routerLink="/home" routerLinkActive="active-link">HOME<span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#" routerLink="/home" routerLinkActive="active-link">HOME<span
+              class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item dropdown" *ngIf="auth.isAuthenticated()" dropdown>
+        <li class="nav-item dropdown" xngIf="auth.isAuthenticated()" dropdown>
           <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
             ADMIN<span class="caret"></span></a>
-            <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-              <a class="dropdown-item waves-light" href="#" routerLink="/car/edit" routerLinkActive="active-link">CAR</a>
-              <a class="dropdown-item waves-light" href="#" routerLink="/client/edit" routerLinkActive="active-link">CLIENT</a>
-              <a class="dropdown-item waves-light" href="#" routerLink="/make/add" routerLinkActive="active-link">MAKE</a>
-              <a class="dropdown-item waves-light" href="#" routerLink="/model/add">MODEL</a>
-              <a class="dropdown-item waves-light" href="#" routerLink="/variant/add">VARIANT</a>
-              <a class="dropdown-item waves-light" href="#" routerLink="/vehicleType/add">VEHICLE TYPE</a>
-              <a class="dropdown-item waves-light" href="#" routerLink="/fuelType/add">FUEL TYPE</a>
-              <a class="dropdown-item waves-light" href="#" routerLink="/transmissionType/add">TRANSMISSION</a>
-              <a class="dropdown-item waves-light" href="#" routerLink="/insurance/add">INSURANCE</a>
-              <a class="dropdown-item waves-light" href="#" routerLink="/expense/add">EXPENSE</a>
-              <a class="dropdown-item waves-light" href="#" routerLink="/color/add">COLOR</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/cars" routerLinkActive="active-link">CAR LISTING<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item" *ngIf="auth.isAuthenticated()">
-            <a class="nav-link" routerLink="/investors-corner" routerLinkActive="active-link">INVESTOR'S CORNER<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/about" routerLinkActive="active-link">ABOUT US<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/contact" routerLinkActive="active-link">CONTACT US<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item" *ngIf="!auth.isAuthenticated()" (click)="!auth.login()">
-            <a class="nav-link">LOGIN<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item" *ngIf="auth.isAuthenticated()" (click)="auth.logout()">
-            <a class="nav-link">LOGOUT<span class="sr-only">(current)</span></a>
-          </li>
-        </ul>
-      </links>
-    </mdb-navbar>
-    </section>
+          <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" href="#" routerLink="/car/edit" routerLinkActive="active-link">CAR</a>
+            <a class="dropdown-item waves-light" href="#" routerLink="/client/edit"
+              routerLinkActive="active-link">CLIENT</a>
+            <a class="dropdown-item waves-light" href="#" routerLink="/make/add" routerLinkActive="active-link">MAKE</a>
+            <a class="dropdown-item waves-light" href="#" routerLink="/model/add">MODEL</a>
+            <a class="dropdown-item waves-light" href="#" routerLink="/variant/add">VARIANT</a>
+            <a class="dropdown-item waves-light" href="#" routerLink="/vehicleType/add">VEHICLE TYPE</a>
+            <a class="dropdown-item waves-light" href="#" routerLink="/fuelType/add">FUEL TYPE</a>
+            <a class="dropdown-item waves-light" href="#" routerLink="/transmissionType/add">TRANSMISSION</a>
+            <a class="dropdown-item waves-light" href="#" routerLink="/insurance/add">INSURANCE</a>
+            <a class="dropdown-item waves-light" href="#" routerLink="/expense/add">EXPENSE</a>
+            <a class="dropdown-item waves-light" href="#" routerLink="/color/add">COLOR</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/cars" routerLinkActive="active-link">CAR LISTING<span
+              class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item" xngIf="auth.isAuthenticated()">
+          <a class="nav-link" routerLink="/investors-corner" routerLinkActive="active-link">INVESTOR'S CORNER<span
+              class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about" routerLinkActive="active-link">ABOUT US<span
+              class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact" routerLinkActive="active-link">CONTACT US<span
+              class="sr-only">(current)</span></a>
+        </li>
+      
+       
+        <div class="divider dropdown-divider"></div>
+        <li class="nav-item" *ngIf="this.name == ''">
+          <a (click)="this.isLogin = true" class="nav-link waves-light heading" mdbWavesEffect><span [ngClass]="{'router-link-active': isLogin == true}" [routerLinkActive]="['router-link-active']" class="heading">LOGIN</span></a>
+        </li>
+        <div class="divider dropdown-divider"></div>
+     <li class="nav-item" *ngIf="this.name != ''">
+       <span class="nav-link waves-light heading">{{name}}</span>
+      <a class="nav-link waves-light heading" mdbWavesEffect href="#" (click)="logout()"><mdb-icon fas icon="sign-out-alt"></mdb-icon><span  [routerLinkActive]="['router-link-active']" class="heading ml-2">LOGOUT</span></a>
+    </li>
+      </ul>
+    </links>
+  </mdb-navbar>
+</section>
+
+ 
+
+<div *ngIf="isLogin == true">
+<app-sign-in (userName)="setUserName($event)" (password)="setPassword($event)"  (isLogin)="setIsLogin($event)" (isRegister)='setIsRegister($event)'
+  (isRecoverPassword)='setIsRecoverPassword($event)'></app-sign-in>
+</div>
+<div *ngIf="isRegister == true">
+<app-sign-up (isLogin)="setIsLogin($event)" (isRegister)='setIsRegister($event)'></app-sign-up>
+</div>
+<div *ngIf="isRecoverPassword == true">
+<app-forgot-password (isLogin)="setIsLogin($event)" (isRecoverPassword)='setIsRecoverPassword($event)'>
+</app-forgot-password>
+</div>
+<div *ngIf="isVerifyOTP == true">
+<app-verify-otp [userName]="this.userName" (isVerifyOTP)="setisVerifyOTP($event)" (isLogin)="setIsLogin($event)">
+</app-verify-otp>
+</div>

@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
 import { RequestOptions } from '@angular/http';
 import {Subject} from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { UploadFileService } from 'app/services/upload-file/upload-file.service';
+import { UploadFileService } from '../../services/upload-file/upload-file.service';
 import 'rxjs/add/observable/from';
 
 const httpOptions = {

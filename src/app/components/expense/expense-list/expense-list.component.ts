@@ -2,8 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router,ActivatedRoute } from '@angular/router';
 
-import { Expense } from 'app/data-model';
-import { ExpenseService } from 'app/services/expense/expense.service';
+import { Expense } from '../../../data-model';
+import { ExpenseService } from '../../../services/expense/expense.service';
 
 @Component({
   selector: 'app-expense-list',

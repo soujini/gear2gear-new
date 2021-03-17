@@ -5,9 +5,9 @@ import { Observable } from 'rxjs/Observable';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { Client } from 'app/data-model';
-import { ClientService } from 'app/services/client/client.service';
-import { CommonService } from 'app/services/common/common.service';
+import { Client } from '../../data-model';
+import { ClientService } from '../../services/client/client.service';
+import { CommonService } from '../../services/common/common.service';
 
 @Component({
   selector: 'app-client',

@@ -19,7 +19,6 @@ import { ChecklistComponent } from './components/checklist/checklist.component';
 import { ROUTES } from './app.routes';
 import { AppRoutingModule } from './app-routing.module';
 
-import { AuthService } from './auth/auth.service';
 import { CallbackComponent } from './callback/callback.component';
 import { HeaderComponent } from './components/header/header.component';
 
@@ -51,6 +50,14 @@ const environment = require('../environments/environment.ts');
 
 // import { UploadFileComponent } from './components/upload-file/upload-file.component';
 
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { AuthService } from "./shared/services/auth.service";
 
 @NgModule({
   declarations: [
@@ -62,9 +69,16 @@ const environment = require('../environments/environment.ts');
     ChecklistComponent,
     AdvantagesComponent,
     LazyLoadDirective,
+    SignInComponent,
+    SignUpComponent,
+    ForgotPasswordComponent,
+    VerifyEmailComponent,
     // UploadFileComponent,
     ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
     BrowserModule,
     HttpClientModule,
     MDBBootstrapModule.forRoot(),
@@ -84,13 +98,12 @@ const environment = require('../environments/environment.ts');
     MatTabsModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [
+  providers: [AuthService,
     {
     provide: HTTP_INTERCEPTORS,
     useClass: LoaderInterceptorService,
     multi: true
   },
-    AuthService,
     ValidationService,
     MakeService,
     ModelService,

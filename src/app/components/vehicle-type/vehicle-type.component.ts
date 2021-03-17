@@ -5,8 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import { EmptyObservable } from 'rxjs/observable/EmptyObservable';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { VehicleType } from 'app/data-model';
-import { VehicleTypeService } from 'app/services/vehicle-type/vehicle-type.service';
+import { VehicleType } from '../../data-model';
+import { VehicleTypeService } from '../../services/vehicle-type/vehicle-type.service';
 
 @Component({
   selector: 'app-make',

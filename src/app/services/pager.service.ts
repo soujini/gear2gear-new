@@ -1,13 +1,19 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as _ from 'underscore';
+import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class PagerService {
+    public userDetailsSubject = new BehaviorSubject({});
+    userDetails = this.userDetailsSubject.asObservable();
 
-  constructor() { }
-  getPager(totalItems: number, currentPage: number = 1, pageSize: number = 10) {
+
+    constructor(public httpClient: HttpClient,private router: Router, ) { }
+    getPager(totalItems: number, currentPage: number = 1, pageSize: number = 10) {
         // calculate total pages
         let totalPages = Math.ceil(totalItems / pageSize);
 
@@ -42,7 +48,7 @@ export class PagerService {
                 endPage = totalPages;
             } else {
                 startPage = currentPage - 2;
-                endPage = currentPage+2;
+                endPage = currentPage + 2;
             }
         }
 
@@ -66,4 +72,6 @@ export class PagerService {
             pages: pages
         };
     }
+  
+            
 }
