@@ -35,7 +35,6 @@ export class CarService {
   }
 
   public getCars(): Observable<any> {
-    alert(this.apiUrl);
     return this.http.get(this.apiUrl+'/api/cars', {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .pipe(map(res => res));
   }
