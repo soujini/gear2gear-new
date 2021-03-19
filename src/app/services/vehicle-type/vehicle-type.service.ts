@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-// const environment = require('../../../environments/environment.ts');
-const environment = require('../../../environments/environment.ts');
-// const environment = require('../../../environments/environment.ts');
+// const environment = require('../../../environments/environment');
+const environment = require('../../../environments/environment');
+// const environment = require('../../../environments/environment');
 import { VehicleType } from '../../data-model';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs';
