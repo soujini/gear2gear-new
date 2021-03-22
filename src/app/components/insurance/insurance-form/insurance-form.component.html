@@ -1,4 +1,4 @@
-<section class="container-fluid section">
+<section class="container section">
   <div *ngIf="message" class="alert alert-success text-center col-12">
     <strong>Success!</strong>&nbsp;<span>{{message}}</span>
   </div>
@@ -14,7 +14,7 @@
 
     <div class="col-12">
       <form [formGroup]="insuranceForm" (ngSubmit)="onSubmit()" >
-        <div class="form-group">
+        <div class="form-group col-md-4">
           <label for="inputInsuranceName" class="col-sm-2 col-form-label">Name</label>
           <div>
             <div class="md-form mt-0">
@@ -28,7 +28,7 @@
         <div class="form-group">
           <div class="text-right">
             <!--  [disabled]="insuranceForm.invalid"-->
-            <button type="submit" class="btn btn-primary btn-custom btn-md" >
+            <button type="submit" class="btn btn-primary btn-custom btn-md mr-3" >
               <i class="fa fa-save"></i>
             </button>
             <app-simple-modal [module]="module" [mode]="mode" [name]="insuranceForm.controls.name.value" (isDelete)="deleteInsurance($event)"></app-simple-modal>
