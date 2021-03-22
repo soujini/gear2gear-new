@@ -71,7 +71,6 @@ export class CarListComponent implements OnInit {
 
   //On Click of the Edit Button
   selectCar(car_id: number, mode: any) {
-
     this.selectedCarId = car_id;
     this.carService.selectedMode = mode;
     this.router.navigate(['/car/edit/'+ this.selectedCarId]);
