@@ -23,29 +23,21 @@ export class ColorComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getColors();
-    this.colorService.refreshList.subscribe(
-      res=>{
-          this.getColors();
-      },
-      err => {
-        console.log(err);
-      }
-    );
+  
   }
 
-  getColors()  {
-    this.colors$ = this.colorService.getColors();
-  }
+  // getColors()  {
+  //   this.colors$ = this.colorService.getColors();
+  // }
 
-  searchColors(searchTerm){
-    if(searchTerm){
-      this.colors$ = this.colorService.searchColors(searchTerm);
-    }
-    else{
-      this.getColors();
-      //this.colors$ = new EmptyObservable();
-    }
-  }
+  // searchColors(searchTerm){
+  //   if(searchTerm){
+  //     this.colors$ = this.colorService.searchColors(searchTerm);
+  //   }
+  //   else{
+  //     this.getColors();
+  //     //this.colors$ = new EmptyObservable();
+  //   }
+  // }
 
 }

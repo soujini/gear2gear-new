@@ -3,7 +3,7 @@
     <app-search (searchTermValueChanged)="searchColors($event)" (isCreate)="createColor('Create')"></app-search>
   </div>
   <div>
-    <div *ngIf="(results$ | async)?.length==0" class="alert alert-danger text-center col-12">
+    <div *ngIf="(colors$ | async)?.length==0" class="alert alert-danger text-center col-12">
       <strong>Error!</strong>&nbsp;<span>No records found</span>
     </div>
     <table class="table">
@@ -14,7 +14,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor='let color of results$ | async' [ngClass]="{'is-active': selectedColorId == color.color_id}">
+        <tr *ngFor='let color of colors$ | async' [ngClass]="{'is-active': selectedColorId == color.color_id}">
           <td class="capitalize">{{color.name}}</td>
           <td class="pointer" (click)="selectColor(color.color_id, 'Edit')">
               <i class="fa fa-pencil"></i>

@@ -23,29 +23,20 @@ export class ExpenseComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getExpenses();
-    this.expenseService.refreshList.subscribe(
-      res=>{
-          this.getExpenses();
-      },
-      err => {
-        console.log(err);
-      }
-    );
   }
 
-  getExpenses()  {
-    this.expenses$ = this.expenseService.getExpenses();
-  }
+  // getExpenses()  {
+  //   this.expenses$ = this.expenseService.getExpenses();
+  // }
 
-  searchExpenses(searchTerm){
-    if(searchTerm){
-      this.expenses$ = this.expenseService.searchExpenses(searchTerm);
-    }
-    else{
-      this.getExpenses();
-      //this.expenses$ = new EmptyObservable();
-    }
-  }
+  // searchExpenses(searchTerm){
+  //   if(searchTerm){
+  //     this.expenses$ = this.expenseService.searchExpenses(searchTerm);
+  //   }
+  //   else{
+  //     this.getExpenses();
+  //     //this.expenses$ = new EmptyObservable();
+  //   }
+  // }
 
 }

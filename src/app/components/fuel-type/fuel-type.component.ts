@@ -4,8 +4,8 @@ import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { FuelType } from 'app/data-model';
-import { FuelTypeService } from 'app/services/fuel-type/fuel-type.service';
+import { FuelType } from '../../data-model';
+import { FuelTypeService } from '../../services/fuel-type/fuel-type.service';
 
 @Component({
   selector: 'app-make',
@@ -23,29 +23,21 @@ export class FuelTypeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getFuelTypes();
-    this.fuelTypeService.refreshList.subscribe(
-      res=>{
-          this.getFuelTypes();
-      },
-      err => {
-        console.log(err);
-      }
-    );
+    
   }
 
-  getFuelTypes()  {
-    this.fuelTypes$ = this.fuelTypeService.getFuelTypes();
-  }
+  // getFuelTypes()  {
+  //   this.fuelTypes$ = this.fuelTypeService.getFuelTypes();
+  // }
 
-  searchFuelTypes(searchTerm){
-    if(searchTerm){
-      this.fuelTypes$ = this.fuelTypeService.searchFuelTypes(searchTerm);
-    }
-    else{
-      this.getFuelTypes();
-      //this.fuelTypes$ = new EmptyObservable();
-    }
-  }
+  // searchFuelTypes(searchTerm){
+  //   if(searchTerm){
+  //     this.fuelTypes$ = this.fuelTypeService.searchFuelTypes(searchTerm);
+  //   }
+  //   else{
+  //     this.getFuelTypes();
+  //     //this.fuelTypes$ = new EmptyObservable();
+  //   }
+  // }
 
 }

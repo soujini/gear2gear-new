@@ -12,7 +12,7 @@ import { ExpenseService } from '../../../services/expense/expense.service';
 })
 export class ExpenseListComponent implements OnInit {
   @Input()
-  results$: Observable<Expense>;
+  expenses$: Observable<Expense>;
 
   @Output()
   searchTerm = new EventEmitter();
@@ -28,11 +28,33 @@ export class ExpenseListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.router.navigate(['/expense/add']);
+    this.getExpenses();
+    this.expenseService.refreshList.subscribe(
+      res=>{
+          this.getExpenses();
+      },
+      err => {
+        console.log(err);
+      }
+    );
+    // this.router.navigate(['/expense/add']);
   }
 
-  searchExpenses(search: string){
-    this.searchTerm.emit(search);
+  // searchExpenses(search: string){
+  //   this.searchTerm.emit(search);
+  // }
+  getExpenses()  {
+    this.expenses$ = this.expenseService.getExpenses();
+  }
+
+  searchExpenses(searchTerm){
+    if(searchTerm){
+      this.expenses$ = this.expenseService.searchExpenses(searchTerm);
+    }
+    else{
+      this.getExpenses();
+      //this.expenses$ = new EmptyObservable();
+    }
   }
 
   //On Click of the Add Button
