@@ -363,7 +363,7 @@ export class CarFormComponent implements OnInit {
         }
         selectCar(car_id:number){
           this.carService.selectedMode = 'Edit';
-          this.router.navigate(['/car/edit']);
+          this.router.navigate(['/car/edit/'+car_id]);
           setTimeout(() => {
             this.carService.selectedCarId.next(car_id);
           }, 100);
