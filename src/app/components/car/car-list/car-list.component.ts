@@ -71,13 +71,13 @@ export class CarListComponent implements OnInit {
 
   //On Click of the Edit Button
   selectCar(car_id: number, mode: any) {
-
     this.selectedCarId = car_id;
     this.carService.selectedMode = mode;
+    this.carService.selectedCarId.next(car_id);
     this.router.navigate(['/car/edit']);
-    setTimeout(() => {
-      this.carService.selectedCarId.next(car_id);
-    }, 100);
+    // setTimeout(() => {
+    //   this.carService.selectedCarId.next(car_id);
+    // }, 100);
   }
 
 }
