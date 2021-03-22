@@ -17,7 +17,7 @@ export class CarListComponent implements OnInit {
   @Output()
   searchTerm = new EventEmitter();
 
-  selectedCarId: number;
+  selectedCarId:any="";
   title: string = "Car";
   selectedCar: Car;
 
@@ -74,10 +74,10 @@ export class CarListComponent implements OnInit {
 
     this.selectedCarId = car_id;
     this.carService.selectedMode = mode;
-    this.router.navigate(['/car/edit']);
+    this.router.navigate(['/car/edit/'+ this.selectedCarId]);
     setTimeout(() => {
       this.carService.selectedCarId.next(car_id);
     }, 100);
   }
-
+  
 }

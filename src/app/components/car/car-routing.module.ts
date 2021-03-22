@@ -11,7 +11,7 @@ const carRoutes: Routes = [
     children: [
         {path: 'list',component: CarListComponent},
         {path: 'add', component: CarFormComponent},
-        {path: 'edit', component: CarFormComponent}
+        {path: 'edit/:id', component: CarFormComponent}
       ]
 }];
 

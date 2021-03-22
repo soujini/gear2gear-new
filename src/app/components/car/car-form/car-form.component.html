@@ -242,15 +242,15 @@
                 <!-- Default switch -->
                 <div class="form-check col-md-4" *ngIf="carForm.controls.is_sold.value == true" >
                   <input type="checkbox" class="form-check-input" id="inputIsSold" formControlName="is_sold" (change)="is_sold()">
-                  <label class="form-check-label" for="inputIsSold">Is Sold?</label>
+                  <label class="form-check-label" for="inputIsSold">Sold?</label>
                 </div>
                 <div class="form-check col-md-4">
                   <input type="checkbox" class="form-check-input" id="inputFlooded" formControlName="is_flooded">
-                  <label class="form-check-label" for="inputFlooded">Is Flooded?</label>
+                  <label class="form-check-label" for="inputFlooded">Flooded?</label>
                 </div>
                 <div class="form-check col-md-4">
                   <input type="checkbox" class="form-check-input" id="inputAccidental" formControlName="is_accidental">
-                  <label class="form-check-label" for="inputAccidental">Is Accidental?</label>
+                  <label class="form-check-label" for="inputAccidental">Accidental?</label>
                 </div>
                 <div class="form-group" *ngIf="selectedCar_Id" style="margin-bottom:25px">
                   <app-upload-file [car_id]=selectedCar_Id></app-upload-file>
