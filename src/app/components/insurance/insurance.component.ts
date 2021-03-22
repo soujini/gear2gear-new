@@ -23,29 +23,21 @@ export class InsuranceComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getInsurances();
-    this.insuranceService.refreshList.subscribe(
-      res=>{
-          this.getInsurances();
-      },
-      err => {
-        console.log(err);
-      }
-    );
+   
   }
 
-  getInsurances()  {
-    this.insurances$ = this.insuranceService.getInsurances();
-  }
+  // getInsurances()  {
+  //   this.insurances$ = this.insuranceService.getInsurances();
+  // }
 
-  searchInsurances(searchTerm){
-    if(searchTerm){
-      this.insurances$ = this.insuranceService.searchInsurances(searchTerm);
-    }
-    else{
-        this.getInsurances();
-      //this.insurances$ = new EmptyObservable();
-    }
-  }
+  // searchInsurances(searchTerm){
+  //   if(searchTerm){
+  //     this.insurances$ = this.insuranceService.searchInsurances(searchTerm);
+  //   }
+  //   else{
+  //       this.getInsurances();
+  //     //this.insurances$ = new EmptyObservable();
+  //   }
+  // }
 
 }

@@ -12,7 +12,7 @@ import { FuelTypeService } from '../../../services/fuel-type/fuel-type.service';
 })
 export class FuelTypeListComponent implements OnInit {
   @Input()
-  results$: Observable<FuelType>;
+  fuelTypes$: Observable<FuelType>;
 
   @Output()
   searchTerm = new EventEmitter();
@@ -28,12 +28,34 @@ export class FuelTypeListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.router.navigate(['/fuelType/add']);
+    this.getFuelTypes();
+    this.fuelTypeService.refreshList.subscribe(
+      res=>{
+          this.getFuelTypes();
+      },
+      err => {
+        console.log(err);
+      }
+    );
+    // this.router.navigate(['/fuelType/add']);
   }
 
-  searchFuelTypes(search: string){
-    this.searchTerm.emit(search);
+  getFuelTypes()  {
+    this.fuelTypes$ = this.fuelTypeService.getFuelTypes();
   }
+
+  searchFuelTypes(searchTerm){
+    if(searchTerm){
+      this.fuelTypes$ = this.fuelTypeService.searchFuelTypes(searchTerm);
+    }
+    else{
+      this.getFuelTypes();
+      //this.fuelTypes$ = new EmptyObservable();
+    }
+  }
+  // searchFuelTypes(search: string){
+  //   this.searchTerm.emit(search);
+  // }
 
   //On Click of the Add Button
   createFuelType(mode:any){

@@ -3,7 +3,7 @@
     <app-search (searchTermValueChanged)="searchFuelTypes($event)" (isCreate)="createFuelType('Create')"></app-search>
   </div>
   <div>
-    <div *ngIf="(results$ | async)?.length==0" class="alert alert-danger text-center col-12">
+    <div *ngIf="(fuelTypes$ | async)?.length==0" class="alert alert-danger text-center col-12">
       <strong>Error!</strong>&nbsp;<span>No records found</span>
     </div>
     <table class="table">
@@ -14,7 +14,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor='let fuelType of results$ | async' [ngClass]="{'is-active': selectedFuelTypeId == fuelType.fuel_type_id}">
+        <tr *ngFor='let fuelType of fuelTypes$ | async' [ngClass]="{'is-active': selectedFuelTypeId == fuelType.fuel_type_id}">
           <td class="capitalize">{{fuelType.name}}</td>
           <td class="pointer" (click)="selectFuelType(fuelType.fuel_type_id, 'Edit')">
               <i class="fa fa-pencil"></i>

@@ -23,15 +23,7 @@ export class TransmissionTypeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getTransmissionTypes();
-    this.transmissionTypeService.refreshList.subscribe(
-      res=>{
-          this.getTransmissionTypes();
-      },
-      err => {
-        console.log(err);
-      }
-    );
+   
   }
 
   getTransmissionTypes()  {

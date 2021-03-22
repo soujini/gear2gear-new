@@ -127,10 +127,7 @@ section {
     padding:0px;
 }
 
-.car-img{
-  padding:0px;
-  height:350px !important;
-}
+
 
 .car-details{
   border-left:0px;
@@ -197,3 +194,16 @@ input[type=checkbox] {
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) and (max-width: 1920px) {}
+
+// .car-img{
+//   padding:0px;
+//   height:350px !important;
+// }
+
+.frame{
+  // width: 116px;
+  height: 350px;
+  vertical-align: middle;
+  text-align: center;
+  display: table-cell;
+}

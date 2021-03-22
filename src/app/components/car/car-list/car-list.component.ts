@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Router,ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { Car } from '../../../data-model';
 import { CarService } from '../../../services/car/car.service';
@@ -17,17 +17,17 @@ export class CarListComponent implements OnInit {
   @Output()
   searchTerm = new EventEmitter();
 
-  selectedCarId:number;
-  title : string = "Car";
-  selectedCar : Car;
+  selectedCarId: number;
+  title: string = "Car";
+  selectedCar: Car;
 
   cars$: Observable<Car>;
 
-  constructor(private carService:CarService, private router:Router, private route:ActivatedRoute) {
+  constructor(private carService: CarService, private router: Router, private route: ActivatedRoute) {
 
-    this.carService.selectedCarId.subscribe(res=>{
-      this.selectedCarId=res;
-    },err=>{
+    this.carService.selectedCarId.subscribe(res => {
+      this.selectedCarId = res;
+    }, err => {
 
     });
   }
@@ -35,8 +35,8 @@ export class CarListComponent implements OnInit {
   ngOnInit() {
     this.getCars();
     this.carService.refreshList.subscribe(
-      res=>{
-          this.getCars();
+      res => {
+        this.getCars();
       },
       err => {
         console.log(err);
@@ -44,15 +44,15 @@ export class CarListComponent implements OnInit {
     );
     // this.router.navigate(['/car/add']);
   }
-  getCars()  {
+  getCars() {
     this.cars$ = this.carService.getCars();
   }
 
-  searchCars(searchTerm){
-    if(searchTerm){
+  searchCars(searchTerm) {
+    if (searchTerm) {
       this.cars$ = this.carService.searchCars(searchTerm);
     }
-    else{
+    else {
       this.getCars();
       //this.cars$ = new EmptyObservable();
     }
@@ -63,16 +63,16 @@ export class CarListComponent implements OnInit {
   // }
 
   //On Click of the Add Button
-  createCar(mode:any){
-    this.selectedCarId=0;
+  createCar(mode: any) {
+    this.selectedCarId = 0;
     this.carService.selectedMode = mode;
     this.router.navigate(['/car/add']);
   }
 
   //On Click of the Edit Button
-  selectCar(car_id:number, mode:any){
+  selectCar(car_id: number, mode: any) {
 
-    this.selectedCarId=car_id;
+    this.selectedCarId = car_id;
     this.carService.selectedMode = mode;
     this.router.navigate(['/car/edit']);
     setTimeout(() => {

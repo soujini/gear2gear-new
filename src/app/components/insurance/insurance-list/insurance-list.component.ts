@@ -12,7 +12,7 @@ import { InsuranceService } from '../../../services/insurance/insurance.service'
 })
 export class InsuranceListComponent implements OnInit {
   @Input()
-  results$: Observable<Insurance>;
+  insurances$: Observable<Insurance>;
 
   @Output()
   searchTerm = new EventEmitter();
@@ -28,11 +28,33 @@ export class InsuranceListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.router.navigate(['/insurance/add']);
+    this.getInsurances();
+    this.insuranceService.refreshList.subscribe(
+      res=>{
+          this.getInsurances();
+      },
+      err => {
+        console.log(err);
+      }
+    );
+    // this.router.navigate(['/insurance/add']);
   }
 
-  searchInsurances(search: string){
-    this.searchTerm.emit(search);
+  // searchInsurances(search: string){
+  //   this.searchTerm.emit(search);
+  // }
+  getInsurances()  {
+    this.insurances$ = this.insuranceService.getInsurances();
+  }
+
+  searchInsurances(searchTerm){
+    if(searchTerm){
+      this.insurances$ = this.insuranceService.searchInsurances(searchTerm);
+    }
+    else{
+        this.getInsurances();
+      //this.insurances$ = new EmptyObservable();
+    }
   }
 
   //On Click of the Add Button

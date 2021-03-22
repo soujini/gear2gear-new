@@ -12,7 +12,7 @@ import { TransmissionTypeService } from '../../../services/transmission-type/tra
 })
 export class TransmissionTypeListComponent implements OnInit {
   @Input()
-  results$: Observable<TransmissionType>;
+  transmissionTypes$: Observable<TransmissionType>;
 
   @Output()
   searchTerm = new EventEmitter();
@@ -28,12 +28,35 @@ export class TransmissionTypeListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.router.navigate(['/transmissionType/add']);
+    this.getTransmissionTypes();
+    this.transmissionTypeService.refreshList.subscribe(
+      res=>{
+          this.getTransmissionTypes();
+      },
+      err => {
+        console.log(err);
+      }
+    );
+    // this.router.navigate(['/transmissionType/add']);
   }
 
-  searchTransmissionTypes(search: string){
-    this.searchTerm.emit(search);
+  getTransmissionTypes()  {
+    this.transmissionTypes$ = this.transmissionTypeService.getTransmissionTypes();
   }
+
+  searchTransmissionTypes(searchTerm){
+    if(searchTerm){
+      this.transmissionTypes$ = this.transmissionTypeService.searchTransmissionTypes(searchTerm);
+    }
+    else{
+      this.getTransmissionTypes();
+      //this.transmissionTypes$ = new EmptyObservable();
+    }
+  }
+
+  // searchTransmissionTypes(search: string){
+  //   this.searchTerm.emit(search);
+  // }
 
   //On Click of the Add Button
   createTransmissionType(mode:any){
