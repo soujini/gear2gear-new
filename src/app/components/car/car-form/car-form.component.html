@@ -1,5 +1,5 @@
 
-<section class="container-fluid section">
+<section class="container section">
   <div *ngIf="message" class="alert alert-success text-center col-12">
     <strong>Success!</strong>&nbsp;<span>{{message}}</span>
   </div>
@@ -9,7 +9,7 @@
   <div class="row">
     <mat-tab-group class="col-12">
       <mat-tab  label="Car Details">
-        <div class="col-12 grey lighten-4">
+        <div class="col-12 grey lighten-4" style="padding-bottom:35px">
           <header class="header row">
             <div class="col-12">
               <app-title [title]=title></app-title>

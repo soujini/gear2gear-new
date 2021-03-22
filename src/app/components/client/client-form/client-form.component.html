@@ -1,4 +1,4 @@
-<section  id="top" class="container-fluid section">
+<section  id="top" class="container section">
   <div *ngIf="message" class="alert alert-success text-center col-12">
     <strong>Success!</strong>&nbsp;<span>{{message}}</span>
   </div>
@@ -17,7 +17,8 @@
             </header>
             <div class="col-12">
               <form [formGroup]="clientForm" (ngSubmit)="onSubmit()" >
-                <div class="form-group">
+                <div class="col-12" style="display:inline-flex;flex-wrap:wrap">
+                <div class="form-group col-md-4">
                   <label for="inputClientName" class="col-sm-3 col-form-label">Name</label>
                   <div>
                     <div class="md-form mt-0">
@@ -27,7 +28,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-md-4">
                   <label for="inputPhone" class="col-sm-3 col-form-label">Phone</label>
                   <div>
                     <div class="md-form mt-0">
@@ -37,7 +38,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-md-4">
                   <label for="inputEmail" class="col-sm-3 col-form-label">Email</label>
                   <div>
                     <div class="md-form mt-0">
@@ -47,7 +48,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-md-4">
                   <label for="inputAddress" class="col-sm-3 col-form-label">Address</label>
                   <div>
                     <div class="md-form mt-0">
@@ -57,7 +58,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-md-4">
                   <label for="inputCity" class="col-sm-3 col-form-label">City</label>
                   <div>
                     <div class="md-form mt-0">
@@ -66,7 +67,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-md-4">
                   <label for="inputState" class="col-sm-3 col-form-label">State</label>
                   <div>
                     <div class="mt-0">
@@ -78,7 +79,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-md-4">
                   <label for="inputPin" class="col-sm-3 col-form-label">Pin</label>
                   <div>
                     <div class="md-form mt-0">
@@ -92,18 +93,19 @@
                   <input type="checkbox" class="form-check-input" id="inputOwner" formControlName="is_owner">
                   <label class="form-check-label" for="inputOwner">Is Owner?</label>
                 </div> -->
-                <div class="form-check" *ngIf="clientForm.controls.client_id.value != 1">
+                <div class="form-check col-md-4" *ngIf="clientForm.controls.client_id.value != 1">
                   <input type="checkbox" class="form-check-input" id="inputInvestor" formControlName="is_investor">
                   <label class="form-check-label" for="inputInvestor">Is Investor?</label>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-md-12">
                   <div class="text-right">
-                    <button type="submit" class="btn btn-primary btn-custom btn-md" >
+                    <button type="submit" class="btn btn-primary btn-custom btn-md mr-3" >
                       <i class="fa fa-save"></i>
                     </button>
                     <app-simple-modal [module]="module" [mode]="mode" [name]="clientForm.controls.name.value" (isDelete)="deleteClient($event)"></app-simple-modal>
                   </div>
+                </div>
                 </div>
               </form>
             </div>

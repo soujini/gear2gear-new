@@ -1,11 +1,11 @@
-<section class="container-fluid section">
+<section class="container section">
   <div *ngIf="message" class="alert alert-success text-center col-12">
     <strong>Success!</strong>&nbsp;<span>{{message}}</span>
   </div>
   <div *ngIf="message_error" class="alert alert-danger text-center col-12">
     <strong>Error!</strong>&nbsp;<span>{{message_error}}</span>
   </div>
-  <div class="col-12 grey lighten-4">
+  <div class="col-12 grey lighten-4" style="padding-bottom:35px">
     <header class="header row">
       <div class="col-12">
         <app-title [title]=title></app-title>
@@ -14,8 +14,9 @@
 
     <div class="col-12">
       <form [formGroup]="modelForm" (ngSubmit)="onSubmit()" >
-        <div class="form-group">
-          <label for="inputMake" class="col-sm-2 col-form-label">Make</label>
+        <div class="col-12" style="display:inline-flex;flex-wrap:wrap">
+        <div class="form-group col-md-6">
+          <label for="inputMake" class="col-form-label">Make</label>
           <div>
             <div class="mt-0">
               <select class="form-control" id="inputMake" formControlName="make_id">
@@ -25,8 +26,8 @@
             </div>
           </div>
         </div>
-        <div class="form-group">
-          <label for="inputModelName" class="col-sm-2 col-form-label">Name</label>
+        <div class="form-group col-md-6">
+          <label for="inputModelName" class="col-form-label">Name</label>
           <div>
             <div class="md-form mt-0">
               <input type="text" class="form-control capitalize" id="inputModelName" formControlName="name">
@@ -36,15 +37,16 @@
           </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-12">
           <div class="text-right">
             <!--  [disabled]="modelForm.invalid"-->
-            <button type="submit" class="btn btn-primary btn-custom btn-md" >
+            <button type="submit" class="btn btn-primary btn-custom btn-md mr-3" >
               <i class="fa fa-save"></i>
             </button>
             <app-simple-modal [module]="module" [mode]="mode" [name]="modelForm.controls.name.value" (isDelete)="deleteModel($event)"></app-simple-modal>
 
           </div>
+        </div>
         </div>
       </form>
     </div>
