@@ -12,7 +12,8 @@ import { MakeService } from '../../../services/make/make.service';
 })
 export class MakeListComponent implements OnInit {
   @Input()
-  results$: Observable<Make>;
+  // results$: Observable<Make>;
+  makes$: Observable<Make>;
 
   @Output()
   searchTerm = new EventEmitter();
@@ -29,15 +30,38 @@ export class MakeListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.router.navigate(['/make/add']);
+    this.makeService.selectedMakeId.next(0);
+    this.getMakes();
+    this.makeService.refreshList.subscribe(
+      res=>{
+          this.getMakes();
+      },
+      err => {
+        console.log(err);
+      }
+    );
+    // this.router.navigate(['/make/add']);
+  }
+  getMakes()  {
+    this.makes$ = this.makeService.getMakes();
+  }
+
+  searchMakes(searchTerm){
+    if(searchTerm){
+      this.makes$ = this.makeService.searchMakes(searchTerm);
+    }
+    else{
+      this.getMakes();
+      //this.makes$ = new EmptyObservable();
+    }
   }
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
 
-  searchMakes(search: string){
-    this.searchTerm.emit(search);
-  }
+  // searchMakes(search: string){
+  //   this.searchTerm.emit(search);
+  // }
 
   //On Click of the Add Button
   createMake(mode:any){

@@ -23,30 +23,21 @@ export class MakeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.makeService.selectedMakeId.next(0);
-    this.getMakes();
-    this.makeService.refreshList.subscribe(
-      res=>{
-          this.getMakes();
-      },
-      err => {
-        console.log(err);
-      }
-    );
+  
   }
 
-  getMakes()  {
-    this.makes$ = this.makeService.getMakes();
-  }
+  // getMakes()  {
+  //   this.makes$ = this.makeService.getMakes();
+  // }
 
-  searchMakes(searchTerm){
-    if(searchTerm){
-      this.makes$ = this.makeService.searchMakes(searchTerm);
-    }
-    else{
-      this.getMakes();
-      //this.makes$ = new EmptyObservable();
-    }
-  }
+  // searchMakes(searchTerm){
+  //   if(searchTerm){
+  //     this.makes$ = this.makeService.searchMakes(searchTerm);
+  //   }
+  //   else{
+  //     this.getMakes();
+  //     //this.makes$ = new EmptyObservable();
+  //   }
+  // }
 
 }

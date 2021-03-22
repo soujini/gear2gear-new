@@ -4,7 +4,8 @@ import { Router,ActivatedRoute } from '@angular/router';
 
 import { Client,Make,Model } from '../../../data-model';
 import { ClientService } from '../../../services/client/client.service';
-
+import {EMPTY} from 'rxjs';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-client-list',
@@ -14,6 +15,7 @@ import { ClientService } from '../../../services/client/client.service';
 export class ClientListComponent implements OnInit {
   @Input()
   results$: Observable<Client>;
+  clients$: Observable<Client>;
 
   @Output()
   searchTerm = new EventEmitter();
@@ -29,12 +31,34 @@ export class ClientListComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.router.navigate(['/client/add']);
-  }
+      this.getClients();
 
-  searchClients(search: string){
-    this.searchTerm.emit(search);
+    this.clientService.refreshList.subscribe(
+      res=>{
+          this.getClients();
+      },
+      err => {
+        console.log(err);
+      }
+    );
+    // this.router.navigate(['/client/add']);
   }
+  getClients()  {
+      this.clients$ = this.clientService.getClients();
+    }
+    searchClients(searchTerm){
+    if(searchTerm){
+      this.clients$ = this.clientService.searchClients(searchTerm);
+    }
+    else{
+      this.getClients();
+      this.clients$ =  EMPTY;
+      of({});
+    }
+  }
+  // searchClients(search: string){
+  //   this.searchTerm.emit(search);
+  // }
 
   //On Click of the Add Button
   createClient(mode:any){

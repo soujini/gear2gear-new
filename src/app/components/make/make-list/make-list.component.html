@@ -3,7 +3,7 @@
     <app-search (searchTermValueChanged)="searchMakes($event)" (isCreate)="createMake('Create')"></app-search>
   </div>
   <div>
-    <div *ngIf="(results$ | async)?.length==0" class="alert alert-danger text-center col-12">
+    <div *ngIf="(makes$ | async)?.length==0" class="alert alert-danger text-center col-12">
       <strong>Error!</strong>&nbsp;<span>No records found</span>
     </div>
     <table class="table">
@@ -14,7 +14,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor='let make of results$ | async' [ngClass]="{'is-active': selectedMakeId == make.make_id}">
+        <tr *ngFor='let make of makes$ | async' [ngClass]="{'is-active': selectedMakeId == make.make_id}">
           <td class="capitalize">{{make.name}}</td>
           <td class="pointer" (click)="selectMake(make.make_id, 'Edit')">
               <i class="fa fa-pencil"></i>

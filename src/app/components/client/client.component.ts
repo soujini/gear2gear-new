@@ -26,33 +26,24 @@ export class ClientComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getClients();
-
-    this.clientService.refreshList.subscribe(
-      res=>{
-          this.getClients();
-      },
-      err => {
-        console.log(err);
-      }
-    );
+  
   }
 
 
-  getClients()  {
-    this.clients$ = this.clientService.getClients();
-  }
+  // getClients()  {
+  //   this.clients$ = this.clientService.getClients();
+  // }
 
-  searchClients(searchTerm){
-    if(searchTerm){
-      this.clients$ = this.clientService.searchClients(searchTerm);
-    }
-    else{
-      this.getClients();
-      this.clients$ =  EMPTY;
-      of({});
-    }
-  }
+  // searchClients(searchTerm){
+  //   if(searchTerm){
+  //     this.clients$ = this.clientService.searchClients(searchTerm);
+  //   }
+  //   else{
+  //     this.getClients();
+  //     this.clients$ =  EMPTY;
+  //     of({});
+  //   }
+  // }
 
 //   getStates(){
 //     this.commonService.getStates().subscribe(res=>{
