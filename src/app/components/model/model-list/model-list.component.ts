@@ -12,8 +12,9 @@ import { ModelService } from '../../../services/model/model.service';
 })
 export class ModelListComponent implements OnInit {
   @Input()
-  results$: Observable<Model>;
-
+  // results$: Observable<Model>;
+  models$: Observable<Model>;
+  
   @Output()
   searchTerm = new EventEmitter();
 
@@ -28,12 +29,33 @@ export class ModelListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.router.navigate(['/model/add']);
+    this.getModels();
+    this.modelService.refreshList.subscribe(
+      res=>{
+          this.getModels();
+      },
+      err => {
+        console.log(err);
+      }
+    );
+    // this.router.navigate(['/model/add']);
+  }
+  getModels()  {
+    this.models$ = this.modelService.getModels();
   }
 
-  searchModels(search: string){
-    this.searchTerm.emit(search);
+  searchModels(searchTerm){
+    if(searchTerm){
+      this.models$ = this.modelService.searchModels(searchTerm);
+    }
+    else{
+      this.getModels();
+      //this.models$ = new EmptyObservable();
+    }
   }
+  // searchModels(search: string){
+  //   this.searchTerm.emit(search);
+  // }
 
   //On Click of the Add Button
   createModel(mode:any){

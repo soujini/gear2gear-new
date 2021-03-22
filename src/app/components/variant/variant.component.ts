@@ -23,29 +23,21 @@ export class VariantComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getVariants();
-    this.variantService.refreshList.subscribe(
-      res=>{
-          this.getVariants();
-      },
-      err => {
-        console.log(err);
-      }
-    );
+    
   }
 
-  getVariants()  {
-    this.variants$ = this.variantService.getVariants();
-  }
+  // getVariants()  {
+  //   this.variants$ = this.variantService.getVariants();
+  // }
 
-  searchVariants(searchTerm){
-    if(searchTerm){
-      this.variants$ = this.variantService.searchVariants(searchTerm);
-    }
-    else{
-      this.getVariants();
-      //this.variants$ = new EmptyObservable();
-    }
-  }
+  // searchVariants(searchTerm){
+  //   if(searchTerm){
+  //     this.variants$ = this.variantService.searchVariants(searchTerm);
+  //   }
+  //   else{
+  //     this.getVariants();
+  //     //this.variants$ = new EmptyObservable();
+  //   }
+  // }
 
 }

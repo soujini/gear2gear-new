@@ -12,8 +12,8 @@ import { VehicleTypeService } from '../../../services/vehicle-type/vehicle-type.
 })
 export class VehicleTypeListComponent implements OnInit {
   @Input()
-  results$: Observable<VehicleType>;
-
+  // results$: Observable<VehicleType>;
+  vehicleTypes$: Observable<VehicleType>;
   @Output()
   searchTerm = new EventEmitter();
 
@@ -28,12 +28,33 @@ export class VehicleTypeListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.router.navigate(['/vehicleType/add']);
+    this.getVehicleTypes();
+    this.vehicleTypeService.refreshList.subscribe(
+      res=>{
+          this.getVehicleTypes();
+      },
+      err => {
+        console.log(err);
+      }
+    );
+    // this.router.navigate(['/vehicleType/add']);
+  }
+  getVehicleTypes()  {
+    this.vehicleTypes$ = this.vehicleTypeService.getVehicleTypes();
   }
 
-  searchVehicleTypes(search: string){
-    this.searchTerm.emit(search);
+  searchVehicleTypes(searchTerm){
+    if(searchTerm){
+      this.vehicleTypes$ = this.vehicleTypeService.searchVehicleTypes(searchTerm);
+    }
+    else{
+      this.getVehicleTypes();
+      //this.vehicleTypes$ = new EmptyObservable();
+    }
   }
+  // searchVehicleTypes(search: string){
+  //   this.searchTerm.emit(search);
+  // }
 
   //On Click of the Add Button
   createVehicleType(mode:any){

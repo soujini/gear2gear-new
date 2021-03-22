@@ -23,29 +23,21 @@ export class VehicleTypeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getVehicleTypes();
-    this.vehicleTypeService.refreshList.subscribe(
-      res=>{
-          this.getVehicleTypes();
-      },
-      err => {
-        console.log(err);
-      }
-    );
+   
   }
 
-  getVehicleTypes()  {
-    this.vehicleTypes$ = this.vehicleTypeService.getVehicleTypes();
-  }
+  // getVehicleTypes()  {
+  //   this.vehicleTypes$ = this.vehicleTypeService.getVehicleTypes();
+  // }
 
-  searchVehicleTypes(searchTerm){
-    if(searchTerm){
-      this.vehicleTypes$ = this.vehicleTypeService.searchVehicleTypes(searchTerm);
-    }
-    else{
-      this.getVehicleTypes();
-      //this.vehicleTypes$ = new EmptyObservable();
-    }
-  }
+  // searchVehicleTypes(searchTerm){
+  //   if(searchTerm){
+  //     this.vehicleTypes$ = this.vehicleTypeService.searchVehicleTypes(searchTerm);
+  //   }
+  //   else{
+  //     this.getVehicleTypes();
+  //     //this.vehicleTypes$ = new EmptyObservable();
+  //   }
+  // }
 
 }

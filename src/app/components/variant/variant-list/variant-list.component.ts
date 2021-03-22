@@ -12,7 +12,8 @@ import { VariantService } from '../../../services/variant/variant.service';
 })
 export class VariantListComponent implements OnInit {
   @Input()
-  results$: Observable<Variant>;
+  // results$: Observable<Variant>;
+  variants$: Observable<Variant>;
 
   @Output()
   searchTerm = new EventEmitter();
@@ -28,12 +29,33 @@ export class VariantListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.router.navigate(['/variant/add']);
+    this.getVariants();
+    this.variantService.refreshList.subscribe(
+      res=>{
+          this.getVariants();
+      },
+      err => {
+        console.log(err);
+      }
+    );
+    // this.router.navigate(['/variant/add']);
+  }
+  getVariants()  {
+    this.variants$ = this.variantService.getVariants();
   }
 
-  searchVariants(search: string){
-    this.searchTerm.emit(search);
+  searchVariants(searchTerm){
+    if(searchTerm){
+      this.variants$ = this.variantService.searchVariants(searchTerm);
+    }
+    else{
+      this.getVariants();
+      //this.variants$ = new EmptyObservable();
+    }
   }
+  // searchVariants(search: string){
+  //   this.searchTerm.emit(search);
+  // }
 
   //On Click of the Add Button
   createVariant(mode:any){

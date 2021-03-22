@@ -23,29 +23,21 @@ export class ModelComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getModels();
-    this.modelService.refreshList.subscribe(
-      res=>{
-          this.getModels();
-      },
-      err => {
-        console.log(err);
-      }
-    );
+   
   }
 
-  getModels()  {
-    this.models$ = this.modelService.getModels();
-  }
+  // getModels()  {
+  //   this.models$ = this.modelService.getModels();
+  // }
 
-  searchModels(searchTerm){
-    if(searchTerm){
-      this.models$ = this.modelService.searchModels(searchTerm);
-    }
-    else{
-      this.getModels();
-      //this.models$ = new EmptyObservable();
-    }
-  }
+  // searchModels(searchTerm){
+  //   if(searchTerm){
+  //     this.models$ = this.modelService.searchModels(searchTerm);
+  //   }
+  //   else{
+  //     this.getModels();
+  //     //this.models$ = new EmptyObservable();
+  //   }
+  // }
 
 }
