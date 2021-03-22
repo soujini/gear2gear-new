@@ -14,7 +14,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor='let insurance of insurancess$ | async' [ngClass]="{'is-active': selectedInsuranceId == insurance.insurance_id}">
+        <tr *ngFor='let insurance of insurances$ | async' [ngClass]="{'is-active': selectedInsuranceId == insurance.insurance_id}">
           <td class="capitalize">{{insurance.name}}</td>
           <td class="pointer" (click)="selectInsurance(insurance.insurance_id, 'Edit')">
               <i class="fa fa-pencil"></i>
