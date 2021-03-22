@@ -15,45 +15,44 @@
       </button>
       <form [formGroup]="filterForm" xaction="/action_page.php">
         <div class="text-center col-md-12" style="display:inline-flex;flex-wrap:wrap">
-
-          <div class="form-group col-md-3 text-left">
+          <div class="form-group col-md-2 text-left">
             <label class="col-form-label">Make</label>
             <select class="form-control" formControlName="make" (change)="getFilteredCarsMake()">
               <option *ngFor="let make of makes$ | async" [value]="make.make_id">{{make.name}}</option>
             </select>
           </div>
-          <div class="form-group col-md-3 text-left">
+          <div class="form-group col-md-2 text-left">
             <label class="col-form-label">Model</label>
             <select class="form-control" formControlName="model" (change)="getFilteredCars()">
               <option *ngFor="let model of models$ | async" [value]="model.model_id">{{model.name}}</option>
             </select>
           </div>
-          <div class="form-group col-md-3 text-left">
+          <div class="form-group col-md-2 text-left">
             <label class="col-form-label">Variant</label>
             <select class="form-control"  formControlName="variant" (change)="getFilteredCars()">
               <option *ngFor="let variant of variants$ | async" [value]="variant.variant_id">{{variant.name}}</option>
             </select>
           </div>
-          <div class="form-group col-md-3 text-left">
+          <div class="form-group col-md-2 text-left">
             <label class="col-form-label">Vehicle Type</label>
             <select class="form-control" formControlName="vehicle_type" (change)="getFilteredCars()">
               <option *ngFor="let vehicleType of vehicleTypes$ | async" [value]="vehicleType.vehicle_type_id">{{vehicleType.name}}</option>
             </select>
           </div>
 
-          <div class="form-group col-md-3 text-left">
+          <div class="form-group col-md-2 text-left">
             <label class="col-form-label">Fuel Type</label>
             <select class="form-control" formControlName="fuel_type" (change)="getFilteredCars()">
               <option *ngFor="let fuelType of fuelTypes$ | async" [value]="fuelType.fuel_type_id">{{fuelType.name}}</option>
             </select>
           </div>
-          <div class="form-group col-md-3 text-left">
+          <div class="form-group col-md-1 text-left">
             <label class="col-form-label">Transmission</label>
             <select class="form-control" formControlName="transmission_type" (change)="getFilteredCars()">
               <option *ngFor="let transmissionType of transmissionTypes$ | async" [value]="transmissionType.transmission_type_id">{{transmissionType.name}}</option>
             </select>
           </div>
-          <div class="form-group col-md-3 text-center">
+          <div class="form-group col-md-1 text-center">
             <label class="col-form-label" for="inputIsSold">Is Sold?</label><br>
             <input type="checkbox" cclass="form-check-input" id="inputIsSold" formControlName="is_sold" (change)="getFilteredCars()">
           </div>
