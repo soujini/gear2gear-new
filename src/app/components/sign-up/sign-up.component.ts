@@ -38,14 +38,14 @@ export class SignUpComponent implements AfterViewInit {
       this.isLogin.emit(true);
     }
     signUp(userEmail:string, userPwd:string, firstName:string, lastName:string ){
-      this.authService.SignUp(userEmail, userPwd,).then(() => {
+      this.authService.SignUp(userEmail, userPwd).then(() => {
         this.successMessage = 'Verification email sent, check your inbox.';
         setTimeout(() => {
           this.successMessage ="";
           this.isRegister.emit(false);
         }, 500);
-        
-  
+
+
       }).catch((error) => {
         this.errorMessage = error.message;
       })

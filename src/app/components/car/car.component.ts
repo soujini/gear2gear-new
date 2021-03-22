@@ -23,29 +23,21 @@ export class CarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getCars();
-    this.carService.refreshList.subscribe(
-      res=>{
-          this.getCars();
-      },
-      err => {
-        console.log(err);
-      }
-    );
+
   }
 
-  getCars()  {
-    this.cars$ = this.carService.getCars();
-  }
-
-  searchCars(searchTerm){
-    if(searchTerm){
-      this.cars$ = this.carService.searchCars(searchTerm);
-    }
-    else{
-      this.getCars();
-      //this.cars$ = new EmptyObservable();
-    }
-  }
+  // getCars()  {
+  //   this.cars$ = this.carService.getCars();
+  // }
+  //
+  // searchCars(searchTerm){
+  //   if(searchTerm){
+  //     this.cars$ = this.carService.searchCars(searchTerm);
+  //   }
+  //   else{
+  //     this.getCars();
+  //     //this.cars$ = new EmptyObservable();
+  //   }
+  // }
 
 }

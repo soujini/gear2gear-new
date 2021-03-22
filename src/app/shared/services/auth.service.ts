@@ -10,15 +10,15 @@ import {PagerService} from '../../services/pager.service';
   providedIn: 'root'
 })
 export class AuthService {
-  userData: any; 
-  
+  userData: any;
+
   public errorMessageSubject = new BehaviorSubject("");
   errorMessage = this.errorMessageSubject.asObservable();
  constructor(
     public afs: AngularFirestore,   // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
-    public pagerService:PagerService, 
+    public pagerService:PagerService,
     public ngZone: NgZone // NgZone service to remove outside scope warning
   ) {
     /* Saving user data in localstorage when
@@ -36,18 +36,10 @@ export class AuthService {
       }
     })
   }
-  
+
   SignIn(email, password) {
-    return this.afAuth.signInWithEmailAndPassword(email, password)
-      .then((result) => {
-        console.log(result.user.email);
-        this.pagerService.userDetailsSubject.next(result.user);
-        this.ngZone.run(() => {
-          this.router.navigate(['home']);
-        });
-      }).catch((error) => {
-        window.alert(error.message)
-      })
+    return this.afAuth.signInWithEmailAndPassword(email, password);
+
   }
 
   // Sign up with email/password
@@ -65,10 +57,10 @@ export class AuthService {
     await (await this.afAuth.currentUser).sendEmailVerification()
     .then(() => {
       this.errorMessageSubject.next("Please check your email inbox for a verification email and login again.");
-    
+
     })
   }
- 
+
   // Reset Forggot password
   ForgotPassword(passwordResetEmail) {
     return this.afAuth.sendPasswordResetEmail(passwordResetEmail)
@@ -113,7 +105,3 @@ export class AuthService {
   }
 
 }
-
-
-
- 

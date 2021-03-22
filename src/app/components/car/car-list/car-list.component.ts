@@ -18,6 +18,10 @@ export class CarListComponent implements OnInit {
   searchTerm = new EventEmitter();
 
   selectedCarId:number;
+  title : string = "Car";
+  selectedCar : Car;
+
+  cars$: Observable<Car>;
 
   constructor(private carService:CarService, private router:Router, private route:ActivatedRoute) {
 
@@ -29,12 +33,34 @@ export class CarListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.router.navigate(['/car/add']);
+    this.getCars();
+    this.carService.refreshList.subscribe(
+      res=>{
+          this.getCars();
+      },
+      err => {
+        console.log(err);
+      }
+    );
+    // this.router.navigate(['/car/add']);
+  }
+  getCars()  {
+    this.cars$ = this.carService.getCars();
   }
 
-  searchCars(search: string){
-    this.searchTerm.emit(search);
+  searchCars(searchTerm){
+    if(searchTerm){
+      this.cars$ = this.carService.searchCars(searchTerm);
+    }
+    else{
+      this.getCars();
+      //this.cars$ = new EmptyObservable();
+    }
   }
+
+  // searchCars(search: string){
+  //   this.searchTerm.emit(search);
+  // }
 
   //On Click of the Add Button
   createCar(mode:any){

@@ -41,7 +41,7 @@ export class SignInComponent implements AfterViewInit {
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
     public pagerService: PagerService) {
-  
+
   }
 
   ngOnInit() {
@@ -50,7 +50,7 @@ export class SignInComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.loginModal.show();
   }
-  
+
   forgotPassword() {
     this.isRecoverPassword.emit(true);
     this.isLogin.emit(false);
@@ -86,23 +86,22 @@ export class SignInComponent implements AfterViewInit {
         return false;
       }
     }
-  
+
 
   onSubmit() {
     this.submitted = true;
     this.loading = true;
   }
   signIn(userEmail:string, userPwd:string ){
-    this.authService.SignIn(userEmail, userPwd).then(() => {
-      this.successMessage = 'You are successfully logged in';
-      setTimeout(() => {
-        this.successMessage ="";
-        this.isLogin.emit(false);
-      }, 500);
-    
+
+    this.authService.SignIn(userEmail, userPwd).then((result) => {
+      this.pagerService.userDetailsSubject.next(result.user);
+      this.ngZone.run(() => {
+        this.router.navigate(['home']);
+      });
     }).catch((error) => {
       this.errorMessage = error.message;
-    })
+    });
   }
- 
+
 }
