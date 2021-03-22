@@ -18,20 +18,20 @@
 
           <div class="col-12">
             <form [formGroup]="carForm" (ngSubmit)="onSubmit()" >
-              <div class="col-12">
+              <div class="col-12" style="display:inline-flex;flex-wrap:wrap">
                 <!-- *ngIf="carForm.controls.is_sold.value == true" -->
-                <div class="form-check">
+                <div class="form-check col-md-12">
                   <input type="checkbox" class="form-check-input" id="inputIsParkAndSell" formControlName="is_parkandsell" (change)="IsParkAndSell()">
                   <label class="form-check-label" for="inputIsParkAndSell">Park and Sell?</label>
                 </div>
 
-                <div class="form-check">
+                <div class="form-check col-md-12">
                   <input type="checkbox" class="form-check-input" id="inputIsPartnerCar" formControlName="is_partnercar">
                   <label class="form-check-label" for="inputIsPartnerCar">Partner Car?</label>
                 </div>
 
-                <div class="form-group">
-                  <label for="inputMake" class="col-sm-3 col-form-label">Make</label>
+                <div class="form-group col-md-4">
+                  <label for="inputMake" class=" col-form-label">Make</label>
                   <div>
                     <div class="mt-0">
                       <select class="form-control" id="inputMake" formControlName="make">
@@ -41,8 +41,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="inputModel" class="col-sm-3 col-form-label">Model</label>
+                <div class="form-group col-md-4">
+                  <label for="inputModel" class=" col-form-label">Model</label>
                   <div>
                     <div class="mt-0">
                       <select id="inputModel" class="form-control" formControlName="model">
@@ -52,25 +52,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="inputDescription" class="col-sm-3 col-form-label">Description</label>
-                  <div>
-                    <div class="md-form mt-0">
-                      <input id="inputDescription" type="text" class="form-control" formControlName="description">
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="inputRegistration" class="col-sm-3 col-form-label">Registration Number</label>
-                  <div>
-                    <div class="md-form mt-0">
-                      <input id="inputRegistration" type="text" class="form-control" formControlName="license_plate">
-                      <app-control-messages [control]="carForm.controls.license_plate"></app-control-messages>
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="inputVariant" class="col-sm-3 col-form-label">Variant</label>
+                <div class="form-group col-md-4">
+                  <label for="inputVariant" class=" col-form-label">Variant</label>
                   <div>
                     <div class="mt-0">
                       <select id="inputVariant" class="form-control"  formControlName="variant">
@@ -80,8 +63,26 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="inputMakeYear" class="col-sm-3 col-form-label">Make Year</label>
+                <div class="form-group col-md-4">
+                  <label for="inputDescription" class=" col-form-label">Description</label>
+                  <div>
+                    <div class="md-form mt-0">
+                      <input id="inputDescription" type="text" class="form-control" formControlName="description">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputRegistration" class=" col-form-label">Registration Number</label>
+                  <div>
+                    <div class="md-form mt-0">
+                      <input id="inputRegistration" type="text" class="form-control" formControlName="license_plate">
+                      <app-control-messages [control]="carForm.controls.license_plate"></app-control-messages>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group col-md-4">
+                  <label for="inputMakeYear" class=" col-form-label">Make Year</label>
                   <div>
                     <div class="md-form mt-0">
                       <input id="inputMakeYear" type="text" class="form-control" formControlName="make_year">
@@ -89,16 +90,16 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="inputMakeMonth" class="col-sm-3 col-form-label">Make Month</label>
+                <div class="form-group col-md-4">
+                  <label for="inputMakeMonth" class=" col-form-label">Make Month</label>
                   <div>
                     <div class="md-form mt-0">
                       <input id="inputMakeMonth" type="text" class="form-control" formControlName="make_month">
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="inputMileage" class="col-sm-3 col-form-label">Mileage</label>
+                <div class="form-group col-md-4">
+                  <label for="inputMileage" class=" col-form-label">Mileage</label>
                   <div>
                     <div class="md-form mt-0">
                       <!-- <input id="inputMileage" type="number" class="form-control" formControlName="mileage"> -->
@@ -107,8 +108,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="inputOwners" class="col-sm-3 col-form-label">Owners</label>
+                <div class="form-group col-md-4">
+                  <label for="inputOwners" class=" col-form-label">Owners</label>
                   <div>
                     <div class="md-form mt-0">
                       <input id="inputOwners" type="number" class="form-control" formControlName="owners">
@@ -116,8 +117,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="inputVehicleType" class="col-sm-3 col-form-label">Vehicle Type</label>
+                <div class="form-group col-md-4">
+                  <label for="inputVehicleType" class=" col-form-label">Vehicle Type</label>
                   <div>
                     <div class="mt-0">
                       <select id="inputVehicleType" class="form-control" formControlName="vehicle_type">
@@ -127,8 +128,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="inputFuelType" class="col-sm-3 col-form-label">Fuel Type</label>
+                <div class="form-group col-md-4">
+                  <label for="inputFuelType" class=" col-form-label">Fuel Type</label>
                   <div>
                     <div class="mt-0">
                       <select id="inputFuelType" class="form-control" formControlName="fuel_type">
@@ -138,8 +139,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="inputTransmissionType" class="col-sm-3 col-form-label">Transmission Type</label>
+                <div class="form-group col-md-4">
+                  <label for="inputTransmissionType" class=" col-form-label">Transmission Type</label>
                   <div>
                     <div class="mt-0">
                       <select id="inputTransmissionType" class="form-control"  formControlName="transmission_type">
@@ -150,8 +151,8 @@
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="inputInsurance" class="col-sm-3 col-form-label">Insurance</label>
+                <div class="form-group col-md-4">
+                  <label for="inputInsurance" class=" col-form-label">Insurance</label>
                   <div>
                     <div class="mt-0">
                       <select id="inputInsurance" class="form-control" formControlName="insurance">
@@ -160,16 +161,16 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="inputInsuranceYear" class="col-sm-3 col-form-label">Insurance Year</label>
+                <div class="form-group col-md-4">
+                  <label for="inputInsuranceYear" class=" col-form-label">Insurance Year</label>
                   <div>
                     <div class="md-form mt-0">
                       <input id="inputInsuranceYear" type="text" class="form-control" formControlName="insurance_year">
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="inputExteriorColor" class="col-sm-3 col-form-label">Exterior Color</label>
+                <div class="form-group col-md-4">
+                  <label for="inputExteriorColor" class=" col-form-label">Exterior Color</label>
                   <div>
                     <div class="mt-0">
                       <select id="inputExteriorColor" class="form-control"  formControlName="exterior_color">
@@ -179,8 +180,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="inputInteriorColor" class="col-sm-3 col-form-label">Interior Color</label>
+                <div class="form-group col-md-4">
+                  <label for="inputInteriorColor" class=" col-form-label">Interior Color</label>
                   <div>
                     <div class="mt-0">
                       <select id="inputInteriorColor" class="form-control"  formControlName="interior_color">
@@ -189,8 +190,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="inputFuelEconomy" class="col-sm-3 col-form-label">Fuel Economy</label>
+                <div class="form-group col-md-4">
+                  <label for="inputFuelEconomy" class=" col-form-label">Fuel Economy</label>
                   <div>
                     <div class="md-form mt-0">
                       <input id="inputFuelEconomy" type="text" class="form-control" formControlName="fuel_economy">
@@ -198,9 +199,9 @@
                   </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-md-4">
                   <div class="form-group">
-                    <label for="inputPurchasedOn" class="col-sm-3 col-form-label">Purchased On</label>
+                    <label for="inputPurchasedOn" class=" col-form-label">Purchased On</label>
                     <div>
                       <div class="md-form mt-0">
                         <input id="inputPurchasedOn" type="date" class="form-control" formControlName="purchased_on">
@@ -209,8 +210,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="inputPurchasedFrom" class="col-sm-3 col-form-label">Purchased From</label>
+                <div class="form-group col-md-4">
+                  <label for="inputPurchasedFrom" class=" col-form-label">Purchased From</label>
                   <div>
                     <div class="mt-0">
                       <select id="inputPurchasedFrom" class="form-control" formControlName="purchased_from">
@@ -220,8 +221,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="inputPurchasedFor" class="col-sm-3 col-form-label">Purchased For</label>
+                <div class="form-group col-md-4">
+                  <label for="inputPurchasedFor" class=" col-form-label">Purchased For</label>
                   <div>
                     <div class="md-form mt-0">
                       <input id="inputPurchasedFor" type="text" class="form-control" formControlName="cost_price" (keyup)="formatCurrency(carForm.controls.cost_price)">
@@ -229,8 +230,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label for="inputSoldFor" class="col-sm-3 col-form-label">Selling Price</label>
+                <div class="form-group col-md-4">
+                  <label for="inputSoldFor" class=" col-form-label">Selling Price</label>
                   <div>
                     <div class="md-form mt-0">
                       <input id="inputSoldFor" type="text" class="form-control" formControlName="selling_price" (keyup)="formatCurrency(carForm.controls.selling_price)">
@@ -239,23 +240,23 @@
                   </div>
                 </div>
                 <!-- Default switch -->
-                <div class="form-check" *ngIf="carForm.controls.is_sold.value == true" >
+                <div class="form-check col-md-4" *ngIf="carForm.controls.is_sold.value == true" >
                   <input type="checkbox" class="form-check-input" id="inputIsSold" formControlName="is_sold" (change)="is_sold()">
                   <label class="form-check-label" for="inputIsSold">Is Sold?</label>
                 </div>
-                <div class="form-check">
+                <div class="form-check col-md-4">
                   <input type="checkbox" class="form-check-input" id="inputFlooded" formControlName="is_flooded">
                   <label class="form-check-label" for="inputFlooded">Is Flooded?</label>
                 </div>
-                <div class="form-check">
+                <div class="form-check col-md-4">
                   <input type="checkbox" class="form-check-input" id="inputAccidental" formControlName="is_accidental">
                   <label class="form-check-label" for="inputAccidental">Is Accidental?</label>
                 </div>
-                <div class="form-group" *ngIf="selectedCar_Id" style="margin-bottom:25px">
+                <div class="form-group" xngIf="selectedCar_Id" style="margin-bottom:25px">
                   <app-upload-file [car_id]=selectedCar_Id></app-upload-file>
                 </div>
-                <div class="text-right">
-                  <button type="submit" class="btn btn-primary btn-custom btn-md" >
+                <div class="text-right col-12">
+                  <button type="submit" class="btn btn-primary btn-custom btn-md mr-3" >
                     <i class="fa fa-save"></i>
                   </button>
                   <app-simple-modal [module]="module" [mode]="mode" [name]="carForm.controls.make.value" (isDelete)="deleteCar($event)"></app-simple-modal>
