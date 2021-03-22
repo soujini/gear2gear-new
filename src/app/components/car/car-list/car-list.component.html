@@ -3,7 +3,7 @@
     <app-search (searchTermValueChanged)="searchCars($event)" (isCreate)="createCar('Create')"></app-search>
   </div>
   <div>
-    <div *ngIf="(results$ | async)?.length==0" class="alert alert-danger text-center col-12">
+    <div *ngIf="(cars$ | async)?.length==0" class="alert alert-danger text-center col-12">
       <strong>Error!</strong>&nbsp;<span>No records found</span>
     </div>
     <table class="table">
@@ -17,7 +17,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor='let car of results$ | async' [ngClass]="{'is-active': selectedCarId == car.car_id}">
+        <tr *ngFor='let car of cars$ | async' [ngClass]="{'is-active': selectedCarId == car.car_id}">
           <td class="capitalize">{{car.make_name}}</td>
             <td class="capitalize">{{car.model_name}}</td>
             <td class="capitalize">{{car.variant_name}}</td>
