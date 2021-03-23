@@ -11,7 +11,7 @@ const clientRoutes: Routes = [
     children: [
         {path: 'list',component: ClientListComponent},
         {path: 'add', component: ClientFormComponent},
-        {path: 'edit', component: ClientFormComponent}
+        {path: 'edit/:id', component: ClientFormComponent}
       ]
 }];
 

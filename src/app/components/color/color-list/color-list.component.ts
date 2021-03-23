@@ -68,7 +68,7 @@ export class ColorListComponent implements OnInit {
   selectColor(color_id: number, mode: any) {
     this.selectedColorId = color_id;
     this.colorService.selectedMode = mode;
-    this.router.navigate(['/color/edit']);
+    this.router.navigate(['/color/edit/' + this.selectedColorId]);
     setTimeout(() => {
       this.colorService.selectedColorId.next(color_id);
     }, 100);

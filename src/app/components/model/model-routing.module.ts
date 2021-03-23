@@ -13,7 +13,7 @@ const modelRoutes: Routes = [
     children: [
         {path: 'list',component: ModelListComponent},
         {path: 'add', component: ModelFormComponent},
-        {path: 'edit', component: ModelFormComponent}
+        {path: 'edit/:id', component: ModelFormComponent}
       ]
 }];
 

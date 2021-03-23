@@ -13,7 +13,7 @@ const variantRoutes: Routes = [
     children: [
         {path: 'list',component: VariantListComponent},
         {path: 'add', component: VariantFormComponent},
-        {path: 'edit', component: VariantFormComponent}
+        {path: 'edit/:id', component: VariantFormComponent}
       ]
 }];
 

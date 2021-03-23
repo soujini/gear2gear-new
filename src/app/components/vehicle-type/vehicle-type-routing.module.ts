@@ -13,7 +13,7 @@ const vehicleTypeRoutes: Routes = [
     children: [
         {path: 'list',component: VehicleTypeListComponent},
         {path: 'add', component: VehicleTypeFormComponent},
-        {path: 'edit', component: VehicleTypeFormComponent}
+        {path: 'edit/:id', component: VehicleTypeFormComponent}
       ]
 }];
 

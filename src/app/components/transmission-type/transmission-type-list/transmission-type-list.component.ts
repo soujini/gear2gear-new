@@ -69,7 +69,7 @@ export class TransmissionTypeListComponent implements OnInit {
   selectTransmissionType(transmissionType_id:number, mode:any){
     this.selectedTransmissionTypeId=transmissionType_id;
     this.transmissionTypeService.selectedMode = mode;
-    this.router.navigate(['/transmissionType/edit']);
+    this.router.navigate(['/transmissionType/edit/' + this.selectedTransmissionTypeId]);
     setTimeout(() => {
       this.transmissionTypeService.selectedTransmissionTypeId.next(transmissionType_id);
     }, 100);

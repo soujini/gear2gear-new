@@ -67,7 +67,7 @@ export class VehicleTypeListComponent implements OnInit {
   selectVehicleType(vehicleType_id:number, mode:any){
     this.selectedVehicleTypeId=vehicleType_id;
     this.vehicleTypeService.selectedMode = mode;
-    this.router.navigate(['/vehicleType/edit']);
+    this.router.navigate(['/vehicleType/edit/' + this.selectedVehicleTypeId]);
     setTimeout(() => {
       this.vehicleTypeService.selectedVehicleTypeId.next(vehicleType_id);
     }, 100);

@@ -13,7 +13,7 @@ const transmissionTypeRoutes: Routes = [
     children: [
         {path: 'list',component: TransmissionTypeListComponent},
         {path: 'add', component: TransmissionTypeFormComponent},
-        {path: 'edit', component: TransmissionTypeFormComponent}
+        {path: 'edit/:id', component: TransmissionTypeFormComponent}
       ]
 }];
 

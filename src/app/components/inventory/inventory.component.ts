@@ -10,7 +10,8 @@ import { VehicleTypeService } from '../../services/vehicle-type/vehicle-type.ser
 import { FuelTypeService } from '../../services/fuel-type/fuel-type.service';
 import { TransmissionTypeService } from '../../services/transmission-type/transmission-type.service';
 import { UploadFileService } from '../../services/upload-file/upload-file.service';
-import 'rxjs/add/observable/of';
+// import 'rxjs/add/observable/of';
+import { of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as _ from 'underscore';
 import { PagerService } from '../../services/index';

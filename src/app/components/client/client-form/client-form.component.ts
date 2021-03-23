@@ -90,7 +90,7 @@ export class ClientFormComponent implements OnInit {
 
     selectClient(client_id:number){
         this.clientService.selectedMode = 'Edit';
-        this.router.navigate(['/client/edit']);
+        this.router.navigate(['/client/edit/' + client_id ]);
         setTimeout(() => {
           this.clientService.selectedClientId.next(client_id);
         }, 100);

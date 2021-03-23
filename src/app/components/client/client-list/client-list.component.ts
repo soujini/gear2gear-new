@@ -71,7 +71,7 @@ export class ClientListComponent implements OnInit {
   selectClient(client_id:number, mode:any){
     this.selectedClientId=client_id;
     this.clientService.selectedMode = mode;
-    this.router.navigate(['/client/edit']);
+    this.router.navigate(['/client/edit/' + this.selectedClientId]);
     setTimeout(() => {
       this.clientService.selectedClientId.next(client_id);
     }, 100);

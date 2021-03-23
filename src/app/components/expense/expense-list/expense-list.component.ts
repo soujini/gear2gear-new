@@ -68,7 +68,7 @@ export class ExpenseListComponent implements OnInit {
   selectExpense(expense_id:number, mode:any){
     this.selectedExpenseId=expense_id;
     this.expenseService.selectedMode = mode;
-    this.router.navigate(['/expense/edit']);
+    this.router.navigate(['/expense/edit/' + this.selectedExpenseId]);
     setTimeout(() => {
       this.expenseService.selectedExpenseId.next(expense_id);
     }, 100);

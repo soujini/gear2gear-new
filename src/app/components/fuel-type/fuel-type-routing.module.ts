@@ -13,7 +13,7 @@ const fuelTypeRoutes: Routes = [
     children: [
         {path: 'list',component: FuelTypeListComponent},
         {path: 'add', component: FuelTypeFormComponent},
-        {path: 'edit', component: FuelTypeFormComponent}
+        {path: 'edit/:id', component: FuelTypeFormComponent}
       ]
 }];
 

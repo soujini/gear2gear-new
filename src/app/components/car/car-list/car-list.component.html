@@ -13,17 +13,20 @@
           <th>Model</th>
           <th>Variant</th>
           <th>Year</th>
+          <th>Status</th>
           <th>Edit</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor='let car of cars$ | async' [ngClass]="{'is-active': selectedCarId == car.car_id}">
           <td class="capitalize">{{car.make_name}}</td>
-            <td class="capitalize">{{car.model_name}}</td>
-            <td class="capitalize">{{car.variant_name}}</td>
-            <td>{{car.make_year}}</td>
+          <td class="capitalize">{{car.model_name}}</td>
+          <td class="capitalize">{{car.variant_name}}</td>
+          <td>{{car.make_year}}</td>
+          <td *ngIf="car.is_sold == true">Sold</td>
+          <td *ngIf="car.is_sold != true">Active</td>
           <td class="pointer" (click)="selectCar(car.car_id, 'Edit')">
-              <i class="fa fa-pencil"></i>
+            <i class="fa fa-pencil"></i>
           </td>
         </tr>
       </tbody>

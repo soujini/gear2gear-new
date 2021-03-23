@@ -68,7 +68,7 @@ export class VariantListComponent implements OnInit {
   selectVariant(variant_id:number, mode:any){
     this.selectedVariantId=variant_id;
     this.variantService.selectedMode = mode;
-    this.router.navigate(['/variant/edit']);
+    this.router.navigate(['/variant/edit/' + this.selectedVariantId]);
     setTimeout(() => {
       this.variantService.selectedVariantId.next(variant_id);
     }, 100);

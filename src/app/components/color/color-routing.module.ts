@@ -11,7 +11,7 @@ const colorRoutes: Routes = [
     children: [
         {path: 'list',component: ColorListComponent},
         {path: 'add', component: ColorFormComponent},
-        {path: 'edit', component: ColorFormComponent}
+        {path: 'edit/:id', component: ColorFormComponent}
       ]
 }];
 

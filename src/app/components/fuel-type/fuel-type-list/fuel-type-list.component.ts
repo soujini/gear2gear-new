@@ -68,7 +68,7 @@ export class FuelTypeListComponent implements OnInit {
   selectFuelType(fuelType_id:number, mode:any){
     this.selectedFuelTypeId=fuelType_id;
     this.fuelTypeService.selectedMode = mode;
-    this.router.navigate(['/fuelType/edit']);
+    this.router.navigate(['/fuelType/edit/' + this.selectedFuelTypeId]);
     setTimeout(() => {
       this.fuelTypeService.selectedFuelTypeId.next(fuelType_id);
     }, 100);

@@ -13,7 +13,7 @@ const makeRoutes: Routes = [
     children: [
         {path: 'list',component: MakeListComponent},
         {path: 'add', component: MakeFormComponent},
-        {path: 'edit', component: MakeFormComponent}
+        {path: 'edit/:id', component: MakeFormComponent}
       ]
 }];
 

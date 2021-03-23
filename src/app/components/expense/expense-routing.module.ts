@@ -13,7 +13,7 @@ const expenseRoutes: Routes = [
     children: [
         {path: 'list',component: ExpenseListComponent},
         {path: 'add', component: ExpenseFormComponent},
-        {path: 'edit', component: ExpenseFormComponent}
+        {path: 'edit/:id', component: ExpenseFormComponent}
       ]
 }];
 

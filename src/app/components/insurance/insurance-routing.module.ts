@@ -13,7 +13,7 @@ const insuranceRoutes: Routes = [
     children: [
         {path: 'list',component: InsuranceListComponent},
         {path: 'add', component: InsuranceFormComponent},
-        {path: 'edit', component: InsuranceFormComponent}
+        {path: 'edit/:id', component: InsuranceFormComponent}
       ]
 }];
 

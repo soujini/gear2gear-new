@@ -68,7 +68,7 @@ export class InsuranceListComponent implements OnInit {
   selectInsurance(insurance_id:number, mode:any){
     this.selectedInsuranceId=insurance_id;
     this.insuranceService.selectedMode = mode;
-    this.router.navigate(['/insurance/edit']);
+    this.router.navigate(['/insurance/edit/' + this.selectedInsuranceId]);
     setTimeout(() => {
       this.insuranceService.selectedInsuranceId.next(insurance_id);
     }, 100);

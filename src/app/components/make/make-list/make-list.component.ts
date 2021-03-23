@@ -74,7 +74,7 @@ export class MakeListComponent implements OnInit {
   selectMake(make_id:number, mode:any){
     this.selectedMakeId=make_id;
     this.makeService.selectedMode = mode;
-    this.router.navigate(['/make/edit']);
+    this.router.navigate(['/make/edit/' + this.selectedMakeId]);
     setTimeout(() => {
       this.makeService.selectedMakeId.next(make_id);
     }, 100);

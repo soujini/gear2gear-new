@@ -68,7 +68,7 @@ export class ModelListComponent implements OnInit {
   selectModel(model_id:number, mode:any){
     this.selectedModelId=model_id;
     this.modelService.selectedMode = mode;
-    this.router.navigate(['/model/edit']);
+    this.router.navigate(['/model/edit/' + this.selectedModelId]);
     setTimeout(() => {
       this.modelService.selectedModelId.next(model_id);
     }, 100);
