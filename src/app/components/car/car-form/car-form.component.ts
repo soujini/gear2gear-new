@@ -80,6 +80,11 @@ export class CarFormComponent implements OnInit {
     this.createForm();
     this.createSoldDetailsForm();
 
+//     this.paramsSubscription = this.route.paramMap.subscribe(params => {
+//   this.applicationId = params.get('id');
+//   this.getApplicationDetails();
+// });
+
     this.sub = this.carService.selectedCarId
     .subscribe(
       res => {
