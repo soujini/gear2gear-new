@@ -85,6 +85,7 @@ export class CarFormComponent implements OnInit {
       res => {
         if(res != 0){
           this.selectedCar_Id = res;
+          alert(this.selectedCar_Id);
 
           if(this.carService.selectedMode == "Edit"){
             this.title = "Edit Car"
