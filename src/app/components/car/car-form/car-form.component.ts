@@ -74,7 +74,8 @@ export class CarFormComponent implements OnInit {
     private clientService:ClientService,
     private expenseService:ExpenseService,
     private transactionTypeService:TransactionTypeService,
-    private transactionDetailsService:TransactionDetailsService
+    private transactionDetailsService:TransactionDetailsService,
+    private changeDetectorRef: ChangeDetectorRef
 
   ) {
     this.createForm();
@@ -90,9 +91,9 @@ export class CarFormComponent implements OnInit {
       res => {
         if(res != 0){
           this.selectedCar_Id = res;
-          alert(this.selectedCar_Id);
 
           if(this.carService.selectedMode == "Edit"){
+            setTimeout(_=>{this.changeDetectorRef.detectChanges()},0);
             this.title = "Edit Car"
             this.mode = "delete";
             this.getCarById(res);
