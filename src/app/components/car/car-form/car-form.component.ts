@@ -169,6 +169,9 @@ export class CarFormComponent implements OnInit {
         }
       }
     }
+    selectFile(event){
+
+    }
 
     is_sold(){
       if(this.carForm.controls.is_sold.value == false)
