@@ -159,7 +159,7 @@ export class CarFormComponent implements OnInit {
       //console.log("total files ", this.selectedFiles.length);
       for(var i=0;i<this.selectedFiles.length;i++){
         const file = this.selectedFiles.item(i);
-        this.uploadFileService.uploadfile(file,this.car_id);
+        this.uploadFileService.uploadfile(file,this.selectedCar_Id);
       }
     }
 
