@@ -11,6 +11,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatTabsModule} from '@angular/material/tabs';
 
+import {NgxImageCompressService} from 'ngx-image-compress';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -98,7 +99,7 @@ import { AuthService } from "./shared/services/auth.service";
     MatTabsModule
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [AuthService,
+  providers: [AuthService,NgxImageCompressService,
     {
     provide: HTTP_INTERCEPTORS,
     useClass: LoaderInterceptorService,

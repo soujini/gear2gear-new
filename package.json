@@ -56,6 +56,7 @@
     "https": "^1.0.0",
     "jquery": "^3.6.0",
     "moment": "^2.29.1",
+    "ngx-image-compress": "^11.0.3",
     "npm": "^7.6.2",
     "open-iconic": "^1.1.1",
     "pg": "^8.5.1",
