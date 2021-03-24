@@ -17,6 +17,7 @@ import { ClientService } from '../../../services/client/client.service';
 import { ExpenseService } from '../../../services/expense/expense.service';
 import { TransactionTypeService } from '../../../services/transaction-type/transaction-type.service';
 import { TransactionDetailsService } from '../../../services/transaction-details/transaction-details.service';
+import { UploadFileService } from '../../../services/upload-file/upload-file.service';
 
 @Component({
   selector: 'app-car-form',
@@ -35,7 +36,7 @@ export class CarFormComponent implements OnInit {
   soldDetailsForm:FormGroup;
   private sub;
   private sub1;
-
+  selectedFiles: FileList;
   selectedCar_Id: any;
   submitted = false;
   sold:boolean=false;
@@ -75,16 +76,12 @@ export class CarFormComponent implements OnInit {
     private expenseService:ExpenseService,
     private transactionTypeService:TransactionTypeService,
     private transactionDetailsService:TransactionDetailsService,
-    private changeDetectorRef: ChangeDetectorRef
+    private changeDetectorRef: ChangeDetectorRef,
+    private uploadFileService:UploadFileService
 
   ) {
     this.createForm();
     this.createSoldDetailsForm();
-
-//     this.paramsSubscription = this.route.paramMap.subscribe(params => {
-//   this.applicationId = params.get('id');
-//   this.getApplicationDetails();
-// });
 
     this.sub = this.carService.selectedCarId
     .subscribe(
@@ -157,6 +154,18 @@ export class CarFormComponent implements OnInit {
         sold_on : ['', [Validators.required]],//required if sold
         selling_price : ['', [Validators.required]], //required if sold//{value:'', disabled:true}
       })
+    }
+    upload() {
+      //console.log("total files ", this.selectedFiles.length);
+      for(var i=0;i<this.selectedFiles.length;i++){
+        const file = this.selectedFiles.item(i);
+        this.uploadService.uploadfile(file,this.car_id);
+      }
+
+    }
+
+    selectFile(event) {
+      this.selectedFiles = event.target.files;
     }
 
     onSubmit(){
