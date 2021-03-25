@@ -4,12 +4,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 // import {environment} from '../../../environments/environment';
 const environment = require('../../../environments/environment.ts');
 import { Car,FileUpload } from '../../data-model';
-import { Http, Response } from '@angular/http';
+// import { Http, Response } from '@angular/http';
+
 import { Observable } from 'rxjs';
 import { Subscription } from 'rxjs';
 // import 'rxjs/add/operator/catch';
 import { map } from 'rxjs/operators';
-import { RequestOptions } from '@angular/http';
+// import { RequestOptions } from '@angular/http';
+
 import { Subject } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { UploadFileService } from '../../services/upload-file/upload-file.service';

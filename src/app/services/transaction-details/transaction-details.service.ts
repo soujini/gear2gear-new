@@ -3,12 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 // const environment = require('../../../environments/environment.ts');
 const environment = require('../../../environments/environment.ts');
 import { TransactionDetails } from '../../data-model';
-import { Http, Response } from '@angular/http';
+// import { Http, Response } from '@angular/http';
+
 import { Observable } from 'rxjs';
 import { of } from 'rxjs';
 // import 'rxjs/add/operator/catch';
 import { map } from 'rxjs/operators';
-import { RequestOptions } from '@angular/http';
+// import { RequestOptions } from '@angular/http';
+
 import { Subject } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 // import "rxjs/add/operator/debounceTime";
