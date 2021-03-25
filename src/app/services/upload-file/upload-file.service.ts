@@ -2,7 +2,6 @@ import { Injectable,Input,Output } from '@angular/core';
 import * as AWS from 'aws-sdk/global';
 import * as S3 from 'aws-sdk/clients/s3';
 import { Observable } from 'rxjs';
-// import 'rxjs/add/observable/of';
 import { FileUpload } from '../../data-model';
 import { map } from 'rxjs/operators';
 import { of } from 'rxjs';
