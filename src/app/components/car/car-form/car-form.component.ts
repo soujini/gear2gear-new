@@ -37,7 +37,10 @@ export class CarFormComponent implements OnInit {
   soldDetailsForm: FormGroup;
   private sub;
   private sub1;
-  selectedFiles: FileList;
+  // selectedFiles: FileList;
+  public selectedFiles: File[] = [];
+  images: any = [];
+
   selectedCar_Id: any;
   submitted = false;
   sold: boolean = false;
@@ -161,26 +164,42 @@ export class CarFormComponent implements OnInit {
   }
   upload() {
     //console.log("total files ", this.selectedFiles.length);
-    for (var i = 0; i < this.selectedFiles.length; i++) {
-      const file = this.selectedFiles.item(i);
-      var _filename = "image" + Date.now();
-      // this.uploadFileService.uploadfile(file, this.selectedCar_Id);
-      this.compressFile(file, _filename)
+    // for (var i = 0; i < this.selectedFiles.length; i++) {
+    //   const file = this.selectedFiles.item(i);
+    //       this.uploadFileService.uploadfile(file, this.selectedCar_Id);
+
+    // }
+    this.uploadFileService.uploadfile(this.imageFile, this.selectedCar_Id);
+
+
+  }
+
+  selectFile(event) {
+    this.images = [];
+    if (event.target.files && event.target.files[0]) {
+      var length = event.target.files.length;
+      for (let i = 0; i < event.target.files.length; i++) {
+        this.selectedFiles.push(event.target.files[i]);
+        var _filename = "imageCar" + Date.now();
+        var reader = new FileReader();
+        reader.onload = (event: any) => {
+          this.images.push(event.target.result);//base64???
+          this.compressFile(event.target.result, _filename);
+        }
+        reader.readAsDataURL(event.target.files[i]);
+      }
     }
   }
   compressFile(base64URL, filename) {
     var orientation = -1;
     this.imgResultBeforeCompress = base64URL;
-    console.log(this.imgResultBeforeCompress);
+    console.warn('Size in bytes was:', this.imageCompress.byteCount(base64URL));
     this.imageCompress.compressFile(base64URL, orientation, 50, 50).then(
       result => {
         this.imgResultAfterCompress.push(result);
-        console.log(this.imgResultAfterCompress);
+        console.warn('Size in bytes is now:', this.imageCompress.byteCount(result));
         this.imageFile = this.dataURLtoFile(result, filename);
-        this.uploadFileService.uploadfile(this.imageFile, this.selectedCar_Id);
-
       });
-
   }
   dataURLtoFile(dataurl, filename) {
     var arr = dataurl.split(','),
@@ -193,10 +212,6 @@ export class CarFormComponent implements OnInit {
     }
     return new File([u8arr], filename, { type: mime });
   }
-  selectFile(event) {
-    this.selectedFiles = event.target.files;
-  }
-
 
   onSubmit() {
     this.submitted = true;

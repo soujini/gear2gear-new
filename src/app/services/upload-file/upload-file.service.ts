@@ -48,8 +48,6 @@ export class UploadFileService {
   }
 
   uploadfile(file, folder) {
-    alert('h' );
-    alert('h' );
     this.FOLDER = folder+'/';
     const bucket = new S3(
       {
