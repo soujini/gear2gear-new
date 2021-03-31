@@ -99,8 +99,9 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-      this.router.navigate(['home']);
+    this.router.navigate(['home']);
     this.authService.SignOut();
+    this.user=null;
   }
 
   setisVerifyEMAIL(event) {
@@ -108,6 +109,5 @@ export class HeaderComponent implements OnInit {
   }
   setRegisteredEmail(event){
     this.userName=event;
-    alert(this.userName);
   }
 }

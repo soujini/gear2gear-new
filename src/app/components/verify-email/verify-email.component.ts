@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input,AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Input,AfterViewInit, EventEmitter, Output } from '@angular/core';
 import { ModalDirective } from 'angular-bootstrap-md';
 import { AuthService } from "../../shared/services/auth.service";
 @Component({
@@ -11,8 +11,7 @@ export class VerifyEmailComponent implements AfterViewInit {
   @ViewChild('verifyModal') verifyModal: ModalDirective;
   @Input() userName;
 
-  // @Output() isRegister = new EventEmitter();
-  // @Output() isLogin = new EventEmitter();
+   @Output() isVerifyEMAIL = new EventEmitter();
 
   constructor(public authService: AuthService) { }
 

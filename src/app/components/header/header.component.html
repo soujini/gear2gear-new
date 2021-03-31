@@ -9,7 +9,7 @@
           <a class="nav-link"  routerLink="/home" routerLinkActive="active-link">HOME<span
               class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item dropdown" xngIf="auth.isAuthenticated()" dropdown>
+        <li class="nav-item dropdown" *ngIf="user != null" dropdown>
           <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
             ADMIN<span class="caret"></span></a>
           <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
@@ -31,7 +31,7 @@
           <a class="nav-link" routerLink="/cars" routerLinkActive="active-link">CAR LISTING<span
               class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item" xngIf="auth.isAuthenticated()">
+        <li class="nav-item" *ngIf="user != null">
           <a class="nav-link" routerLink="/investors-corner" routerLinkActive="active-link">INVESTOR'S CORNER<span
               class="sr-only">(current)</span></a>
         </li>
@@ -43,7 +43,6 @@
           <a class="nav-link" routerLink="/contact" routerLinkActive="active-link">CONTACT US<span
               class="sr-only">(current)</span></a>
         </li>
-
 
         <div class="divider dropdown-divider"></div>
         <li class="nav-item" *ngIf="this.name == ''">
@@ -97,6 +96,6 @@
 <div *ngIf="isVerifyEMAIL == true">
   <!-- <app-verify-email [userName]="this.userName" (isVerifyEMAIL)="setisVerifyEMAIL($event)" (isLogin)="setIsLogin($event)">
   </app-verify-email> -->
-  <app-verify-email [userName]="this.userName">
+  <app-verify-email [userName]="this.userName" (isVerifyEMAIL)="setisVerifyEMAIL($event)">
   </app-verify-email>
   </div>
