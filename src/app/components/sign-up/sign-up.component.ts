@@ -10,15 +10,15 @@ import { AuthService } from "../../shared/services/auth.service";
 })
 export class SignUpComponent implements AfterViewInit {
   public errorMessage:string="";
-  successMessage:string="";
   @Output() isRegister = new EventEmitter();
   @Output() isLogin = new EventEmitter();
   @Output() isRecoverPassword = new EventEmitter();
+  @Output() isVerifyEMAIL = new EventEmitter();
 
   @ViewChild('registerModal') public registerModal: ModalDirective;
   registerForm: any;
 
-  constructor( public authService: AuthService) {
+  constructor( public authService: AuthService,private formBuilder: FormBuilder) {
     this.authService.errorMessage.subscribe(data => {
       this.errorMessage=data;
     });
@@ -26,6 +26,12 @@ export class SignUpComponent implements AfterViewInit {
     }
 
     ngAfterViewInit(): void {
+      this.registerForm = this.formBuilder.group({
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
+        email: ['', Validators.required],
+        password: ['', [Validators.required, Validators.minLength(6)]]
+      });
       this.registerModal.show();
       this.isLogin.emit(false);
     }
@@ -38,16 +44,20 @@ export class SignUpComponent implements AfterViewInit {
       this.isLogin.emit(true);
     }
     signUp(userEmail:string, userPwd:string, firstName:string, lastName:string ){
-      this.authService.SignUp(userEmail, userPwd).then(() => {
-        this.successMessage = 'Verification email sent, check your inbox.';
-        setTimeout(() => {
-          this.successMessage ="";
-          this.isRegister.emit(false);
-        }, 500);
+      this.authService.SignUp(userEmail, userPwd,firstName, lastName);
+      this.isVerifyEMAIL.emit(true);
+      this.isRegister.emit(false);  
+      // .then(() => {
+      //   this.successMessage = 'Verification email sent, check your inbox.';
+      //   setTimeout(() => {
+      //     this.successMessage ="";
+      //     this.isRegister.emit(false);
+      //     this.isVerifyEMAIL.emit(true);
+      //   }, 500);
 
 
-      }).catch((error) => {
-        this.errorMessage = error.message;
-      })
+      // }).catch((error) => {
+      //   this.errorMessage = error.message;
+      // })
     }
   }

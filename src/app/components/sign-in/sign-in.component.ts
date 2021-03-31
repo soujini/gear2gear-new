@@ -92,16 +92,64 @@ export class SignInComponent implements AfterViewInit {
     this.submitted = true;
     this.loading = true;
   }
-  signIn(userEmail:string, userPwd:string ){
+  // signIn(userEmail:string, userPwd:string ){
 
-    this.authService.SignIn(userEmail, userPwd).then((result) => {
-      this.pagerService.userDetailsSubject.next(result.user);
-      this.ngZone.run(() => {
-        this.router.navigate(['home']);
-      });
+  //   this.authService.SignIn(userEmail, userPwd).then((result) => {
+  //     this.pagerService.userDetailsSubject.next(result.user);
+  //     this.ngZone.run(() => {
+  //       this.router.navigate(['home']);
+  //     });
+  //   }).catch((error) => {
+  //     this.errorMessage = error.message;
+  //   });
+  // }
+  signIn(userName:string, password?:string){
+    this.submitted=true;
+      this.signInWithEmailAndPassword(userName, password);
+  }
+  signInWithEmailAndPassword(userName:String, password?:string){
+    this.authService.SignIn(userName, password).then((data) => {
+      if(data.user.emailVerified == true){
+        this.getAccessToken(userName);
+        this.ngZone.run(() => {
+          // this.router.navigate(['home']);
+          this.isLogin.emit(false);
+
+          const User: any = {
+            'id':data['user']['id'],
+            'accessToken':data['accessToken'],
+            'firstName':data['user']['firstName'],
+            'lastName':data['user']['lastName'],
+            'email':data['user']['email'],
+            'avatarURL':data['user']['avatarURL'][0],
+          }
+
+          localStorage.setItem('User', JSON.stringify(User));
+          this.pagerService.userDetailsSubject.next(JSON.stringify(User));
+        });
+        // this.SetUserData(result.user);
+      }
+      else{
+        this.errorMessage = "Please check your email inbox for a verification email.";
+      }
+
     }).catch((error) => {
-      this.errorMessage = error.message;
+     this.errorMessage = error.message;
     });
   }
+  getAccessToken(userName){
+    this.pagerService.getAccessToken(userName).subscribe((data)=>{
+      const User: any = {
+        'id':data['user'].id,
+        'accessToken':data['accessToken'],
+        'firstName':data['user'].firstName,
+        'lastName':data['user'].lastName,
+        'email':data['user'].email,
+        'avatarURL':data['user'].avatarURL[0],
+      }
 
+      localStorage.setItem('User', JSON.stringify(User));
+      this.pagerService.userDetailsSubject.next(JSON.stringify(User));
+    });
+  }
 }

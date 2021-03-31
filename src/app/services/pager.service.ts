@@ -73,5 +73,28 @@ export class PagerService {
         };
     }
   
-            
+     getAccessToken(username) { //Username can be email or phone number
+        var obj;
+          obj = {
+            "email": username
+          };
+        
+        return this.httpClient.post("", obj);
+      }      
+
+      public signInWeb(email, phone, firstName, lastName) {//create user in the user table
+        var obj = {
+          "email": email,
+          "phoneNumber": phone,
+          "firstName": firstName,
+          "lastName": lastName
+        };
+        return this.httpClient.post("", obj)
+          .toPromise()
+          .then((res) => {
+            // this.user = res;
+            console.log(res);
+          })
+          .catch(err => { console.log("Oops! Sign In Web " + err) });
+      }
 }

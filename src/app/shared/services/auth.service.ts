@@ -26,13 +26,13 @@ export class AuthService {
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
-        this.pagerService.userDetailsSubject.next(JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('user'));
+        // localStorage.setItem('user', JSON.stringify(this.userData));
+        // this.pagerService.userDetailsSubject.next(JSON.stringify(this.userData));
+        // JSON.parse(localStorage.getItem('user'));
       } else {
-        localStorage.setItem('user', null);
-        this.pagerService.userDetailsSubject.next(null);
-        JSON.parse(localStorage.getItem('user'));
+        // localStorage.setItem('user', null);
+        // this.pagerService.userDetailsSubject.next(null);
+        // JSON.parse(localStorage.getItem('user'));
       }
     })
   }
@@ -43,13 +43,30 @@ export class AuthService {
   }
 
   // Sign up with email/password
-  SignUp(email, password) {
+  SignUp(email, password,firstName, lastName) {
     return this.afAuth.createUserWithEmailAndPassword(email, password)
-      .then((result) => {
-        this.SendVerificationMail();
-      }).catch((error) => {
-        window.alert(error.message)
-      })
+    .then(u => {
+      // this.pagerService.signInWeb(email,password,firstName,lastName);
+      this.SendVerificationMail();
+  })
+  .catch(error => {
+    switch (error.code) {
+      case 'auth/email-already-in-use':
+      this.errorMessageSubject.next(`Email address ${email} already in use.`);
+      break;
+      case 'auth/invalid-email':
+      this.errorMessageSubject.next(`Email address ${email} is invalid.`);
+      break;
+      case 'auth/operation-not-allowed':
+      this.errorMessageSubject.next(`Error during sign up.`);
+      break;
+      case 'auth/weak-password':
+      this.errorMessageSubject.next('Password is not strong enough. Add additional characters including special characters and numbers.');
+      break;
+      default:
+      this.errorMessageSubject.next(error.message);
+      break;
+    }});
   }
 
   // Send email verfificaiton when new user sign up

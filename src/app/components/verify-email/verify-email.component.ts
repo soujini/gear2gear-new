@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ModalDirective } from 'angular-bootstrap-md';
 import { AuthService } from "../../shared/services/auth.service";
 @Component({
   selector: 'app-verify-email',
@@ -6,6 +7,8 @@ import { AuthService } from "../../shared/services/auth.service";
   styleUrls: ['./verify-email.component.scss']
 })
 export class VerifyEmailComponent implements OnInit {
+  errorMessage: any;
+  @ViewChild('verifyModal') otpModal: ModalDirective;
 
   constructor(public authService: AuthService) { }
 

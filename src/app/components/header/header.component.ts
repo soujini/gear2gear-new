@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
   loading = false;
   submitted = false;
   public user :User;
+  isVerifyEMAIL: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,7 +31,7 @@ export class HeaderComponent implements OnInit {
     private authService: AuthService,
     public pagerService: PagerService
   ) {
-    this.pagerService.userDetails.subscribe(data => {
+    this.pagerService.userDetailsSubject.subscribe(data => {
       if (JSON.stringify(data) === '{}') {
         this.name = "";
       }
@@ -90,5 +91,8 @@ export class HeaderComponent implements OnInit {
  
   logout() {
     this.authService.SignOut();
+  }
+  setisVerifyEMAIL(event) {
+    this.isVerifyEMAIL = event; 
   }
 }

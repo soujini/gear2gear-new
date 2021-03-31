@@ -94,7 +94,7 @@
 <app-forgot-password (isLogin)="setIsLogin($event)" (isRecoverPassword)='setIsRecoverPassword($event)'>
 </app-forgot-password>
 </div>
-<div >
-<!-- <app-verify-email [userName]="this.userName" (isVerifyOTP)="setisVerifyOTP($event)" (isLogin)="setIsLogin($event)">
-</app-verify-email> -->
-</div>
+<div *ngIf="isVerifyEMAIL == true">
+  <app-verify-email [userName]="this.userName" (isVerifyEMAIL)="setisVerifyEMAIL($event)" (isLogin)="setIsLogin($event)">
+  </app-verify-email>
+  </div>
