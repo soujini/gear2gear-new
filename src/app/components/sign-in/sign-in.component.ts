@@ -11,7 +11,6 @@ import { ModalDirective } from 'angular-bootstrap-md';
 import { PagerService } from "../../services/pager.service";
 
 
-
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
@@ -110,22 +109,25 @@ export class SignInComponent implements AfterViewInit {
   signInWithEmailAndPassword(userName:String, password?:string){
     this.authService.SignIn(userName, password).then((data) => {
       if(data.user.emailVerified == true){
-        this.getAccessToken(userName);
+        // this.getAccessToken(userName);
         this.ngZone.run(() => {
           // this.router.navigate(['home']);
           this.isLogin.emit(false);
-
-          const User: any = {
-            'id':data['user']['id'],
-            'accessToken':data['accessToken'],
-            'firstName':data['user']['firstName'],
-            'lastName':data['user']['lastName'],
+          const User: any={
             'email':data['user']['email'],
-            'avatarURL':data['user']['avatarURL'][0],
           }
 
-          localStorage.setItem('User', JSON.stringify(User));
-          this.pagerService.userDetailsSubject.next(JSON.stringify(User));
+          // const User: any = {
+          //   'id':data['user']['id'],
+          //   'accessToken':data['accessToken'],
+          //   'firstName':data['user']['firstName'],
+          //   'lastName':data['user']['lastName'],
+          //   'email':data['user']['email'],
+          //   'avatarURL':data['user']['avatarURL'][0],
+          // }
+
+           localStorage.setItem('User', JSON.stringify(User));
+           this.pagerService.userDetailsSubject.next(JSON.stringify(User));
         });
         // this.SetUserData(result.user);
       }
@@ -135,21 +137,24 @@ export class SignInComponent implements AfterViewInit {
 
     }).catch((error) => {
      this.errorMessage = error.message;
+     setTimeout(() => {
+       this.errorMessage = "";
+     }, 3000);
     });
   }
-  getAccessToken(userName){
-    this.pagerService.getAccessToken(userName).subscribe((data)=>{
-      const User: any = {
-        'id':data['user'].id,
-        'accessToken':data['accessToken'],
-        'firstName':data['user'].firstName,
-        'lastName':data['user'].lastName,
-        'email':data['user'].email,
-        'avatarURL':data['user'].avatarURL[0],
-      }
-
-      localStorage.setItem('User', JSON.stringify(User));
-      this.pagerService.userDetailsSubject.next(JSON.stringify(User));
-    });
-  }
+  // getAccessToken(userName){
+  //   this.pagerService.getAccessToken(userName).subscribe((data)=>{
+  //     const User: any = {
+  //       'id':data['user'].id,
+  //       'accessToken':data['accessToken'],
+  //       'firstName':data['user'].firstName,
+  //       'lastName':data['user'].lastName,
+  //       'email':data['user'].email,
+  //       'avatarURL':data['user'].avatarURL[0],
+  //     }
+  //
+  //     localStorage.setItem('User', JSON.stringify(User));
+  //     this.pagerService.userDetailsSubject.next(JSON.stringify(User));
+  //   });
+  // }
 }

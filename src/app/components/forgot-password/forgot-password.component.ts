@@ -26,22 +26,37 @@ export class ForgotPasswordComponent implements AfterViewInit {
   closeRecoverModal(){
     this.isRecoverPassword.emit(false);
     this.isLogin.emit(false);
-  }
-  forgotPassword(email){
-    this.authService.ForgotPassword(email).then(() => {
-      this.successMessage = 'Password reset email sent, check your inbox.';
-      setTimeout(() => {
-        this.successMessage ="";
-        this.isRecoverPassword.emit(false);
-      }, 500);
-     
+     }
+    // forgotPassword(email){
+    //   this.authService.ForgotPassword(email).then(() => {
+    //     this.successMessage = 'Password reset email sent, check your inbox.';
+    //     setTimeout(() => {
+    //       this.successMessage ="";
+    //       this.isRecoverPassword.emit(false);
+    //     }, 500);
+    //
+    //
+    //   }).catch((error) => {
+    //     this.errorMessage = error.message;
+    //   })
+    // }
 
-    }).catch((error) => {
-      this.errorMessage = error.message;
-    })
+    forgotPassword(email){
+      this.authService.ForgotPassword(email).then(() => {
+        this.successMessage = 'Password reset email sent, please check your inbox.';
+        setTimeout(() => {
+          this.successMessage ="";
+          this.isRecoverPassword.emit(false);
+        }, 5000);
+      }).catch((error) => {
+        this.errorMessage = error;
+        setTimeout(() => {
+            this.errorMessage="";
+        }, 3000);
+      });
+    }
+    login(){
+      this.isRecoverPassword.emit(false);
+      this.isLogin.emit(true);
+    }
   }
-  login(){
-    this.isRecoverPassword.emit(false);
-    this.isLogin.emit(true);
-  }
-}

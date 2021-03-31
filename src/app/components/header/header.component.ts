@@ -31,13 +31,22 @@ export class HeaderComponent implements OnInit {
     private authService: AuthService,
     public pagerService: PagerService
   ) {
+
+
     this.pagerService.userDetailsSubject.subscribe(data => {
       if (JSON.stringify(data) === '{}') {
-        this.name = "";
+        if(JSON.parse(localStorage.getItem('User')) != null){
+          var user = JSON.parse(localStorage.getItem('User'));
+          this.user = user;
+          this.name = user.email;
+        }
+        else{
+          this.name = "";
+        }
       }
       else {
-        if(JSON.parse(localStorage.getItem('user')) != null){
-          var user = JSON.parse(localStorage.getItem('user'));
+        if(JSON.parse(localStorage.getItem('User')) != null){
+          var user = JSON.parse(localStorage.getItem('User'));
           this.user = user;
           this.name = user.email;
         }
@@ -53,10 +62,10 @@ export class HeaderComponent implements OnInit {
       }
 
     });
-   }
+  }
 
   ngOnInit() {
-  
+
     $(document).ready(function () {
       // $(".navbar-toggler-icon").addClass('sr-only');
       $(".navbar-toggler-icon").attr("aria-label", "Toggle Menu");
@@ -88,11 +97,17 @@ export class HeaderComponent implements OnInit {
   setPassword(event) {
     this.password = event;
   }
- 
+
   logout() {
+      this.router.navigate(['home']);
     this.authService.SignOut();
   }
+
   setisVerifyEMAIL(event) {
-    this.isVerifyEMAIL = event; 
+    this.isVerifyEMAIL = event;
+  }
+  setRegisteredEmail(event){
+    this.userName=event;
+    alert(this.userName);
   }
 }

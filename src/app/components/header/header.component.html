@@ -6,25 +6,25 @@
     <links>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#" routerLink="/home" routerLinkActive="active-link">HOME<span
+          <a class="nav-link"  routerLink="/home" routerLinkActive="active-link">HOME<span
               class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item dropdown" xngIf="auth.isAuthenticated()" dropdown>
           <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
             ADMIN<span class="caret"></span></a>
           <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-            <a class="dropdown-item waves-light" href="#" routerLink="/car/list" routerLinkActive="active-link">CAR</a>
-            <a class="dropdown-item waves-light" href="#" routerLink="/client/list"
+            <a class="dropdown-item waves-light"  routerLink="/car/list" routerLinkActive="active-link">CAR</a>
+            <a class="dropdown-item waves-light"  routerLink="/client/list"
               routerLinkActive="active-link">CLIENT</a>
-            <a class="dropdown-item waves-light" href="#" routerLink="/make/list" routerLinkActive="active-link">MAKE</a>
-            <a class="dropdown-item waves-light" href="#" routerLink="/model/list">MODEL</a>
-            <a class="dropdown-item waves-light" href="#" routerLink="/variant/list">VARIANT</a>
-            <a class="dropdown-item waves-light" href="#" routerLink="/vehicleType/list">VEHICLE TYPE</a>
-            <a class="dropdown-item waves-light" href="#" routerLink="/fuelType/list">FUEL TYPE</a>
-            <a class="dropdown-item waves-light" href="#" routerLink="/transmissionType/list">TRANSMISSION</a>
-            <a class="dropdown-item waves-light" href="#" routerLink="/insurance/list">INSURANCE</a>
-            <a class="dropdown-item waves-light" href="#" routerLink="/expense/list">EXPENSE</a>
-            <a class="dropdown-item waves-light" href="#" routerLink="/color/list">COLOR</a>
+            <a class="dropdown-item waves-light"  routerLink="/make/list" routerLinkActive="active-link">MAKE</a>
+            <a class="dropdown-item waves-light"  routerLink="/model/list">MODEL</a>
+            <a class="dropdown-item waves-light"  routerLink="/variant/list">VARIANT</a>
+            <a class="dropdown-item waves-light"  routerLink="/vehicleType/list">VEHICLE TYPE</a>
+            <a class="dropdown-item waves-light"  routerLink="/fuelType/list">FUEL TYPE</a>
+            <a class="dropdown-item waves-light"  routerLink="/transmissionType/list">TRANSMISSION</a>
+            <a class="dropdown-item waves-light"  routerLink="/insurance/list">INSURANCE</a>
+            <a class="dropdown-item waves-light"  routerLink="/expense/list">EXPENSE</a>
+            <a class="dropdown-item waves-light"  routerLink="/color/list">COLOR</a>
           </div>
         </li>
         <li class="nav-item">
@@ -57,11 +57,11 @@
             <span class="ml-2" style="vertical-align:middle">{{name}}</span><span class="caret"></span>
           </a>
           <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown xdropdown-custom" role="menu">
-            <a [routerLink]="'/my-account'" class="dropdown-item" mdbWavesEffect href="#">
+            <a [routerLink]="'/my-account'" class="dropdown-item" mdbWavesEffect >
               <img [src]="avatarURL" alt="" class="img-fluid rounded-circle z-depth-0" height="20px" width="20px" style="vertical-align:middle">
               <span [routerLinkActive]="['router-link-active']" class="heading ml-2">My Account</span></a>
             <div class="divider dropdown-divider"></div>
-            <a class="dropdown-item" mdbWavesEffect href="#" (click)="logout()"><mdb-icon fas icon="sign-out-alt"></mdb-icon><span  [routerLinkActive]="['router-link-active']" class="heading ml-2">Logout</span></a>
+            <a class="dropdown-item" mdbWavesEffect  (click)="logout()"><mdb-icon fas icon="sign-out-alt"></mdb-icon><span  [routerLinkActive]="['router-link-active']" class="heading ml-2">Logout</span></a>
           </div>
         </li>
         <li class="nav-item avatar dropdown d-lg-none" dropdown *ngIf="this.name != ''">
@@ -70,9 +70,9 @@
             <span class="ml-2" style="vertical-align:middle">{{name}}</span><span class="caret"></span>
           </a>
           <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown xdropdown-custom" role="menu" style="position:relative !important">
-            <a [routerLink]="'/my-account'" class="dropdown-item" mdbWavesEffect href="#"><img [src]="avatarURL" alt="" class="img-fluid rounded-circle z-depth-0" height="20px" width="20px" style="vertical-align:middle"><span [routerLinkActive]="['router-link-active']" class="heading ml-2">My Account</span></a>
+            <a [routerLink]="'/my-account'" class="dropdown-item" mdbWavesEffect ><img [src]="avatarURL" alt="" class="img-fluid rounded-circle z-depth-0" height="20px" width="20px" style="vertical-align:middle"><span [routerLinkActive]="['router-link-active']" class="heading ml-2">My Account</span></a>
             <div class="divider dropdown-divider"></div>
-            <a class="dropdown-item" mdbWavesEffect href="#" (click)="logout()"><mdb-icon fas icon="sign-out-alt"></mdb-icon><span [routerLinkActive]="['router-link-active']" class="heading ml-2">Logout</span></a>
+            <a class="dropdown-item" mdbWavesEffect  (click)="logout()"><mdb-icon fas icon="sign-out-alt"></mdb-icon><span [routerLinkActive]="['router-link-active']" class="heading ml-2">Logout</span></a>
           </div>
         </li>
         <div class="divider dropdown-divider"></div>
@@ -84,17 +84,19 @@
 
 
 <div *ngIf="isLogin == true">
-<app-sign-in (userName)="setUserName($event)" (password)="setPassword($event)"  (isLogin)="setIsLogin($event)" (isRegister)='setIsRegister($event)'
+<app-sign-in (userName)="setUserName($event)" (password)="setPassword($event)" (isLogin)="setIsLogin($event)" (isRegister)='setIsRegister($event)'
   (isRecoverPassword)='setIsRecoverPassword($event)'></app-sign-in>
 </div>
 <div *ngIf="isRegister == true">
-<app-sign-up (isLogin)="setIsLogin($event)" (isRegister)='setIsRegister($event)'></app-sign-up>
+<app-sign-up (isLogin)="setIsLogin($event)" (isRegister)='setIsRegister($event)' (isVerifyEMAIL)="setisVerifyEMAIL($event)" (registeredEmail)="setRegisteredEmail($event)"></app-sign-up>
 </div>
 <div *ngIf="isRecoverPassword == true">
 <app-forgot-password (isLogin)="setIsLogin($event)" (isRecoverPassword)='setIsRecoverPassword($event)'>
 </app-forgot-password>
 </div>
 <div *ngIf="isVerifyEMAIL == true">
-  <app-verify-email [userName]="this.userName" (isVerifyEMAIL)="setisVerifyEMAIL($event)" (isLogin)="setIsLogin($event)">
+  <!-- <app-verify-email [userName]="this.userName" (isVerifyEMAIL)="setisVerifyEMAIL($event)" (isLogin)="setIsLogin($event)">
+  </app-verify-email> -->
+  <app-verify-email [userName]="this.userName">
   </app-verify-email>
   </div>

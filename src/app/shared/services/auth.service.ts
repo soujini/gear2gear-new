@@ -44,47 +44,19 @@ export class AuthService {
 
   // Sign up with email/password
   SignUp(email, password,firstName, lastName) {
-    return this.afAuth.createUserWithEmailAndPassword(email, password)
-    .then(u => {
-      // this.pagerService.signInWeb(email,password,firstName,lastName);
-      this.SendVerificationMail();
-  })
-  .catch(error => {
-    switch (error.code) {
-      case 'auth/email-already-in-use':
-      this.errorMessageSubject.next(`Email address ${email} already in use.`);
-      break;
-      case 'auth/invalid-email':
-      this.errorMessageSubject.next(`Email address ${email} is invalid.`);
-      break;
-      case 'auth/operation-not-allowed':
-      this.errorMessageSubject.next(`Error during sign up.`);
-      break;
-      case 'auth/weak-password':
-      this.errorMessageSubject.next('Password is not strong enough. Add additional characters including special characters and numbers.');
-      break;
-      default:
-      this.errorMessageSubject.next(error.message);
-      break;
-    }});
+    return this.afAuth.createUserWithEmailAndPassword(email, password);
+
   }
 
   // Send email verfificaiton when new user sign up
   async  SendVerificationMail() {
-    await (await this.afAuth.currentUser).sendEmailVerification()
-    .then(() => {
-      this.errorMessageSubject.next("Please check your email inbox for a verification email and login again.");
+    return await (await this.afAuth.currentUser).sendEmailVerification();
 
-    })
   }
 
   // Reset Forggot password
   ForgotPassword(passwordResetEmail) {
-    return this.afAuth.sendPasswordResetEmail(passwordResetEmail)
-    .then(() => {
-    }).catch((error) => {
-      window.alert(error)
-    })
+    return this.afAuth.sendPasswordResetEmail(passwordResetEmail);
   }
 
   // Returns true when user is looged in and email is verified
@@ -115,7 +87,7 @@ export class AuthService {
   // Sign out
   SignOut() {
     return this.afAuth.signOut().then(() => {
-      localStorage.removeItem('user');
+      localStorage.removeItem('User');
       this.pagerService.userDetailsSubject.next(null);
       // this.router.navigate(['sign-in']);
     })

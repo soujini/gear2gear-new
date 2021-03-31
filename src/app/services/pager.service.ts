@@ -11,7 +11,6 @@ export class PagerService {
     public userDetailsSubject = new BehaviorSubject({});
     userDetails = this.userDetailsSubject.asObservable();
 
-
     constructor(public httpClient: HttpClient,private router: Router, ) { }
     getPager(totalItems: number, currentPage: number = 1, pageSize: number = 10) {
         // calculate total pages
@@ -72,15 +71,15 @@ export class PagerService {
             pages: pages
         };
     }
-  
+
      getAccessToken(username) { //Username can be email or phone number
         var obj;
           obj = {
             "email": username
           };
-        
+
         return this.httpClient.post("", obj);
-      }      
+      }
 
       public signInWeb(email, phone, firstName, lastName) {//create user in the user table
         var obj = {
