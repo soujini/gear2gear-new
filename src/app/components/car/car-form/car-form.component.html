@@ -252,7 +252,7 @@
                   <input type="checkbox" class="form-check-input" id="inputAccidental" formControlName="is_accidental">
                   <label class="form-check-label" for="inputAccidental">Accidental?</label>
                 </div>
-                <div class="form-group" xngIf="selectedCar_Id" style="margin-bottom:25px">
+                <div class="form-group" *ngIf="this.carService.selectedMode == 'Edit'" style="margin-bottom:25px">
                   <label class="btn btn-default">
                     <input type="file" multiple="multiple" (change)="selectFile($event)">
                   </label>
