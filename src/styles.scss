@@ -77,10 +77,20 @@ body, html {
 .error-message{
   background-color: #f1f1f1;
   color:red;
+  height:45px;
+  position:inherit !important;
+  margin-bottom: 2em !important;
 }
 .success-mesage{
   background-color: #f1f1f1;
   color:green;
+  height:45px;
+  position:inherit !important;
+  margin-bottom: 2em !important;
+}
+.center {
+  margin: auto;
+  width: 100%;
 }
 
 /*Header*/

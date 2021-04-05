@@ -3,8 +3,8 @@
   <div *ngIf="message" class="alert alert-success text-center col-12">
     <strong>Success!</strong>&nbsp;<span>{{message}}</span>
   </div>
-  <div *ngIf="message_error" class="error-message text-center col-12">
-    <strong></strong>&nbsp;<span>{{message_error}}</span>
+  <div *ngIf="message_error" class="error-message text-center center">
+    <span>{{message_error}}</span>
   </div>
   <div class="row">
     <mat-tab-group class="col-12">
@@ -333,10 +333,10 @@
           </div>
         </form>
         <div *ngIf="message_td_success != ''" class="success-mesage text-center col-12">
-          <strong></strong>&nbsp;{{message_td_success}}
+          {{message_td_success}}
         </div>
-        <div *ngIf="message_td != ''" class="error-message text-center col-12">
-          <strong></strong>&nbsp;{{message_td}}
+        <div *ngIf="message_td != ''" class="error-message text-center center">
+          {{message_td}}
         </div>
         <app-transaction-details (tdCount)="getTDCount($event)" (opMessage)="setMessage($event)" [transactionTypes$]="transactionTypes$" [expenses$]="expenses$" [carForm]="carForm" [refreshTD]="refreshTD"></app-transaction-details>
       </mat-tab>

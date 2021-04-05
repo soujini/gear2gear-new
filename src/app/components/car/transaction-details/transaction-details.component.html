@@ -1,4 +1,4 @@
-<div *ngIf="message" class="error-message text-center col-12">
+<div *ngIf="message" class="error-message text-center center">
   <strong> </strong>{{message}}
 </div>
 <form *ngIf="carForm.get('is_parkandsell').value != true" [formGroup]="transactionDetailsForm" (ngSubmit)="onSubmit()" >
