@@ -1,6 +1,6 @@
 <section class="container-fluid section-list">
   <div>
-    <app-search (searchTermValueChanged)="searchClients($event)" (isCreate)="createClient('Create')"></app-search>
+    <app-search (searchTermValueChanged)="searchClients($event)" (isCreate)="createClient('Create')" (deleteAll)="deleteAll()"></app-search>
   </div>
   <div>
     <div *ngIf="(clients$ | async)?.length==0" class="alert alert-danger text-center col-12">

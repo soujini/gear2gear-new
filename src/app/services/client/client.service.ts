@@ -112,6 +112,10 @@ export class ClientService {
     return this.http.delete(this.apiUrl+'/api/clients/'+client_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
     .pipe(map(res => res));
   }
+  public deleteAllClients(): Observable<any> {
+    return this.http.delete(this.apiUrl+'/api/clients', {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
+    .pipe(map(res => res));
+  }
 
   extractData(res: Response) {
     let body = res.json();

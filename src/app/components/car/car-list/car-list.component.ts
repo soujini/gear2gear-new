@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Car } from '../../../data-model';
 import { CarService } from '../../../services/car/car.service';
 import { TransactionDetailsService } from '../../../services/transaction-details/transaction-details.service';
+
 @Component({
   selector: 'app-car-list',
   templateUrl: './car-list.component.html',
@@ -97,7 +98,7 @@ export class CarListComponent implements OnInit {
         setTimeout(() => {
           this.message = "";
         }, 5000);
-
+        this.getCars();
       },
       err => {
         window.scrollTo(0, 0);

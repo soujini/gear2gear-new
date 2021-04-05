@@ -21,6 +21,8 @@ export class ClientListComponent implements OnInit {
   searchTerm = new EventEmitter();
 
   selectedClientId:number;
+  message_error:string="";
+  message:string="";
 
   constructor(private clientService:ClientService, private router:Router, private route:ActivatedRoute) {
     this.clientService.selectedClientId.subscribe(res=>{
@@ -65,6 +67,27 @@ export class ClientListComponent implements OnInit {
     this.selectedClientId=0;
     this.clientService.selectedMode = mode;
     this.router.navigate(['/client/add']);
+  }
+  deleteAll(){
+    this.clientService.deleteAllClients()
+    .subscribe(
+      res => {
+        window.scrollTo(0, 0);
+        this.message = "Clients Deleted successfully.";
+        setTimeout(() => {
+          this.message = "";
+        }, 5000);
+        this.getClients();
+      },
+      err => {
+        window.scrollTo(0, 0);
+        this.message_error = err;
+        setTimeout(() => {
+          this.message_error = "";
+        }, 5000);
+        console.log(err);
+      }
+    );
   }
 
   //On Click of the Edit Button
