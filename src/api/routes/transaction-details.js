@@ -418,8 +418,17 @@ router.get('/api/transactionDetails/investorsInvestmentDetails/:date/:date2', fu
           }
           });
         });
-
-
+        router.delete("/api/transactionDetails", function(req, res) {
+          client.query('delete from public.transaction_details ', function(err,result) {
+            if(err){
+              console.log(err);
+              res.status(400).send(err);
+            }
+            else{
+            res.status(200).send(result.rows);
+          }
+          });
+        });
 
         function formatCurrency(val){
           let val1 = ''+val;

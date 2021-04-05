@@ -224,6 +224,21 @@ router.get('/api/cars', function(req, res) {
         });
 
       });
+      router.delete("/api/cars", function(req, res) {
+        var carId = parseInt(req.params.id);
+        client.query('delete from public.car', function(err,result) {
+          if(err){
+            console.log(err);
+            res.status(400).send(err);
+          }
+          else{
+            res.status(200).send(result);
+          }
+          // res.status(200).send({message:"The client has been deleted successfully."});
+        });
+
+      });
+
 
       function formatCurrency(val){
         let val1 = ''+val;

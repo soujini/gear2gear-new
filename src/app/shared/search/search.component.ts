@@ -14,11 +14,26 @@ import { map } from 'rxjs/operators';
 })
 export class SearchComponent implements OnInit {
   searchTerm = new FormControl('');
+  name:String;
+  user:any;
   @Output() searchTermValueChanged = new EventEmitter();
   @Output() isCreate = new EventEmitter();
+  @Output() deleteAll = new EventEmitter();
 
-  constructor() {}
+  constructor() {
+    this.getUserFromLocalStorage();
+  }
 
+  getUserFromLocalStorage(){
+    if(JSON.parse(localStorage.getItem('User')) != null){
+      var user = JSON.parse(localStorage.getItem('User'));
+      this.user = user;
+      this.name = user.email;
+    }
+    else{
+      this.name = "";
+    }
+  }
   valueChanged() {
     this.searchTerm.valueChanges
     //  .debounceTime(400)
@@ -30,6 +45,9 @@ export class SearchComponent implements OnInit {
 
   create(){
     this.isCreate.emit(true);
+  }
+  deleteAllCarsAndTransactions(){
+    this.deleteAll.emit(true);
   }
 
   ngOnInit() {

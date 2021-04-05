@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { Car } from '../../../data-model';
 import { CarService } from '../../../services/car/car.service';
-
+import { TransactionDetailsService } from '../../../services/transaction-details/transaction-details.service';
 @Component({
   selector: 'app-car-list',
   templateUrl: './car-list.component.html',
@@ -20,10 +20,11 @@ export class CarListComponent implements OnInit {
   selectedCarId:any="";
   title: string = "Car";
   selectedCar: Car;
-
+  message_error:string="";
+  message:string="";
   cars$: Observable<Car>;
 
-  constructor(private carService: CarService, private router: Router, private route: ActivatedRoute) {
+  constructor(private transactionDetailsService:TransactionDetailsService, private carService: CarService, private router: Router, private route: ActivatedRoute) {
 
     this.carService.selectedCarId.subscribe(res => {
       this.selectedCarId = res;
@@ -67,6 +68,46 @@ export class CarListComponent implements OnInit {
     this.selectedCarId = 0;
     this.carService.selectedMode = mode;
     this.router.navigate(['/car/add']);
+  }
+  deleteAll(){
+    this.carService.deleteAllCars()
+    .subscribe(
+      res => {
+        this.transactionDetailsService.deleteAllTransactionDetails()
+        .subscribe(
+          res => {
+            window.scrollTo(0, 0);
+            this.message = "Transaction Details Deleted successfully.";
+            setTimeout(() => {
+              this.message = "";
+            }, 5000);
+          },
+          err => {
+            window.scrollTo(0, 0);
+            this.message_error = err;
+            setTimeout(() => {
+              this.message_error = "";
+            }, 5000);
+            console.log(err);
+          }
+        );
+
+        window.scrollTo(0, 0);
+        this.message = "Cars Deleted successfully.";
+        setTimeout(() => {
+          this.message = "";
+        }, 5000);
+
+      },
+      err => {
+        window.scrollTo(0, 0);
+        this.message_error = err;
+        setTimeout(() => {
+          this.message_error = "";
+        }, 5000);
+        console.log(err);
+      }
+    );
   }
 
   //On Click of the Edit Button

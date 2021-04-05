@@ -162,6 +162,10 @@ export class CarService {
       return this.http.delete(this.apiUrl+'/api/cars/'+car_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
       .pipe(map(res => res));
     }
+    public deleteAllCars(){
+      return this.http.delete(this.apiUrl+'/api/cars', {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
+      .pipe(map(res => res));
+    }
 
     extractData(res: Response) {
       let body = res.json();

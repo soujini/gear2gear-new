@@ -159,6 +159,10 @@ export class TransactionDetailsService {
       return this.http.delete(this.apiUrl+'/api/transactionDetails/'+transaction_details_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
       .pipe(map(res => res));
     }
+    public deleteAllTransactionDetails(): Observable<any> {
+      return this.http.delete(this.apiUrl+'/api/transactionDetails', {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
+      .pipe(map(res => res));
+    }
     public deleteTransactionDetailsByTransactionType(transaction_type_id:number): Observable<any> {
       return this.http.delete(this.apiUrl+'/api/transactionDetails/transactionType/'+transaction_type_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
       .pipe(map(res => res));
