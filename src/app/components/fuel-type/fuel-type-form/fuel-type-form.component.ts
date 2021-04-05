@@ -127,7 +127,7 @@ export class FuelTypeFormComponent implements OnInit {
       this.fuelTypeService.deleteFuelType(this.selectedFuelType_Id).subscribe(
         res => {
           this.fuelTypeService.refreshList.next(true);
-          this.router.navigate(['/fuelType/add']);
+          this.router.navigate(['/fuelType/list']);
         },
         err => {
           console.log(err);

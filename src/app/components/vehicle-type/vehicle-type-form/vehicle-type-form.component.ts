@@ -130,7 +130,7 @@ export class VehicleTypeFormComponent implements OnInit {
       this.vehicleTypeService.deleteVehicleType(this.selectedVehicleType_Id).subscribe(
         res => {
           this.vehicleTypeService.refreshList.next(true);
-          this.router.navigate(['/vehicleType/add']);
+          this.router.navigate(['/vehicleType/list']);
         },
         err => {
           console.log(err);

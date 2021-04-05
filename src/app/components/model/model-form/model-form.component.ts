@@ -133,7 +133,7 @@ export class ModelFormComponent implements OnInit {
       this.modelService.deleteModel(this.selectedModel_Id).subscribe(
         res => {
           this.modelService.refreshList.next(true);
-          this.router.navigate(['/model/add']);
+          this.router.navigate(['/model/list']);
         },
         err => {
           console.log(err);
@@ -144,7 +144,7 @@ export class ModelFormComponent implements OnInit {
       this.modelForm.reset();
     }
   }
-  
+
   getMakes()  {
     this.makes$ = this.makeService.getMakes();
   }

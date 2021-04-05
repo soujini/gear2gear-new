@@ -129,7 +129,7 @@ export class InsuranceFormComponent implements OnInit {
       this.insuranceService.deleteInsurance(this.selectedInsurance_Id).subscribe(
         res => {
           this.insuranceService.refreshList.next(true);
-          this.router.navigate(['/insurance/add']);
+          this.router.navigate(['/insurance/list']);
         },
         err => {
           console.log(err);

@@ -129,7 +129,7 @@ export class TransmissionTypeFormComponent implements OnInit {
       this.transmissionTypeService.deleteTransmissionType(this.selectedTransmissionType_Id).subscribe(
         res => {
           this.transmissionTypeService.refreshList.next(true);
-          this.router.navigate(['/transmissionType/add']);
+          this.router.navigate(['/transmissionType/list']);
         },
         err => {
           console.log(err);

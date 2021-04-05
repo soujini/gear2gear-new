@@ -181,7 +181,7 @@ export class ClientFormComponent implements OnInit {
         this.clientService.deleteClient(this.selectedClient_Id).subscribe(
           res => {
             this.clientService.refreshList.next(true);
-            this.router.navigate(['/client/add']);
+            this.router.navigate(['/client/list']);
           },
           err => {
             console.log(err);

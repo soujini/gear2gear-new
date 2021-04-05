@@ -127,7 +127,7 @@ this.expenseService.selectedExpenseId.next(0);
       this.expenseService.deleteExpense(this.selectedExpense_Id).subscribe(
         res => {
           this.expenseService.refreshList.next(true);
-          this.router.navigate(['/expense/add']);
+          this.router.navigate(['/expense/list']);
         },
         err => {
           console.log(err);

@@ -127,7 +127,7 @@ export class VariantFormComponent implements OnInit {
       this.variantService.deleteVariant(this.selectedVariant_Id).subscribe(
         res => {
           this.variantService.refreshList.next(true);
-          this.router.navigate(['/variant/add']);
+          this.router.navigate(['/variant/list']);
         },
         err => {
           console.log(err);

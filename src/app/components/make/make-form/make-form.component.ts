@@ -138,7 +138,6 @@ export class MakeFormComponent implements OnInit {
             this.message = "";
           },5000);
           this.makeService.refreshList.next(true);
-          this.router.navigate(['/make/add']);
         },
         err => {
           window.scrollTo(0, 0);

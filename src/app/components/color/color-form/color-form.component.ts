@@ -131,7 +131,7 @@ export class ColorFormComponent implements OnInit {
         this.colorService.deleteColor(this.selectedColor_Id).subscribe(
           res => {
             this.colorService.refreshList.next(true);
-            this.router.navigate(['/color/add']);
+            this.router.navigate(['/color/list']);
           },
           err => {
             console.log(err);
