@@ -1,10 +1,14 @@
 <section class="header d-none d-block">
-  <mdb-navbar id="mn" SideClass="navbar navbar-expand-lg navbar-dark">
-    <logo>
-      <img class="logo" alt="logo" src="https://s3.amazonaws.com/gear2gear/g2g-logo.png">
-    </logo>
-    <links>
-      <ul class="navbar-nav ml-auto">
+  <!-- <mdb-navbar id="mn" SideClass="navbar navbar-expand-lg navbar-dark"> -->
+  <nav class="navbar navbar-dark navbar-expand-lg">
+    <div style="justify-content:space-between" class="d-flex w-100">
+      <div>
+        <logo>
+          <img class="logo" alt="logo" src="https://s3.amazonaws.com/gear2gear/g2g-logo.png">
+        </logo>
+      </div>
+      <div>
+        <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a class="nav-link"  routerLink="/home" routerLinkActive="active-link">HOME<span
               class="sr-only">(current)</span></a>
@@ -12,8 +16,8 @@
         <li class="nav-item dropdown" *ngIf="user != null" dropdown>
           <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
             ADMIN<span class="caret"></span></a>
-          <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-            <a class="dropdown-item waves-light"  routerLink="/car/list" routerLinkActive="active-link">CAR</a>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-menu-height" role="menu">
+            <a class="dropdown-item"  routerLink="/car/list" routerLinkActive="active-link" mdbWavesEffect>CAR</a>
             <a class="dropdown-item waves-light"  routerLink="/client/list"
               routerLinkActive="active-link">CLIENT</a>
             <a class="dropdown-item waves-light"  routerLink="/make/list" routerLinkActive="active-link">MAKE</a>
@@ -55,8 +59,8 @@
             <img [src]="avatarURL" alt="" class="img-fluid rounded-circle z-depth-0" style="vertical-align:middle">
             <span class="ml-2" style="vertical-align:middle">{{name}}</span><span class="caret"></span>
           </a>
-          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-menu-height xdropdown-custom" role="menu">
-            <a [routerLink]="'/my-account'" class="dropdown-item" mdbWavesEffect >
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-menu-height" role="menu">
+            <a [routerLink]="'/my-account'" class="dropdown-item " mdbWavesEffect >
               <img [src]="avatarURL" alt="" class="img-fluid rounded-circle z-depth-0" height="20px" width="20px" style="vertical-align:middle">
               <span [routerLinkActive]="['router-link-active']" class="heading ml-2">My Account</span></a>
             <!-- <div class="divider dropdown-divider"></div> -->
@@ -73,10 +77,12 @@
             <a class="dropdown-item" mdbWavesEffect  (click)="logout()"><mdb-icon fas icon="sign-out-alt"></mdb-icon><span [routerLinkActive]="['router-link-active']" class="heading ml-2">Logout</span></a>
           </div>
         </li>
-        <!-- <div class="divider dropdown-divider"></div> -->
       </ul>
-    </links>
-  </mdb-navbar>
+
+      </div>
+    </div>
+    </nav>
+  <!-- </mdb-navbar> -->
 </section>
 
 
