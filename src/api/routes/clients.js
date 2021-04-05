@@ -122,6 +122,15 @@ router.delete("/api/clients/:id", function(req, res) {
     res.status(200).send(result.rows);
   });
 });
+router.delete("/api/clients", function(req, res) {
+  client.query('delete from public.client'+clientId, function(err,result) {
+    if(err){
+      console.log(err);
+      res.status(400).send(err);
+    }
+    res.status(200).send(result.rows);
+  });
+});
 function formatCurrency(val){
   let val1 = ''+val;
   let x = val1.replace( /,/g, "" );
