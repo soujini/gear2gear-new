@@ -72,6 +72,16 @@ body, html {
 .active-text{
   border-bottom: 3px solid #d01110;
 }
+/*Error Success Messages*/
+
+.error-message{
+  background-color: #f1f1f1;
+  color:red;
+}
+.success-mesage{
+  background-color: #f1f1f1;
+  color:green;
+}
 
 /*Header*/
 .nav-link{

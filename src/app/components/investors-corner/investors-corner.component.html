@@ -2,7 +2,7 @@
   <mat-tab-group class="col-12">
     <mat-tab  label="Car Details">
       <form>
-        <div *ngIf="(cars$ | async)?.length==0" class="alert alert-danger text-center col-12">
+        <div *ngIf="(cars$ | async)?.length==0" class="error-message text-center col-12">
           <strong></strong>&nbsp;<span>No records found</span>
         </div>
         <table class="table">

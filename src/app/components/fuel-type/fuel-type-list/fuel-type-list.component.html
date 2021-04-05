@@ -3,7 +3,7 @@
     <app-search (searchTermValueChanged)="searchFuelTypes($event)" (isCreate)="createFuelType('Create')"></app-search>
   </div>
   <div>
-    <div *ngIf="(fuelTypes$ | async)?.length==0" class="alert alert-danger text-center col-12">
+    <div *ngIf="(fuelTypes$ | async)?.length==0" class="error-message text-center col-12">
       <strong></strong>&nbsp;<span>No records found</span>
     </div>
     <table class="table">

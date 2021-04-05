@@ -6,10 +6,10 @@
     <div *ngIf="(cars$ | async)?.length==0" class="red-text text-center col-12">
       <strong></strong>&nbsp;<span>No records found</span>
     </div>
-    <div *ngIf="message_error != ''" class="alert alert-danger text-center col-12">
+    <div *ngIf="message_error != ''" class="error-message text-center col-12">
       <strong></strong>&nbsp;<span>{{message_error}}</span>
     </div>
-    <div *ngIf="message != ''" class="alert alert-danger text-center col-12">
+    <div *ngIf="message != ''" class="success-message text-center col-12">
       <strong></strong>&nbsp;<span>{{message}}</span>
     </div>
     <table class="table">
