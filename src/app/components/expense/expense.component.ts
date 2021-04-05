@@ -13,7 +13,7 @@ import { ExpenseService } from '../../services/expense/expense.service';
   styleUrls: ['./expense.component.scss'],
 })
 export class ExpenseComponent implements OnInit {
-  title : string = "Expense";
+  title : string = "Expenses";
   selectedExpense : Expense;
 
   expenses$: Observable<Expense>;

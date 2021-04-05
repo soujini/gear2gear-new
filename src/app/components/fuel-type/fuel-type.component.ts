@@ -13,7 +13,7 @@ import { FuelTypeService } from '../../services/fuel-type/fuel-type.service';
   styleUrls: ['./fuel-type.component.scss'],
 })
 export class FuelTypeComponent implements OnInit {
-  title : string = "Fuel Type";
+  title : string = "Fuel Types";
   selectedFuelType : FuelType;
 
   fuelTypes$: Observable<FuelType>;
@@ -23,7 +23,7 @@ export class FuelTypeComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
   }
 
   // getFuelTypes()  {

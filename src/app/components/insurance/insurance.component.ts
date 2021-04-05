@@ -13,7 +13,7 @@ import { InsuranceService } from '../../services/insurance/insurance.service';
   styleUrls: ['./insurance.component.scss'],
 })
 export class InsuranceComponent implements OnInit {
-  title : string = "Insurance";
+  title : string = "Insurance Types";
   selectedInsurance : Insurance;
 
   insurances$: Observable<Insurance>;
@@ -23,7 +23,7 @@ export class InsuranceComponent implements OnInit {
   }
 
   ngOnInit() {
-   
+
   }
 
   // getInsurances()  {

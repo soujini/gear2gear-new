@@ -13,7 +13,7 @@ import { CarService } from '../../services/car/car.service';
   styleUrls: ['./car.component.scss'],
 })
 export class CarComponent implements OnInit {
-  title : string = "Car";
+  title : string = "Cars";
   selectedCar : Car;
 
   cars$: Observable<Car>;

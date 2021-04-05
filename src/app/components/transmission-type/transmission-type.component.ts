@@ -13,7 +13,7 @@ import { TransmissionTypeService } from '../../services/transmission-type/transm
   styleUrls: ['./transmission-type.component.scss'],
 })
 export class TransmissionTypeComponent implements OnInit {
-  title : string = "Transmission Type";
+  title : string = "Transmission Types";
   selectedTransmissionType : TransmissionType;
 
   transmissionTypes$: Observable<TransmissionType>;
@@ -23,7 +23,7 @@ export class TransmissionTypeComponent implements OnInit {
   }
 
   ngOnInit() {
-   
+
   }
 
   getTransmissionTypes()  {

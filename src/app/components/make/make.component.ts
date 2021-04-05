@@ -13,7 +13,7 @@ import { MakeService } from '../../services/make/make.service';
   styleUrls: ['./make.component.scss'],
 })
 export class MakeComponent implements OnInit {
-  title : string = "Make";
+  title : string = "Makes";
   selectedMake : Make;
 
   makes$: Observable<Make>;
@@ -23,7 +23,7 @@ export class MakeComponent implements OnInit {
   }
 
   ngOnInit() {
-  
+
   }
 
   // getMakes()  {

@@ -87,6 +87,11 @@ body, html {
   font-weight: 900;
   font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;//To Display arial black
 }
+.h2-responsive{
+  font-size:20px;
+  font-weight: 900;
+  font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;//To Display arial black
+}
 h2{
   font-weight: 900;
   font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;//To Display arial black
@@ -279,8 +284,10 @@ p{
 .navbar .dropdown-menu a{
   background-color: black !important;
   color:#CDCFD0 !important;
-
-
+}
+.navbar .dropdown-menu a:hover{
+  background-color: black !important;
+  color:#8acc25 !important;
 }
 .navbar{
     box-shadow: 0px !important;

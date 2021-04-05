@@ -13,7 +13,7 @@ import { VariantService } from '../../services/variant/variant.service';
   styleUrls: ['./variant.component.scss'],
 })
 export class VariantComponent implements OnInit {
-  title : string = "Variant";
+  title : string = "Variants";
   selectedVariant : Variant;
 
   variants$: Observable<Variant>;
@@ -23,7 +23,7 @@ export class VariantComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
   }
 
   // getVariants()  {

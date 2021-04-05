@@ -13,7 +13,7 @@ import { ColorService } from '../../services/color/color.service';
   styleUrls: ['./color.component.scss'],
 })
 export class ColorComponent implements OnInit {
-  title : string = "Color";
+  title : string = "Colors";
   selectedColor : Color;
 
   colors$: Observable<Color>;
@@ -23,7 +23,7 @@ export class ColorComponent implements OnInit {
   }
 
   ngOnInit() {
-  
+
   }
 
   // getColors()  {

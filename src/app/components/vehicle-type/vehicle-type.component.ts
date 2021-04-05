@@ -13,7 +13,7 @@ import { VehicleTypeService } from '../../services/vehicle-type/vehicle-type.ser
   styleUrls: ['./vehicle-type.component.scss'],
 })
 export class VehicleTypeComponent implements OnInit {
-  title : string = "Vehicle Type";
+  title : string = "Vehicle Types";
   selectedVehicleType : VehicleType;
 
   vehicleTypes$: Observable<VehicleType>;
@@ -23,7 +23,7 @@ export class VehicleTypeComponent implements OnInit {
   }
 
   ngOnInit() {
-   
+
   }
 
   // getVehicleTypes()  {

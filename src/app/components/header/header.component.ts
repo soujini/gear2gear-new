@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit {
   submitted = false;
   public user :User;
   isVerifyEMAIL: boolean = false;
+  avatarURL=""
 
   constructor(
     private formBuilder: FormBuilder,

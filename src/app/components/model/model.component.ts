@@ -13,7 +13,7 @@ import { ModelService } from '../../services/model/model.service';
   styleUrls: ['./model.component.scss'],
 })
 export class ModelComponent implements OnInit {
-  title : string = "Model";
+  title : string = "Models";
   selectedModel : Model;
 
   models$: Observable<Model>;
@@ -23,7 +23,7 @@ export class ModelComponent implements OnInit {
   }
 
   ngOnInit() {
-   
+
   }
 
   // getModels()  {

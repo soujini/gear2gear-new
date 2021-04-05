@@ -19,7 +19,7 @@ export class CarListComponent implements OnInit {
   searchTerm = new EventEmitter();
 
   selectedCarId:any="";
-  title: string = "Car";
+  title: string = "Cars";
   selectedCar: Car;
   message_error:string="";
   message:string="";

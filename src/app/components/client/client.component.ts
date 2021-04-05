@@ -16,7 +16,7 @@ import { CommonService } from '../../services/common/common.service';
   styleUrls: ['./client.component.scss'],
 })
 export class ClientComponent implements OnInit {
-  title : string = "Client";
+  title : string = "Clients";
   selectedClient : Client;
 
   clients$: Observable<Client>;
@@ -26,7 +26,7 @@ export class ClientComponent implements OnInit {
   }
 
   ngOnInit() {
-  
+
   }
 
 
