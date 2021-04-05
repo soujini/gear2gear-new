@@ -123,7 +123,7 @@ router.delete("/api/clients/:id", function(req, res) {
   });
 });
 router.delete("/api/clients", function(req, res) {
-  client.query('delete from public.client'+clientId, function(err,result) {
+  client.query('delete from public.client', function(err,result) {
     if(err){
       console.log(err);
       res.status(400).send(err);
