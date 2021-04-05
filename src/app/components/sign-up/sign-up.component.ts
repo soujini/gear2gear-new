@@ -19,6 +19,7 @@ export class SignUpComponent implements AfterViewInit {
   @ViewChild('registerModal') public registerModal: ModalDirective;
   registerForm: any;
   successMessage:string="";
+  isProcessing:boolean=false;
 
   constructor( public authService: AuthService,private formBuilder: FormBuilder) {
     this.authService.errorMessage.subscribe(data => {
@@ -47,6 +48,7 @@ export class SignUpComponent implements AfterViewInit {
     }
 
     signUp(userEmail:string, userPwd:string, firstName:string, lastName:string){
+      this.isProcessing=true;
       this.authService.SignUp(userEmail, userPwd,firstName, lastName).then(user => {
         // this.pagerService.signInWeb(email,password,firstName,lastName);
         this.authService.SendVerificationMail().then(() => {
@@ -55,12 +57,15 @@ export class SignUpComponent implements AfterViewInit {
             this.isRegister.emit(false);
             this.isVerifyEMAIL.emit(true);
             this.registeredEmail.emit(userEmail);
+              this.isProcessing=false;
           // }, 000);
 
         });
+          this.isProcessing=false;
 
     })
     .catch(error => {
+        this.isProcessing=false;
       switch (error.code) {
         case 'auth/email-already-in-use':
         // this.errorMessageSubject.next(`Email address ${email} already in use.`);

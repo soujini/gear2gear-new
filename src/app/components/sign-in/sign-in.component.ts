@@ -31,6 +31,7 @@ export class SignInComponent implements AfterViewInit {
   @Output() userName = new EventEmitter();
   @Output() password = new EventEmitter();
   loginBtnText: string = "Log In"
+  isProcessing:boolean=false;
 
   constructor(public ngZone: NgZone,
     public authService: AuthService,
@@ -103,6 +104,7 @@ export class SignInComponent implements AfterViewInit {
   //   });
   // }
   signIn(userName:string, password?:string){
+    this.isProcessing=true;
     this.submitted=true;
       this.signInWithEmailAndPassword(userName, password);
   }
@@ -128,14 +130,18 @@ export class SignInComponent implements AfterViewInit {
 
            localStorage.setItem('User', JSON.stringify(User));
            this.pagerService.userDetailsSubject.next(JSON.stringify(User));
+             this.isProcessing=false;
         });
         // this.SetUserData(result.user);
       }
       else{
+          this.isProcessing=false;
         this.errorMessage = "Please check your email inbox for a verification email.";
+
       }
 
     }).catch((error) => {
+        this.isProcessing=false;
      this.errorMessage = error.message;
      setTimeout(() => {
        this.errorMessage = "";

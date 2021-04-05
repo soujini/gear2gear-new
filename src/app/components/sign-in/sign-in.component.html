@@ -1,47 +1,54 @@
 <div id="loginModal" mdbModal #loginModal="mdbModal" class="modal fade"
-  [config]="{backdrop: false, ignoreBackdropClick: true}" tabindex="-1" role="dialog"
-  aria-labelledby="myBasicModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close pull-right" aria-label="Close" (click)="this.isLogin.emit(false);"
-          style="right:25px">
-          <img class="modal_close_icon" src="../../../assets/icons/modal_close_icon.svg" height="12px">
-        </button>
-        <div>
-          <span class="title">Login</span>
-        </div>
+[config]="{backdrop: false, ignoreBackdropClick: true}" tabindex="-1" role="dialog"
+aria-labelledby="myBasicModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close pull-right" aria-label="Close" (click)="this.isLogin.emit(false);"
+      style="right:25px">
+      <img class="modal_close_icon" src="../../../assets/icons/modal_close_icon.svg" height="12px">
+    </button>
+    <div>
+      <span class="title">Login</span>
+    </div>
+  </div>
+  <div class="modal-body">
+    <!-- <app-loader></app-loader> -->
+    <div class="d-flex justify-content-center" *ngIf="this.isProcessing == true">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
       </div>
-      <div class="modal-body">
-          <!-- <app-loader></app-loader> -->
-        <div>
-          <p class="red-text text-center" style="font-size:11px;min-height:10px">{{errorMessage}}</p>
-          <p class="green-text text-center" style="font-size:11px;min-height:10px">{{successMessage}}</p>
-          <div class="formGroup">
-            <input id="userName" mdbInput type="text" class="form-control custom-form-control" placeholder=" Email"
-              #userName required>
-          </div>
-          <div class="formGroup text-center mt-4" id="recaptcha-container"></div>
-          <div class="formGroup mt-2">
-            <input id="userPassword" mdbInput type="password" class="form-control custom-form-control"
-              placeholder="Password" #userPassword required>
+    </div>
+    <div>
+      <p class="red-text text-center" style="font-size:11px;min-height:10px">{{errorMessage}}</p>
+      <p class="green-text text-center" style="font-size:11px;min-height:10px">{{successMessage}}</p>
+      <div class="formGroup">
+        <input id="userName" mdbInput type="text" class="form-control custom-form-control" placeholder=" Email"
+        #userName required>
+      </div>
+      <div class="formGroup text-center mt-4" id="recaptcha-container"></div>
+      <div class="formGroup mt-2">
+        <input id="userPassword" mdbInput type="password" class="form-control custom-form-control"
+        placeholder="Password" #userPassword required>
 
-          </div>
-          <div class="formGroup text-center mt-3">
-            <button [disabled]="loading" (click)="signIn(userName.value, userPassword.value)" type="button"
-              class="btn btn-primary btn-rounded">{{loginBtnText}}</button>
-          </div>
-        </div>
-        <div>
-          <div class="forgotPassword">
-            <span (click)="forgotPassword()">Forgot Password?</span>
-          </div>
-          <div class="redirectToLogin">
-            <span>Not a Member?<span class="redirect" style="cursor:pointer" (click)="register()">
-                Register</span></span>
-          </div>
+      </div>
+      <div class="formGroup text-center mt-3">
+        <button [disabled]="loading" (click)="signIn(userName.value, userPassword.value)" type="button"
+        class="btn btn-primary btn-rounded">{{loginBtnText}}</button>
+
+      </div>
+
+    </div>
+    <div>
+      <div class="forgotPassword">
+        <span (click)="forgotPassword()">Forgot Password?</span>
+      </div>
+      <div class="redirectToLogin">
+        <span>Not a Member?<span class="redirect" style="cursor:pointer" (click)="register()">
+          Register</span></span>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>

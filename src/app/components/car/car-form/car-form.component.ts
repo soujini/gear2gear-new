@@ -105,12 +105,10 @@ export class CarFormComponent implements OnInit {
           this.selectedCar_Id = res;
 
           if (this.carService.selectedMode == "Edit") {
-            alert("in edit");
             setTimeout(_ => { this.changeDetectorRef.detectChanges() }, 0);
             this.title = "Edit Car"
             this.mode = "delete";
             this.getCarById(res);
-            alert("getting car");
             this.carService.transactionDetail.next("true");
           }
         }
@@ -416,7 +414,7 @@ export class CarFormComponent implements OnInit {
               this.carService.deleteCar(this.selectedCar_Id).subscribe(
                 res => {
                   this.carService.refreshList.next(true);
-                  this.router.navigate(['/car/add']);
+                  this.router.navigate(['/car/list']);
                   console.log("Delete Car : ", res.message);
                 },
                 err => {
