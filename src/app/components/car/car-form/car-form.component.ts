@@ -413,9 +413,27 @@ export class CarFormComponent implements OnInit {
             if (this.selectedCar_Id) {
               this.carService.deleteCar(this.selectedCar_Id).subscribe(
                 res => {
+                  // this.carService.refreshList.next(true);
+                  // this.router.navigate(['/car/list']);
+                  this.deleteTransactionDetailsByCarId();
+                  console.log("Delete Car : ", res.message);
+                },
+                err => {
+                  console.log(err);
+                }
+              );
+            }
+            else {
+              this.carForm.reset();
+            }
+          }
+          deleteTransactionDetailsByCarId(){
+            if (this.selectedCar_Id) {
+              this.transactionDetailsService.deleteTransactionDetailsByCarId(this.selectedCar_Id).subscribe(
+                res => {
                   this.carService.refreshList.next(true);
                   this.router.navigate(['/car/list']);
-                  console.log("Delete Car : ", res.message);
+                  console.log("Delete TransactionDetails Car : ", res.message);
                 },
                 err => {
                   console.log(err);

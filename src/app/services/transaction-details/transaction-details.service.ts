@@ -167,6 +167,10 @@ export class TransactionDetailsService {
       return this.http.delete(this.apiUrl+'/api/transactionDetails/transactionType/'+transaction_type_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
       .pipe(map(res => res));
     }
+    public deleteTransactionDetailsByCarId(car_id:number): Observable<any> {
+      return this.http.delete(this.apiUrl+'/api/transactionDetails/car/'+car_id, {headers: {'Content-Type': 'application/json; charset=utf-8','Cache-Control': 'max-age=604800'}})
+      .pipe(map(res => res));
+    }
     public deleteProfitOrLossTransactionDetails(car_id:number): Observable<any> {
       // const investorsDetails = JSON.stringify(investorsExpensesAndPercent);
       // let options = {

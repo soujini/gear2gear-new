@@ -476,8 +476,12 @@ export class TransactionDetailsComponent implements OnInit {
           if(this.transactionDetailsForm.get('transaction_type_id').value == 13)
           {
             var sp = parseInt(this.carForm.get('selling_price').value.toString().replace( /,/g, "" ));
-            var credit = parseInt(this.transactionDetailsForm.get('credit').value.toString().replace( /,/g, "" ));
+            var cp = parseInt(this.carForm.get('cost_price').value.toString().replace( /,/g, "" ));
             var tot = this.total_money_received + credit;
+
+            //this credit is only calculated if transaction type is SOLD. We are adding a Credit Entry
+            //as selling price - profit since we have the profit entries separately
+            var credit = parseInt(this.transactionDetailsForm.get('credit').value.toString().replace( /,/g, "" ));
 
             if(tot>sp)
             {
@@ -488,6 +492,11 @@ export class TransactionDetailsComponent implements OnInit {
               },5000);
             }
             else{
+              if(this.transactionDetailsForm.get('transaction_type_id').value == 13){
+                this.transactionDetailsForm.patchValue({
+                  credit:cp,
+                });
+              }
               this.createTransactionDetails();
             }
           }

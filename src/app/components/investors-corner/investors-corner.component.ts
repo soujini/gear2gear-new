@@ -76,23 +76,24 @@ export class InvestorsCornerComponent implements OnInit {
             this.transactionDetails = res;
             this.cars$.subscribe(
               res1=>{
+                console.log(res1);
                 for(var i=0;i<res1.length;i++)
                 {
                   this.total_expenses="0";
                   for(var j =0; j<res.length;j++)
                   {
                     if(res[j].is_void != true){
-                    if(res[j].car_id != null){
-                      if(res1[i].car_id == res[j].car_id && res[j].transaction_type_id == 2)
-                      {
-                        this.total_expenses= (parseFloat(this.total_expenses) + parseFloat(res[j].debit)).toString();
-                        this.cars[i].total_cost = parseFloat(res1[i].cost_price) + parseFloat(this.total_expenses);
-                      }
-                      if(this.total_expenses == "0"){
-                        this.cars[i].total_cost = parseFloat(res1[i].cost_price);
+                      if(res[j].car_id != null){
+                        if(res1[i].car_id == res[j].car_id && res[j].transaction_type_id == 2)
+                        {
+                          this.total_expenses= (parseFloat(this.total_expenses) + parseFloat(res[j].debit)).toString();
+                          this.cars[i].total_cost = parseFloat(res1[i].cost_price) + parseFloat(this.total_expenses);
+                        }
+                        if(this.total_expenses == "0"){
+                          this.cars[i].total_cost = parseFloat(res1[i].cost_price);
+                        }
                       }
                     }
-                  }
                   }
                 }
               },
