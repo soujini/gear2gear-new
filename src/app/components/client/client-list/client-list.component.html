@@ -7,7 +7,7 @@
     No records found
     <!-- <label style="height:45px; vertical-align:center">No records found</label> -->
   </div>
-  <div *ngIf="(clients$ | async)?.length == 0">
+  <div *ngIf="(clients$ | async)?.length != 0">
     <table  class="table">
       <thead class="#f5f5f5 grey lighten-4">
         <tr>
