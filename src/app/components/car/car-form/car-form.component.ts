@@ -416,7 +416,7 @@ export class CarFormComponent implements OnInit {
                   // this.carService.refreshList.next(true);
                   // this.router.navigate(['/car/list']);
                   this.deleteTransactionDetailsByCarId();
-                  console.log("Delete Car : ", res.message);
+                  console.log("Delete Car : ", res);
                 },
                 err => {
                   console.log(err);
@@ -433,7 +433,7 @@ export class CarFormComponent implements OnInit {
                 res => {
                   this.carService.refreshList.next(true);
                   this.router.navigate(['/car/list']);
-                  console.log("Delete TransactionDetails Car : ", res.message);
+                  console.log("Delete TransactionDetails Car : ", res);
                 },
                 err => {
                   console.log(err);
