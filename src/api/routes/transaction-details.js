@@ -406,6 +406,30 @@ router.get('/api/transactionDetails/investorsInvestmentDetails/:date/:date2', fu
           }
           });
         });
+        router.delete("/api/transactionDetails/car/:id", function(req, res) {
+          var car_id = parseInt(req.params.id);
+          client.query('delete from public.transaction_details where car_id = '+car_id, function(err,result) {
+            if(err){
+              console.log(err);
+              res.status(400).send(err);
+            }
+            else{
+            res.status(200).send(result.rows);
+          }
+          });
+        });
+        router.delete("/api/transactionDetails/client/:id", function(req, res) {
+          var client_id = parseInt(req.params.id);
+          client.query('delete from public.transaction_details where client_id = '+client_id, function(err,result) {
+            if(err){
+              console.log(err);
+              res.status(400).send(err);
+            }
+            else{
+            res.status(200).send(result.rows);
+          }
+          });
+        });
         router.delete("/api/transactionDetails/transactionType/:id", function(req, res) {
           var transaction_type_id = parseInt(req.params.id);
           client.query('delete from public.transaction_details where transaction_type_id = '+transaction_type_id, function(err,result) {
