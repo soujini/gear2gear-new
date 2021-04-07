@@ -476,16 +476,14 @@ export class TransactionDetailsComponent implements OnInit {
           if(this.transactionDetailsForm.get('transaction_type_id').value == 13)
           {
             var sp = parseInt(this.carForm.get('selling_price').value.toString().replace( /,/g, "" ));
-            //This is the purchase price and not the CP
-            var cp = parseInt(this.carForm.get('cost_price').value.toString().replace( /,/g, "" ));
+            var credit = parseInt(this.transactionDetailsForm.get('credit').value.toString().replace( /,/g, "" ));
             var tot = this.total_money_received + credit;
 
-            console.log("souj "+cp);
+            console.log("souj "+sp);
+            console.log("souj "+credit);
             console.log("total" +tot);
             //this credit is only calculated if transaction type is SOLD. We are adding a Credit Entry
             //as selling price - profit since we have the profit entries separately
-            var credit = parseInt(this.transactionDetailsForm.get('credit').value.toString().replace( /,/g, "" ));
-  console.log("credit" +credit);
             if(tot>sp)
             {
               this.opMessage.emit("Sold Type transactions should not exceed the Selling Price "+this.carForm.get('selling_price').value);
