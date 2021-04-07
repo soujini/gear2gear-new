@@ -499,7 +499,7 @@ export class TransactionDetailsComponent implements OnInit {
                   credit:this.total_cost_car,
                 });
               }
-            //  this.createTransactionDetails();
+              this.createTransactionDetails();
             }
           }
           else{
