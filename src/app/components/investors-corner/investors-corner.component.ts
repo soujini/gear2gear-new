@@ -87,10 +87,10 @@ export class InvestorsCornerComponent implements OnInit {
                         if(res1[i].car_id == res[j].car_id && res[j].transaction_type_id == 2)
                         {
                           this.total_expenses= (parseFloat(this.total_expenses) + parseFloat(res[j].debit)).toString();
-                          this.cars[i].total_cost = parseFloat(res1[i].cost_price) + parseFloat(this.total_expenses);
+                          this.cars[i].total_cost = parseFloat(res1[i].purchase_price) + parseFloat(this.total_expenses);
                         }
                         if(this.total_expenses == "0"){
-                          this.cars[i].total_cost = parseFloat(res1[i].cost_price);
+                          this.cars[i].total_cost = parseFloat(res1[i].purchase_price);
                         }
                       }
                     }

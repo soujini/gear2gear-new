@@ -59,7 +59,7 @@ export class Car {
   mileage:number;
   make_year:number;
   owners:number;
-  cost_price:number;
+  purchase_price:number;
   purchased_from:number;
   purchased_on:string;
   selling_price:number;

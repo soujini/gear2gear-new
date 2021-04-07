@@ -135,8 +135,8 @@ router.get('/api/cars', function(req, res) {
       });
 
       router.post("/api/cars", function(req, res) {
-        if(req.body.cost_price){
-          req.body.cost_price = req.body.cost_price.replace( /,/g, "" );
+        if(req.body.purchase_price){
+          req.body.purchase_price = req.body.purchase_price.replace( /,/g, "" );
         }
 
         if(req.body.selling_price){
@@ -146,7 +146,7 @@ router.get('/api/cars', function(req, res) {
           req.body.mileage = req.body.mileage.replace( /,/g, "" );
         }
 
-        client.query("INSERT INTO public.car(car_id, make, model, description, variant, vehicle_type, fuel_type, transmission_type, insurance, exterior_color, interior_color,fuel_economy, mileage, make_year, owners, cost_price, purchased_from, purchased_on, selling_price, sold_to, sold_on, make_month,insurance_year,is_accidental,is_flooded,is_sold,license_plate,is_parkandsell, is_partnercar, created_by, create_date) VALUES(DEFAULT, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, 1, CURRENT_TIMESTAMP) returning car_id",[req.body.make,req.body.model,req.body_description, req.body.variant, req.body.vehicle_type, req.body.fuel_type, req.body.transmission_type, req.body.insurance, req.body.exterior_color,req.body.interior_color,req.body.fuel_economy, req.body.mileage, req.body.make_year, req.body.owners, req.body.cost_price, req.body.purchased_from, req.body.purchased_on, req.body.selling_price, req.body.sold_to, req.body.sold_on, req.body.make_month, req.body.insurance_year, req.body.is_accidental, req.body.is_flooded, req.body.is_sold, req.body.license_plate, req.body.is_parkandsell, req.body.is_partnercar], function(err,result) {
+        client.query("INSERT INTO public.car(car_id, make, model, description, variant, vehicle_type, fuel_type, transmission_type, insurance, exterior_color, interior_color,fuel_economy, mileage, make_year, owners, purchase_price, purchased_from, purchased_on, selling_price, sold_to, sold_on, make_month,insurance_year,is_accidental,is_flooded,is_sold,license_plate,is_parkandsell, is_partnercar, created_by, create_date) VALUES(DEFAULT, $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, 1, CURRENT_TIMESTAMP) returning car_id",[req.body.make,req.body.model,req.body_description, req.body.variant, req.body.vehicle_type, req.body.fuel_type, req.body.transmission_type, req.body.insurance, req.body.exterior_color,req.body.interior_color,req.body.fuel_economy, req.body.mileage, req.body.make_year, req.body.owners, req.body.purchase_price, req.body.purchased_from, req.body.purchased_on, req.body.selling_price, req.body.sold_to, req.body.sold_on, req.body.make_month, req.body.insurance_year, req.body.is_accidental, req.body.is_flooded, req.body.is_sold, req.body.license_plate, req.body.is_parkandsell, req.body.is_partnercar], function(err,result) {
           if(err){
             console.log(err);
             res.status(400).send(err);
@@ -166,8 +166,8 @@ router.get('/api/cars', function(req, res) {
             res.status(400).send(err);
           }
           else if (result.rows.length >= 1){
-            if(result.rows[0].cost_price){
-              result.rows[0].cost_price = formatCurrency(result.rows[0].cost_price);
+            if(result.rows[0].purchase_price){
+              result.rows[0].purchase_price = formatCurrency(result.rows[0].purchase_price);
             }
             if(result.rows[0].selling_price){
               result.rows[0].selling_price = formatCurrency(result.rows[0].selling_price);
@@ -186,8 +186,8 @@ router.get('/api/cars', function(req, res) {
       router.put("/api/cars/:id", function(req, res) {
         var carId = parseInt(req.params.id);
 
-        if(req.body.cost_price){
-          req.body.cost_price = req.body.cost_price.replace( /,/g, "" );
+        if(req.body.purchase_price){
+          req.body.purchase_price = req.body.purchase_price.replace( /,/g, "" );
         }
         if(req.body.selling_price){
           req.body.selling_price = req.body.selling_price.replace( /,/g, "" );
@@ -199,7 +199,7 @@ router.get('/api/cars', function(req, res) {
           req.body.is_sold=false;
         }
 
-        client.query("update public.car set make =$1, model=$2,description=$3, variant=$4, vehicle_type=$5, fuel_type=$6, transmission_type=$7, insurance=$8, exterior_color=$9, interior_color=$10, fuel_economy=$11, mileage=$12, make_year=$13, owners=$14, cost_price=$15, purchased_from=$16, purchased_on=$17 ,selling_price=$18, sold_to=$19, sold_on=$20, make_month=$21, insurance_year=$22, is_accidental=$23, is_flooded=$24, is_sold=$25, license_plate=$26, is_parkandsell=$27, is_partnercar=$28, updated_by=1, update_date=CURRENT_TIMESTAMP where car_id = "+carId,[req.body.make,req.body.model,req.body.description, req.body.variant, req.body.vehicle_type, req.body.fuel_type, req.body.transmission_type, req.body.insurance, req.body.exterior_color,req.body.interior_color, req.body.fuel_economy, req.body.mileage, req.body.make_year, req.body.owners, req.body.cost_price, req.body.purchased_from, req.body.purchased_on, req.body.selling_price, req.body.sold_to, req.body.sold_on, req.body.make_month, req.body.insurance_year, req.body.is_accidental, req.body.is_flooded, req.body.is_sold, req.body.license_plate, req.body.is_parkandsell, req.body.is_partnercar], function(err,result) {
+        client.query("update public.car set make =$1, model=$2,description=$3, variant=$4, vehicle_type=$5, fuel_type=$6, transmission_type=$7, insurance=$8, exterior_color=$9, interior_color=$10, fuel_economy=$11, mileage=$12, make_year=$13, owners=$14, purchase_price=$15, purchased_from=$16, purchased_on=$17 ,selling_price=$18, sold_to=$19, sold_on=$20, make_month=$21, insurance_year=$22, is_accidental=$23, is_flooded=$24, is_sold=$25, license_plate=$26, is_parkandsell=$27, is_partnercar=$28, updated_by=1, update_date=CURRENT_TIMESTAMP where car_id = "+carId,[req.body.make,req.body.model,req.body.description, req.body.variant, req.body.vehicle_type, req.body.fuel_type, req.body.transmission_type, req.body.insurance, req.body.exterior_color,req.body.interior_color, req.body.fuel_economy, req.body.mileage, req.body.make_year, req.body.owners, req.body.purchase_price, req.body.purchased_from, req.body.purchased_on, req.body.selling_price, req.body.sold_to, req.body.sold_on, req.body.make_month, req.body.insurance_year, req.body.is_accidental, req.body.is_flooded, req.body.is_sold, req.body.license_plate, req.body.is_parkandsell, req.body.is_partnercar], function(err,result) {
           if(err){
             console.log(err);
             res.status(400).send(err);

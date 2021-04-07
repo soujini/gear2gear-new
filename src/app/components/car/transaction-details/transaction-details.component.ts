@@ -449,12 +449,12 @@ export class TransactionDetailsComponent implements OnInit {
         if(this.transactionDetailsForm.get('transaction_type_mode').value == "debit"){
           //Purchase Transaction Type Should match Cost Price
           if(this.transactionDetailsForm.get('transaction_type_id').value == 12){
-            var cp = parseInt(this.carForm.get('cost_price').value.toString().replace( /,/g, "" ));
+            var cp = parseInt(this.carForm.get('purchase_price').value.toString().replace( /,/g, "" ));
             var debit = parseInt(this.transactionDetailsForm.get('debit').value.toString().replace( /,/g, "" ));
             var tot = this.total_money_invested + debit;
 
             if(tot>cp){
-              this.opMessage.emit("Purchase Type transactions should not exceed the Cost Price "+this.carForm.get('cost_price').value);
+              this.opMessage.emit("Purchase Type transactions should not exceed the Cost Price "+this.carForm.get('purchase_price').value);
 
               setTimeout(() => {
                 this.opMessage.emit("");
@@ -482,6 +482,7 @@ export class TransactionDetailsComponent implements OnInit {
             console.log("souj "+sp);
             console.log("souj "+credit);
             console.log("total" +tot);
+            console.log("expenses "+this.total_cost_car);
             //this credit is only calculated if transaction type is SOLD. We are adding a Credit Entry
             //as selling price - profit since we have the profit entries separately
             if(tot>sp)

@@ -145,7 +145,7 @@ export class CarFormComponent implements OnInit {
         mileage: [null, [Validators.required]],
         make_year: ['', [Validators.required]],//required
         owners: ['', [Validators.required]],
-        cost_price: [null, [Validators.required]],//required
+        purchase_price: [null, [Validators.required]],//required
         purchased_from: [null, [Validators.required]],//required
         purchased_on: [null, [Validators.required]],//required
         make_month: [],
@@ -254,20 +254,20 @@ export class CarFormComponent implements OnInit {
               this.carForm.get('purchased_from').clearValidators();
               this.carForm.get('purchased_from').updateValueAndValidity({ emitEvent: false, onlySelf: true });
 
-              this.carForm.get('cost_price').clearValidators();
-              this.carForm.get('cost_price').updateValueAndValidity({ emitEvent: false, onlySelf: true });
+              this.carForm.get('purchase_price').clearValidators();
+              this.carForm.get('purchase_price').updateValueAndValidity({ emitEvent: false, onlySelf: true });
             }
 
             if (res[0].is_sold == true) {
               this.carForm.disable();
               this.soldDetailsForm.disable();
-              // this.carForm.get('cost_price').disable();
+              // this.carForm.get('purchase_price').disable();
               // this.carForm.get('purchased_on').disable();
               // this.carForm.get('purchased_from').disable();
             }
             else {
               this.carForm.enable();
-              this.carForm.get('cost_price').enable();
+              this.carForm.get('purchase_price').enable();
               this.carForm.get('purchased_on').enable();
               this.carForm.get('purchased_from').enable();
             }
@@ -327,7 +327,7 @@ export class CarFormComponent implements OnInit {
 
           createCar() {
             this.carForm.patchValue({
-              total_cost: this.carForm.controls.cost_price.value,
+              total_cost: this.carForm.controls.purchase_price.value,
             });
             this.carService.createCar(this.carForm.value)
             .subscribe(
@@ -355,7 +355,7 @@ export class CarFormComponent implements OnInit {
           updateCar() {
             //Checking to see if cost price has changed and deleting any purchase transactions
             let formControls = this.carForm.controls;
-            if (formControls.cost_price.dirty) {
+            if (formControls.purchase_price.dirty) {
               this.transactionDetailsService.deleteTransactionDetailsByTransactionType(12).subscribe(
                 res => {
                   this.transactionDetailsService.refreshTD.next(true);
@@ -530,7 +530,7 @@ export class CarFormComponent implements OnInit {
             // (
             //   res=>{
             //     this.total_money_invested=parseInt(res[0].total_money_invested);
-            //     if(this.total_money_invested < parseInt(this.carForm.get('cost_price').value.toString().replace( /,/g, "" )))
+            //     if(this.total_money_invested < parseInt(this.carForm.get('purchase_price').value.toString().replace( /,/g, "" )))
             //     {
             //       //Message - Please input all tran details iwht option sold to enable
             //       this.message_td = "Please enter transactions with type 'Purchase' to match the Cost Price";
@@ -576,8 +576,8 @@ export class CarFormComponent implements OnInit {
                 this.carForm.get('purchased_from').clearValidators();
                 this.carForm.get('purchased_from').updateValueAndValidity({ emitEvent: false, onlySelf: true });
 
-                this.carForm.get('cost_price').clearValidators();
-                this.carForm.get('cost_price').updateValueAndValidity({ emitEvent: false, onlySelf: true });
+                this.carForm.get('purchase_price').clearValidators();
+                this.carForm.get('purchase_price').updateValueAndValidity({ emitEvent: false, onlySelf: true });
 
                 this.carService.updateCar(this.carForm.value);//saving is_parkandsell without saving button
               }
@@ -593,8 +593,8 @@ export class CarFormComponent implements OnInit {
               this.carForm.get('purchased_from').setValidators(Validators.required);
               this.carForm.get('purchased_from').updateValueAndValidity({ emitEvent: false, onlySelf: true });
 
-              this.carForm.get('cost_price').setValidators(Validators.required);
-              this.carForm.get('cost_price').updateValueAndValidity({ emitEvent: false, onlySelf: true });
+              this.carForm.get('purchase_price').setValidators(Validators.required);
+              this.carForm.get('purchase_price').updateValueAndValidity({ emitEvent: false, onlySelf: true });
             }
 
           }
@@ -624,9 +624,9 @@ export class CarFormComponent implements OnInit {
             (
               res => {
                 this.total_money_invested = parseInt(res[0].total_money_invested);
-                if (this.total_money_invested < parseInt(this.carForm.get('cost_price').value.toString().replace(/,/g, ""))) {
+                if (this.total_money_invested < parseInt(this.carForm.get('purchase_price').value.toString().replace(/,/g, ""))) {
                   //Message - Please input all tran details iwht option sold to enable
-                  this.message_td = "Please enter transactions with type 'Purchase' to match the Cost Price of Rs. " + this.carForm.get('cost_price').value;
+                  this.message_td = "Please enter transactions with type 'Purchase' to match the Cost Price of Rs. " + this.carForm.get('purchase_price').value;
                   setTimeout(() => {
                     this.message_td = "";
                   }, 5000);

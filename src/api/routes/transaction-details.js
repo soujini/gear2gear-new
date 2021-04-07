@@ -125,7 +125,7 @@ router.get('/api/transactionDetails/investorsInvestmentDetails/:date/:date2', fu
     router.get('/api/transactionDetails/totalInvestmentBalance/:car_id',function(req, res) {
       const car_id  = req.params.car_id;
       client.query(
-        'SELECT SUM(debit) AS TOTAL_INVESTMENT, B.COST_PRICE, B.COST_PRICE-SUM(DEBIT) AS BALANCE '+
+        'SELECT SUM(debit) AS TOTAL_INVESTMENT, B.purchase_price, B.purchase_price-SUM(DEBIT) AS BALANCE '+
         'FROM PUBLIC.TRANSACTION_DETAILS A, PUBLIC.CAR B '+
         'WHERE A.CAR_ID = ' +car_id+' AND B.CAR_ID = ' +car_id+
         'AND TRANSACTION_TYPE_ID = 1 '+
@@ -266,6 +266,23 @@ router.get('/api/transactionDetails/investorsInvestmentDetails/:date/:date2', fu
             });
 
           });
+
+          //Get all expenses for car
+          router.get("/api/transactionDetails/expenses/:id", function(req, res) {
+            var car_id = parseInt(req.params.id);
+            client.query(
+              'select coalesce(sum(debit),0) as total_expenses from transaction_details where transaction_type_id=2 and (is_void=false or is_void is null) and car_id = '+car_id,
+              function(err,result) {
+                if(err){
+                  console.log(err);
+                  res.status(400).send(err);
+                }
+                else{
+                  res.status(200).send(result.rows);
+                }
+              });
+
+            });
 
       router.get("/api/transactionDetails/:id", function(req, res) {
         var car_id = parseInt(req.params.id);
