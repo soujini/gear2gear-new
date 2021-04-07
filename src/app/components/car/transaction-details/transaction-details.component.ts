@@ -479,6 +479,7 @@ export class TransactionDetailsComponent implements OnInit {
             var cp = parseInt(this.carForm.get('cost_price').value.toString().replace( /,/g, "" ));
             var tot = this.total_money_received + credit;
 
+            console.log("souj "+cp);
             //this credit is only calculated if transaction type is SOLD. We are adding a Credit Entry
             //as selling price - profit since we have the profit entries separately
             var credit = parseInt(this.transactionDetailsForm.get('credit').value.toString().replace( /,/g, "" ));
