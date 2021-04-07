@@ -200,10 +200,10 @@ router.get('/api/transactionDetails/investorsInvestmentDetails/:date/:date2', fu
       });
 
       router.post("/api/transactionDetails/client", function(req, res) {
-        if(req.body.credit){
+        if(req.body.credit && (req.body.credit.indexOf(',') != -1)){
           req.body.credit = req.body.credit.replace( /,/g, "" );
         }
-        if(req.body.debit){
+        if(req.body.debit && (req.body.debit.indexOf(',') != -1)){
           req.body.debit = req.body.debit.replace( /,/g, "" );
         }
 
@@ -218,10 +218,10 @@ router.get('/api/transactionDetails/investorsInvestmentDetails/:date/:date2', fu
       });
 
       router.post("/api/transactionDetails", function(req, res) {
-        if(req.body.credit && (req.body.credit.indexOf(',') != -1){
+        if(req.body.credit && (req.body.credit.indexOf(',') != -1)){
           req.body.credit = req.body.credit.replace( /,/g, "" );
         }
-        if(req.body.debit && (req.body.debit.indexOf(',') != -1){
+        if(req.body.debit && (req.body.debit.indexOf(',') != -1)){
           req.body.debit = req.body.debit.replace( /,/g, "" );
         }
 
