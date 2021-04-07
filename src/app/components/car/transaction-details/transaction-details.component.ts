@@ -496,7 +496,7 @@ export class TransactionDetailsComponent implements OnInit {
             else{
               if(this.transactionDetailsForm.get('transaction_type_id').value == 13){
                 this.transactionDetailsForm.patchValue({
-                  credit:cp,
+                  credit:this.total_cost_car,
                 });
               }
             //  this.createTransactionDetails();
