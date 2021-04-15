@@ -186,13 +186,13 @@ router.get('/api/cars', function(req, res) {
       router.put("/api/cars/:id", function(req, res) {
         var carId = parseInt(req.params.id);
 
-        if(req.body.purchase_price){
+        if(req.body.purchase_price && (req.body.purchase_price.indexOf(',') != -1)){
           req.body.purchase_price = req.body.purchase_price.replace( /,/g, "" );
         }
-        if(req.body.selling_price){
+        if(req.body.selling_price && (req.body.selling_price.indexOf(',') != -1)){
           req.body.selling_price = req.body.selling_price.replace( /,/g, "" );
         }
-        if(req.body.mileage){
+        if(req.body.mileage && (req.body.mileage.indexOf(',') != -1)){
           req.body.mileage = req.body.mileage.replace( /,/g, "" );
         }
         if(req.body.is_sold == null){

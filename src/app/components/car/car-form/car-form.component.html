@@ -8,6 +8,120 @@
   </div>
   <div class="row">
     <mat-tab-group class="col-12">
+      <mat-tab *ngIf="selectedCar_Id" class="col-lg-12" label="Transaction Details">
+        <div *ngIf="carForm.get('is_sold') == false" class="col-12 grey lighten-4 mt-3">
+          <header class="header row">
+            <div class="col-12">
+              <div class="col-12 title2">
+                <h2 class="h2-responsive">Sell Car</h2>
+              </div>
+            </div>
+          </header>
+          <form class="mt-1" [formGroup]="soldDetailsForm" >
+            <div class="w-100" style="display:inline-flex;flex-wrap:wrap">
+
+              <div class="form-group col-md-3 mb-0">
+                <input id="inputSoldOn" type="date" class="form-control" formControlName="sold_on">
+                <app-control-messages [control]="carForm.controls.sold_on"></app-control-messages>
+              </div>
+              <div class="form-group col-md-2 mb-0">
+                <select id="inputSoldto" class="form-control"  formControlName="sold_to" placeholder="Sold To">
+                  <option *ngFor="let client of clients$ | async" [value]="client.client_id">{{client.name}}</option>
+                </select>
+                <app-control-messages [control]="carForm.controls.sold_to"></app-control-messages>
+              </div>
+              <div class="form-group col-md-3 mb-0">
+                <input style="text-align:right" id="inputSoldFor" type="text" class="form-control" formControlName="selling_price" placeholder="Sold For" (keyup)="formatCurrency(soldDetailsForm.controls.selling_price)">
+                <app-control-messages [control]="soldDetailsForm.controls.selling_price"></app-control-messages>
+              </div>
+
+              <div class="form-group col-md-2 text-right mb-0">
+                <button *ngIf="this.carForm" [hidden]="carForm.controls.is_sold.value == true && inProcess == true" [disabled]="soldDetailsForm.invalid || soldDetailsForm.controls.selling_price.value <= 0" type="submit" class="btn btn-primary btn-custom btn-md" style="width:100%" (click)="ProcessSale()" >
+                  Process/Edit Sale
+                </button>
+              </div>
+              <div class="form-group col-md-2 text-right mb-0">
+                <button *ngIf="(carForm.controls.is_sold.value == false || carForm.controls.is_sold.value == null) && inProcess == true" type="submit" class="btn btn-danger btn-md" (click)="Sell()" >
+                  Sell
+                </button>
+
+              </div>
+              <div class="form-group col-md-2 text-right mb-0">
+                <button *ngIf="(carForm.controls.is_sold.value == false || carForm.controls.is_sold.value == null) && carForm.controls.is_parkandsell.value == true" type="submit" class="btn btn-danger btn-md" (click)="ParkAndSell()" >
+                  Park And Sell
+                </button>
+                <label *ngIf="carForm.controls.is_sold.value == true" for="sold" class="danger" style="color:red">SOLD</label>
+
+              </div>
+            </div>
+          </form>
+        </div>
+        <app-transaction-details (tdCount)="getTDCount($event)" (opMessage)="setMessage($event)" [transactionTypes$]="transactionTypes$" [expenses$]="expenses$" [carForm]="carForm" [refreshTD]="refreshTD"></app-transaction-details>
+
+
+        <!-- <form [formGroup]="soldDetailsForm">
+          <div class="row" style="padding:10px;margin:15px">
+            <h5>Buyer Details</h5>
+          </div>
+          <div class="row #f5f5f5 grey lighten-4" style="padding-top:5px;margin:15px;">
+
+            <div class="col col-md-12">
+              <div class="form-group">
+                <div>
+                  <div class="md-form mt-0">
+                    <input id="inputSoldOn" type="date" class="form-control" formControlName="sold_on">
+                    <app-control-messages [control]="carForm.controls.sold_on"></app-control-messages>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="col col-md-12">
+              <div class="form-group">
+                <div>
+                  <div class="mt-0">
+                    <select id="inputSoldto" class="form-control"  formControlName="sold_to" placeholder="Sold To">
+                      <option *ngFor="let client of clients$ | async" [value]="client.client_id">{{client.name}}</option>
+                    </select>
+                    <app-control-messages [control]="carForm.controls.sold_to"></app-control-messages>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col col-md-12">
+              <div class="form-group">
+                <div>
+                  <div class="md-form mt-0">
+                    <input style="text-align:right" id="inputSoldFor" type="text" class="form-control" formControlName="selling_price" placeholder="Sold For" (keyup)="formatCurrency(soldDetailsForm.controls.selling_price)">
+                    <app-control-messages [control]="soldDetailsForm.controls.selling_price"></app-control-messages>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col col-md-12">
+              <button [hidden]="carForm.controls.is_sold.value == true && inProcess == true" [disabled]="soldDetailsForm.invalid || soldDetailsForm.controls.selling_price.value <= 0" type="submit" class="btn btn-primary btn-custom btn-md" style="width:100%" (click)="ProcessSale()" >
+                Process/Edit Sale
+              </button>
+
+            </div>
+            <div class="col col-md-12">
+              <button *ngIf="(carForm.controls.is_sold.value == false || carForm.controls.is_sold.value == null) && inProcess == true" type="submit" class="btn btn-danger btn-md" (click)="Sell()" >
+                Sell
+              </button>
+              <button *ngIf="(carForm.controls.is_sold.value == false || carForm.controls.is_sold.value == null) && carForm.controls.is_parkandsell.value == true" type="submit" class="btn btn-danger btn-md" (click)="ParkAndSell()" >
+                Park And Sell
+              </button>
+              <label *ngIf="carForm.controls.is_sold.value == true" for="sold" class="danger" style="color:red">SOLD</label>
+            </div>
+          </div>
+        </form> -->
+        <div *ngIf="message_td_success != ''" class="success-mesage text-center col-12">
+          {{message_td_success}}
+        </div>
+        <div *ngIf="message_td != ''" class="error-message text-center center">
+          {{message_td}}
+        </div>
+      </mat-tab>
       <mat-tab  label="Car Details">
         <div class="col-12 grey lighten-4" style="padding-bottom:35px">
           <header class="header row">
@@ -271,75 +385,7 @@
         </div>
 
       </mat-tab>
-      <mat-tab *ngIf="selectedCar_Id" class="col-lg-12" label="Transaction Details">
 
-        <form [formGroup]="soldDetailsForm">
-          <div class="row" style="padding:10px;margin:15px">
-          <h5>Buyer Details</h5>
-          </div>
-          <div class="row #f5f5f5 grey lighten-4" style="padding-top:5px;margin:15px;">
-
-            <div class="col col-md-12">
-              <div class="form-group">
-                <div>
-                  <div class="md-form mt-0">
-                    <input id="inputSoldOn" type="date" class="form-control" formControlName="sold_on">
-                    <app-control-messages [control]="carForm.controls.sold_on"></app-control-messages>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-            <div class="col col-md-12">
-              <div class="form-group">
-                <div>
-                  <div class="mt-0">
-                    <select id="inputSoldto" class="form-control"  formControlName="sold_to" placeholder="Sold To">
-                      <option *ngFor="let client of clients$ | async" [value]="client.client_id">{{client.name}}</option>
-                    </select>
-                    <app-control-messages [control]="carForm.controls.sold_to"></app-control-messages>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col col-md-12">
-              <div class="form-group">
-                <div>
-                  <div class="md-form mt-0">
-                    <input style="text-align:right" id="inputSoldFor" type="text" class="form-control" formControlName="selling_price" placeholder="Sold For" (keyup)="formatCurrency(soldDetailsForm.controls.selling_price)">
-                    <app-control-messages [control]="soldDetailsForm.controls.selling_price"></app-control-messages>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col col-md-12">
-              <!-- Updates Buyer details and sets inProcess =true -->
-              <button [hidden]="carForm.controls.is_sold.value == true && inProcess == true" [disabled]="soldDetailsForm.invalid || soldDetailsForm.controls.selling_price.value <= 0" type="submit" class="btn btn-primary btn-custom btn-md" style="width:100%" (click)="ProcessSale()" >
-                Process/Edit Sale
-              </button>
-              <!-- <button [hidden]="carForm.controls.is_sold.value == true && inProcess == false" [disabled]="soldDetailsForm.invalid || soldDetailsForm.controls.selling_price.value <= 0" type="submit" class="btn btn-success btn-md" (click)="ProcessSale()" >
-                In Process
-              </button> -->
-            </div>
-            <div class="col col-md-12">
-              <button *ngIf="(carForm.controls.is_sold.value == false || carForm.controls.is_sold.value == null) && inProcess == true" type="submit" class="btn btn-danger btn-md" (click)="Sell()" >
-                Sell
-              </button>
-              <button *ngIf="(carForm.controls.is_sold.value == false || carForm.controls.is_sold.value == null) && carForm.controls.is_parkandsell.value == true" type="submit" class="btn btn-danger btn-md" (click)="ParkAndSell()" >
-                Park And Sell
-              </button>
-              <label *ngIf="carForm.controls.is_sold.value == true" for="sold" class="danger" style="color:red">SOLD</label>
-            </div>
-          </div>
-        </form>
-        <div *ngIf="message_td_success != ''" class="success-mesage text-center col-12">
-          {{message_td_success}}
-        </div>
-        <div *ngIf="message_td != ''" class="error-message text-center center">
-          {{message_td}}
-        </div>
-        <app-transaction-details (tdCount)="getTDCount($event)" (opMessage)="setMessage($event)" [transactionTypes$]="transactionTypes$" [expenses$]="expenses$" [carForm]="carForm" [refreshTD]="refreshTD"></app-transaction-details>
-      </mat-tab>
     </mat-tab-group>
   </div>
 </section>

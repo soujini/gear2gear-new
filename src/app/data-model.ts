@@ -98,7 +98,7 @@ export class TransactionDetails {
   transaction_type_id : number;
   car_id:number;
   investor_id:number;
-  transaction_type_mode: number;
+  transaction_type_mode: string;
   description:string;
   date:string;
   expense_id:number;

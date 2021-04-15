@@ -6,10 +6,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-Change connectionString to 'postgres://localhost:5432/postgres' in routes/connection.js and set
-SSL to false
+<!-- Change connectionString to 'postgres://localhost:5432/postgres' in routes/connection.js and set
+SSL to false -->
 
-Change origin in app.js
+<!-- Change origin in app.js -->
+Change environment.ts production vs localhost
 
 ## Code scaffolding
 

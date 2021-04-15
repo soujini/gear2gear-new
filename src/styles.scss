@@ -68,6 +68,13 @@ body, html {
   font-weight: bold !important;
 }
 
+.mat-tab-label{
+  background-color: pink !important;
+}
+.mat-tab-label:active{
+  background-color: green !important;
+}
+
 /*BORDERS*/
 .active-text{
   border-bottom: 3px solid #d01110;

@@ -5,12 +5,11 @@ let environment = require('../../environments/environment.ts');
 const app = express();
 
 function connect(){
-  console.log("souj "+environment.CONNECTION_STRING);
   var client = new Client({
     connectionString: environment.CONNECTION_STRING,
-    ssl: { rejectUnauthorized: false }
+    //ssl: { rejectUnauthorized: false }
+    ssl:environment.SSL
   });
-
 
   client.connect(function(err,client,done) {
     if(err){
@@ -20,9 +19,7 @@ function connect(){
       console.log("Connecting (Environment) "+ app.get('env'));
       console.log("Connecting (ORIGIN) "+ environment.ORIGIN);
     }
-
   });
-
   return client;
 }
 

@@ -1,4 +1,12 @@
 .table-td{
-  height: 610px;
+  max-height: 610px;
   overflow: scroll;
+}
+.title2{
+color:#43464B;
+padding-top:5px;
+padding-bottom:5px;
+margin: 5px 0px 5px 0px;
+border-bottom: 1px solid #E5E7E7;
+font-weight: bold;
 }

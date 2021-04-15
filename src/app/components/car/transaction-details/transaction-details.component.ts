@@ -68,6 +68,7 @@ export class TransactionDetailsComponent implements OnInit {
     this.sub = this.carService.transactionDetail.subscribe(value =>{
       this.getTransactionDetailsById(this.carService.selectedCarId.getValue());
       this.selectedCar_Id = this.carService.selectedCarId.getValue();
+
     });
 
     this.sub1 = this.carService.sold.subscribe(value =>{
@@ -239,8 +240,13 @@ export class TransactionDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.transactionDetailsForm.reset();
+    
+    this.transactionDetailsForm.patchValue({
+      car_id:this.selectedCar_Id,
+      transaction_type_mode:'debit',
+      transaction_type_id:2,
+    });
 
   }//End of ng oninit
 
@@ -322,38 +328,36 @@ export class TransactionDetailsComponent implements OnInit {
       createForm() {
         this.transactionDetailsForm = this.fb.group({
           date: ['', Validators.required],
-          transaction_type_id: [Validators.required],
-          transaction_type_mode:['', Validators.required],
-          car_id:[Validators.required],
+          transaction_type_id: [2],
+          transaction_type_mode:['debit'],
+          car_id:['',Validators.required],
           investor_id: [''],
-          expense_id:[{value:'', disabled:true}],
+          expense_id:['',Validators.required],
           description:['', [Validators.maxLength(500)]],
           credit:[{value:'', disabled:true}],
-          debit:[{value:'', disabled:true}],
-          credit_formatted:[],
-          debit_formatted:[],
-          percentage:[]
+          debit:['',Validators.required],
+          percentage:['']
         });
-        this.transactionDetailsForm.get('transaction_type_id')
+        //this.transactionDetailsForm.get('transaction_type_id')
 
-        .valueChanges.subscribe((transaction_type_id: string) => {
-          if(transaction_type_id == "2"){ //Expense
-            this.transactionDetailsForm.get('expense_id').enable();
-            this.transactionDetailsForm.get('expense_id').setValidators(Validators.required);
-            this.transactionDetailsForm.get('expense_id').updateValueAndValidity({emitEvent:false, onlySelf:true});
-          }
-          else{
-            this.transactionDetailsForm.get('expense_id').clearValidators();
-            this.transactionDetailsForm.get('expense_id').disable();
-            this.transactionDetailsForm.get('expense_id').updateValueAndValidity({emitEvent:false, onlySelf:true});
-
-            this.transactionDetailsForm.patchValue({
-              expense_id:0,
-              credit:"",
-              debit:""
-            });
-          }
-        });
+        // .valueChanges.subscribe((transaction_type_id: string) => {
+        //   if(transaction_type_id == "2"){ //Expense
+        //     this.transactionDetailsForm.get('expense_id').enable();
+        //     this.transactionDetailsForm.get('expense_id').setValidators(Validators.required);
+        //     this.transactionDetailsForm.get('expense_id').updateValueAndValidity({emitEvent:false, onlySelf:true});
+        //   }
+        //   else{
+        //     this.transactionDetailsForm.get('expense_id').clearValidators();
+        //     this.transactionDetailsForm.get('expense_id').disable();
+        //     this.transactionDetailsForm.get('expense_id').updateValueAndValidity({emitEvent:false, onlySelf:true});
+        //
+        //     this.transactionDetailsForm.patchValue({
+        //       expense_id:0,
+        //       credit:"",
+        //       debit:""
+        //     });
+        //   }
+        // });
 
         this.carService.selectedCarId
         .subscribe(
@@ -369,37 +373,37 @@ export class TransactionDetailsComponent implements OnInit {
         );
 
       }
-      getSelectedTransactionTypeMode(transactionTypeId){
-        let transactionType;
-        this.transactionTypes$.subscribe(res=>{
-          transactionType = res.filter(tt => tt.transaction_type_id == transactionTypeId);
-          this.transactionDetailsForm.patchValue({
-            transaction_type_mode:transactionType[0].mode,
-          });
-
-          if(transactionType[0].mode == "credit"){
-            this.transactionDetailsForm.get('credit').enable();
-            this.transactionDetailsForm.get('credit').setValidators([Validators.required, Validators.min(1)]);
-            this.transactionDetailsForm.get('credit').updateValueAndValidity({emitEvent:false, onlySelf:true});
-
-            this.transactionDetailsForm.patchValue({'debit':''  });
-            this.transactionDetailsForm.get('debit').clearValidators();
-            this.transactionDetailsForm.get('debit').disable();
-            this.transactionDetailsForm.get('debit').updateValueAndValidity({emitEvent:false, onlySelf:true});
-          }
-          else{
-            this.transactionDetailsForm.get('debit').enable();
-            this.transactionDetailsForm.get('debit').setValidators([Validators.required, Validators.min(1)]);
-            this.transactionDetailsForm.get('debit').updateValueAndValidity({emitEvent:false, onlySelf:true});
-
-            this.transactionDetailsForm.patchValue({'credit':''});
-            this.transactionDetailsForm.get('credit').clearValidators();
-            this.transactionDetailsForm.get('credit').disable();
-            this.transactionDetailsForm.get('credit').updateValueAndValidity({emitEvent:false, onlySelf:true});
-
-          }
-        });
-      }
+      // getSelectedTransactionTypeMode(transactionTypeId){
+      //   let transactionType;
+      //   this.transactionTypes$.subscribe(res=>{
+      //     transactionType = res.filter(tt => tt.transaction_type_id == transactionTypeId);
+      //     this.transactionDetailsForm.patchValue({
+      //       transaction_type_mode:transactionType[0].mode,
+      //     });
+      //
+      //     if(transactionType[0].mode == "credit"){
+      //       this.transactionDetailsForm.get('credit').enable();
+      //       this.transactionDetailsForm.get('credit').setValidators([Validators.required, Validators.min(1)]);
+      //       this.transactionDetailsForm.get('credit').updateValueAndValidity({emitEvent:false, onlySelf:true});
+      //
+      //       this.transactionDetailsForm.patchValue({'debit':''  });
+      //       this.transactionDetailsForm.get('debit').clearValidators();
+      //       this.transactionDetailsForm.get('debit').disable();
+      //       this.transactionDetailsForm.get('debit').updateValueAndValidity({emitEvent:false, onlySelf:true});
+      //     }
+      //     else{
+      //       this.transactionDetailsForm.get('debit').enable();
+      //       this.transactionDetailsForm.get('debit').setValidators([Validators.required, Validators.min(1)]);
+      //       this.transactionDetailsForm.get('debit').updateValueAndValidity({emitEvent:false, onlySelf:true});
+      //
+      //       this.transactionDetailsForm.patchValue({'credit':''});
+      //       this.transactionDetailsForm.get('credit').clearValidators();
+      //       this.transactionDetailsForm.get('credit').disable();
+      //       this.transactionDetailsForm.get('credit').updateValueAndValidity({emitEvent:false, onlySelf:true});
+      //
+      //     }
+      //   });
+      // }
 
       getTransactionDetailsById(car_id:any){
         //this.transactionDetailsForm.reset();
@@ -442,33 +446,31 @@ export class TransactionDetailsComponent implements OnInit {
       }
 
       onSubmit(){
-        this.transactionDetailsForm.patchValue({
-          car_id:this.selectedCar_Id,
-        });
+
 
         if(this.transactionDetailsForm.get('transaction_type_mode').value == "debit"){
           //Purchase Transaction Type Should match Cost Price
-          if(this.transactionDetailsForm.get('transaction_type_id').value == 12){
-            var cp = parseInt(this.carForm.get('purchase_price').value.toString().replace( /,/g, "" ));
-            var debit = parseInt(this.transactionDetailsForm.get('debit').value.toString().replace( /,/g, "" ));
-            var tot = this.total_money_invested + debit;
-
-            if(tot>cp){
-              this.opMessage.emit("Purchase Type transactions should not exceed the Cost Price "+this.carForm.get('purchase_price').value);
-
-              setTimeout(() => {
-                this.opMessage.emit("");
-              },5000);
-            }
-            else{
-              //this.createTransactionDetails();
-              this.getAvailablePoolBalanceAsOfPurchaseDate();
-            }
-          }
-          else{
+          // if(this.transactionDetailsForm.get('transaction_type_id').value == 12){
+          //   var cp = parseInt(this.carForm.get('purchase_price').value.toString().replace( /,/g, "" ));
+          //   var debit = parseInt(this.transactionDetailsForm.get('debit').value.toString().replace( /,/g, "" ));
+          //   var tot = this.total_money_invested + debit;
+          //
+          //   if(tot>cp){
+          //     this.opMessage.emit("Purchase Type transactions should not exceed the Cost Price "+this.carForm.get('purchase_price').value);
+          //
+          //     setTimeout(() => {
+          //       this.opMessage.emit("");
+          //     },5000);
+          //   }
+          //   else{
+          //     //this.createTransactionDetails();
+          //     this.getAvailablePoolBalanceAsOfPurchaseDate();
+          //   }
+          // }
+          // else{
             //this.createTransactionDetails();
             this.getAvailablePoolBalanceAsOfPurchaseDate();
-          }
+          // }
         }
         else{
 
@@ -479,10 +481,6 @@ export class TransactionDetailsComponent implements OnInit {
             var credit = parseInt(this.transactionDetailsForm.get('credit').value.toString().replace( /,/g, "" ));
             var tot = this.total_money_received + credit;
 
-            console.log("souj "+sp);
-            console.log("souj "+credit);
-            console.log("total" +tot);
-            console.log("expenses "+this.total_cost_car);
             //this credit is only calculated if transaction type is SOLD. We are adding a Credit Entry
             //as selling price - profit since we have the profit entries separately
             if(tot>sp)
@@ -512,20 +510,33 @@ export class TransactionDetailsComponent implements OnInit {
 
       getAvailablePoolBalanceAsOfPurchaseDate()
       {
-        var formattedDate = this.carForm.get('purchased_on').value.split('T');
+        var fDate;
+        if(this.carForm.get('purchased_on').value && (this.carForm.get('purchased_on').value.indexOf('T') != -1)){
+          var formattedDate = this.carForm.get('purchased_on').value.split('T');
+          fDate=formattedDate[0].toString();
+        }
+        else{
+          var formattedDate = this.carForm.get('purchased_on').value;
+          fDate=formattedDate.toString();
+        }
+
         var debit = 0;
         var total_debits = 0;
-        this.transactionDetailsService.getAvailablePoolBalanceAsOfPurchaseDate(formattedDate[0].toString())
+        this.transactionDetailsService.getAvailablePoolBalanceAsOfPurchaseDate(fDate)
         .subscribe(
           res => {
             debit = parseInt(this.transactionDetailsForm.get('debit').value.toString().replace( /,/g, "" ));
             console.log("available balance ",res[0].available_balance);
             if(parseInt(res[0].available_balance) < debit)
             {
-              this.opMessage.emit("Insufficient funds in the Gear2Gear Pool - Balance is "+parseInt(res[0].available_balance));
+                window.scrollTo(0, 0);
+              this.message="Insufficient funds in the Gear2Gear Pool - Balance is "+parseInt(res[0].available_balance);
+              // this.opMessage.emit("Insufficient funds in the Gear2Gear Pool - Balance is "+parseInt(res[0].available_balance));
+
               this.transactionDetailsForm.reset();
               setTimeout(() => {
-                this.opMessage.emit("");
+                // this.opMessage.emit("");
+                this.message="";
               },5000);
             }
             else{
@@ -567,14 +578,14 @@ export class TransactionDetailsComponent implements OnInit {
             this.transactionDetailsForm.reset();
             this.getTransactionDetailsById(this.carService.selectedCarId.getValue());
             this.transactionDetailsForm.patchValue({'debit':''  });
-            this.transactionDetailsForm.get('debit').clearValidators();
-            this.transactionDetailsForm.get('debit').disable();
-            this.transactionDetailsForm.get('debit').updateValueAndValidity({emitEvent:false, onlySelf:true});
-
-            this.transactionDetailsForm.patchValue({'credit':''  });
-            this.transactionDetailsForm.get('credit').clearValidators();
-            this.transactionDetailsForm.get('credit').disable();
-            this.transactionDetailsForm.get('credit').updateValueAndValidity({emitEvent:false, onlySelf:true});
+            // this.transactionDetailsForm.get('debit').clearValidators();
+            // this.transactionDetailsForm.get('debit').disable();
+            // this.transactionDetailsForm.get('debit').updateValueAndValidity({emitEvent:false, onlySelf:true});
+            //
+            // this.transactionDetailsForm.patchValue({'credit':''  });
+            // this.transactionDetailsForm.get('credit').clearValidators();
+            // this.transactionDetailsForm.get('credit').disable();
+            // this.transactionDetailsForm.get('credit').updateValueAndValidity({emitEvent:false, onlySelf:true});
           },
           err => {
             console.log(err);
