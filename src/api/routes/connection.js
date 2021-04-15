@@ -7,8 +7,8 @@ const app = express();
 function connect(){
   var client = new Client({
     connectionString: environment.CONNECTION_STRING,
-    //ssl: { rejectUnauthorized: false }
-    ssl:environment.SSL
+    ssl: { rejectUnauthorized: false }
+    //ssl:environment.SSL
   });
 
   client.connect(function(err,client,done) {
