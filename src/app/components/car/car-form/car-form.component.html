@@ -9,7 +9,7 @@
   <div class="row">
     <mat-tab-group class="col-12">
       <mat-tab *ngIf="selectedCar_Id" class="col-lg-12" label="Transaction Details">
-        <div *ngIf="carForm.get('is_sold') == false" class="col-12 grey lighten-4 mt-3">
+        <div *ngIf="carForm.get('is_sold').value == false" class="col-12 grey lighten-4 mt-3">
           <header class="header row">
             <div class="col-12">
               <div class="col-12 title2">

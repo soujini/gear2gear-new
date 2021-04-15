@@ -101,7 +101,9 @@ export class CarFormComponent implements OnInit {
 
     this.routeParamsSubscription = this.route.paramMap.subscribe(params => {
       this.carService.selectedCarId.next(parseInt(params.get('id')));
-        this.getCarById(parseInt(params.get('id')));
+      if(this.carService.selectedMode == "Edit"){
+          this.getCarById(parseInt(params.get('id')));
+      }
     });
 
     this.sub = this.carService.selectedCarId
@@ -428,9 +430,6 @@ export class CarFormComponent implements OnInit {
           autoCreateTransactionMinusProfits(){
             const Profit = parseInt(this.carForm.get('selling_price').value.toString().replace( /,/g, "" )) - this.total_cost_car;
 
-            console.log(this.carForm.get('selling_price').value.toString().replace( /,/g, "" ));
-            console.log(this.total_debits);
-            alert(this.total_debits);
             var soldTranDetailObj={
               transaction_details_id:0,
               date: this.carForm.get('sold_on').value,
@@ -571,7 +570,7 @@ export class CarFormComponent implements OnInit {
               //   percentage:null,
               // });
               var profitAndLossTransactionsObj ={
-                investor_id : 1,
+                investor_id : 76,
                 transaction_type_id: transaction_type_id,
                 transaction_type_mode:transaction_type_mode,
                 car_id: this.carForm.get('car_id').value,

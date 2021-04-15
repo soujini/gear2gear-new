@@ -183,7 +183,7 @@ export class TransactionDetailsComponent implements OnInit {
             }
 
             this.transactionDetailsForm.patchValue({
-              investor_id : 1,
+              investor_id : 76,
               transaction_type_id: transaction_type_id,
               transaction_type_mode:transaction_type_mode,
               car_id: this.carForm.get('car_id').value,
@@ -241,7 +241,7 @@ export class TransactionDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.transactionDetailsForm.reset();
-    
+
     this.transactionDetailsForm.patchValue({
       car_id:this.selectedCar_Id,
       transaction_type_mode:'debit',
